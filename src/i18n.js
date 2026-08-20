@@ -9,11 +9,14 @@ const resources = {
       sertifikasi: "Sertifikasi",
       visi_misi: "Visi & Misi",
       kegiatan: "Kegiatan",
+      produk:"Produk",
+      layanan:"Layanan",
+      mitra:"Mitra",
       info: "Info",
       karir: "Karir",
       faq: "FAQ",
       blog: "Blog",
-      cari_placeholder: "Cari...",
+      cari_placeholder:"Cari",
 
       /**beranda */
 biru1:"SOLUSI IT,",

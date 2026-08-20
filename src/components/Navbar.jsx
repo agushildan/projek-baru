@@ -21,9 +21,7 @@ function Navbar() {
     setCurrentLang(lng);
   };
 
-  const isTentangAktif = ["/sertifikasi", "/visi-misi"].includes(
-    location.pathname,
-  );
+  const isTentangAktif = ["/sertifikasi", "/visimisi"].includes(location.pathname);
   const isInfoAktif = ["/karir", "/faq", "/blog"].includes(location.pathname);
 
   const isSectionActive = (hash) => {
@@ -31,157 +29,17 @@ function Navbar() {
   };
 
   const menuRoutes = [
-    {
-      keywords: [
-        "beranda",
-        "home",
-        "utama",
-        "halaman utama",
-        "homepage",
-        "menu utama",
-        "menu",
-        "dashbord",
-      ],
-      route: "/",
-    },
-    {
-      keywords: [
-        "produk",
-        "product",
-        "barang",
-        "produk kami",
-        "item",
-        "equipment",
-        "peralatan",
-        "sparepart",
-        "spare part",
-        "componen",
-        "daftar barang",
-        "produk list",
-      ],
-      route: "/#produk",
-    },
-    {
-      keywords: [
-        "layanan",
-        "service",
-        "jasa",
-        "services",
-        "pelayanan",
-        "layanan kami",
-        "service kami",
-        "jasa kami",
-        "support",
-        "dukungan",
-      ],
-      route: "/layanan",
-    },
-    {
-      keywords: [
-        "mitra",
-        "partner",
-        "kerjasama",
-        "mitra kami",
-        "kerja sama",
-        "partners",
-        "kolaborasi",
-        "rekan",
-      ],
-      route: "/#mitra",
-    },
-    {
-      keywords: [
-        "kegiatan",
-        "activity",
-        "event",
-        "acara",
-        "event",
-        "events",
-        "aktivitas",
-        "dokumentasi",
-        "agenda",
-        "kegiatan perusahaan",
-        "event perusahaan",
-      ],
-      route: "/#kegiatan",
-    },
-    {
-      keywords: [
-        "sertifikasi",
-        "sertifikat",
-        "penghargaan",
-        "sertifikasi perusahaan",
-        "dokumen",
-        "certifikasi",
-        "certifikasi",
-      ],
-      route: "/sertifikasi",
-    },
-    {
-      keywords: [
-        "visi",
-        "misi",
-        "visi misi",
-        "visison mission",
-        "vision",
-        "mission",
-      ],
-      route: "/visi-misi",
-    },
-    {
-      keywords: [
-        "tentang",
-        "about",
-        "tentang kami",
-        "about us",
-        "profil",
-        "company profile",
-        "company",
-      ],
-      route: "/#tentang",
-    },
-    {
-      keywords: [
-        "karir",
-        "career",
-        "job",
-        "jobs",
-        "lowongan",
-        "lowongan kerja",
-        "rekrutmen",
-        "recruitment",
-        "join us",
-        "bekerja",
-      ],
-      route: "/karir",
-    },
-    {
-      keywords: [
-        "faq",
-        "help",
-        "bantuan",
-        "tanya jawab",
-        "question",
-        "informasi umum",
-        "bantuan",
-      ],
-      route: "/faq",
-    },
-    {
-      keywords: [
-        "blog",
-        "tes",
-        "artikel",
-        "articles",
-        "berita",
-        "news",
-        "informasi",
-        "berita perusahaan",
-        "tips",
-        "update",
-      ],
-      route: "/blog",
-    },
+    { keywords: ["beranda", "home", "utama", "halaman utama", "homepage", "menu utama", "menu", "dashbord"], route: "/" },
+    { keywords: ["produk", "product", "barang", "produk kami", "item", "equipment", "peralatan", "sparepart", "spare part", "componen", "daftar barang", "produk list"], route: "/#produk" },
+    { keywords: ["layanan", "service", "jasa", "services", "pelayanan", "layanan kami", "service kami", "jasa kami", "support", "dukungan"], route: "/layanan" },
+    { keywords: ["mitra", "partner", "kerjasama", "mitra kami", "kerja sama", "partners", "kolaborasi", "rekan"], route: "/#mitra" },
+    { keywords: ["kegiatan", "activity", "event", "acara", "events", "aktivitas", "dokumentasi", "agenda", "kegiatan perusahaan", "event perusahaan"], route: "/#kegiatan" },
+    { keywords: ["sertifikasi", "sertifikat", "penghargaan", "sertifikasi perusahaan", "dokumen", "certifikasi"], route: "/sertifikasi" },
+    { keywords: ["visi", "misi", "visi misi", "vision mission", "vision", "mission"], route: "/visimisi" },
+    { keywords: ["tentang", "about", "tentang kami", "about us", "profil", "company profile", "company"], route: "/#tentang" },
+    { keywords: ["karir", "career", "job", "jobs", "lowongan", "lowongan kerja", "rekrutmen", "recruitment", "join us", "bekerja"], route: "/karir" },
+    { keywords: ["faq", "help", "bantuan", "tanya jawab", "question", "informasi umum"], route: "/faq" },
+    { keywords: ["blog", "tes", "artikel", "articles", "berita", "news", "informasi", "berita perusahaan", "tips", "update"], route: "/blog" },
   ];
 
   const closeAllMenus = () => {
@@ -209,7 +67,7 @@ function Navbar() {
     if (!kataKunci) return;
 
     const match = menuRoutes.find((item) =>
-      item.keywords.some((key) => kataKunci.includes(key)),
+      item.keywords.some((key) => kataKunci.includes(key))
     );
 
     if (match) {
@@ -258,7 +116,9 @@ function Navbar() {
       </div>
 
       <button className="hp-btn" onClick={() => setIsMobileMenuOpen(true)}>
+        
         ☰
+        
       </button>
 
       {isMobileMenuOpen && (
@@ -406,17 +266,16 @@ function Navbar() {
               </svg>
             </button>
           </form>
+
           <div className="language-switcher">
             <button
               type="button"
               className={`lang-btn ${currentLang.startsWith("id") ? "active" : ""}`}
               onClick={() => changeLanguage("id")}
             >
-              {/**benra indonesia */}
-
               <svg
-                width="32"
-                height="32"
+                width="24"
+                height="24"
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -425,8 +284,7 @@ function Navbar() {
                     <circle cx="16" cy="16" r="16" />
                   </clipPath>
                 </defs>
-
-                <g clip-path="url(#circle)">
+                <g clipPath="url(#circle)">
                   <rect width="32" height="16" fill="#FF0000" />
                   <rect y="16" width="32" height="16" fill="#FFFFFF" />
                 </g>
@@ -438,10 +296,9 @@ function Navbar() {
               className={`lang-btn ${currentLang.startsWith("en") ? "active" : ""}`}
               onClick={() => changeLanguage("en")}
             >
-              {/** bendera amerika */}
               <svg
-                width="32"
-                height="32"
+                width="24"
+                height="24"
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -450,43 +307,34 @@ function Navbar() {
                     <circle cx="16" cy="16" r="16" />
                   </clipPath>
                 </defs>
-
                 <g clipPath="url(#us-circle)">
                   <rect width="32" height="32" fill="#B22234" />
-
                   <rect y="4.92" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="9.85" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="14.77" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="19.69" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="24.62" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="29.54" width="32" height="2.46" fill="#FFFFFF" />
-
                   <rect width="14" height="17" fill="#3C3B6E" />
-
                   <g fill="#FFFFFF">
                     <circle cx="2" cy="2" r=".65" />
                     <circle cx="5.5" cy="2" r=".65" />
                     <circle cx="9" cy="2" r=".65" />
                     <circle cx="12.5" cy="2" r=".65" />
-
                     <circle cx="3.75" cy="4.5" r=".65" />
                     <circle cx="7.25" cy="4.5" r=".65" />
                     <circle cx="10.75" cy="4.5" r=".65" />
-
                     <circle cx="2" cy="7" r=".65" />
                     <circle cx="5.5" cy="7" r=".65" />
                     <circle cx="9" cy="7" r=".65" />
                     <circle cx="12.5" cy="7" r=".65" />
-
                     <circle cx="3.75" cy="9.5" r=".65" />
                     <circle cx="7.25" cy="9.5" r=".65" />
                     <circle cx="10.75" cy="9.5" r=".65" />
-
                     <circle cx="2" cy="12" r=".65" />
                     <circle cx="5.5" cy="12" r=".65" />
                     <circle cx="9" cy="12" r=".65" />
                     <circle cx="12.5" cy="12" r=".65" />
-
                     <circle cx="3.75" cy="14.5" r=".65" />
                     <circle cx="7.25" cy="14.5" r=".65" />
                     <circle cx="10.75" cy="14.5" r=".65" />

@@ -1,10 +1,10 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import i18n from "../i18n";
 
 function VisiMisi() {
-
-    const [currentLang, setCurrentLang] = useState(i18n.language || "id");
+  const [currentLang, setCurrentLang] = useState(i18n.language || "id");
   const t = (key) => i18n.t(key);
+
   useEffect(() => {
     const handleLanguageChange = (lng) => {
       setCurrentLang(lng);
@@ -18,10 +18,8 @@ function VisiMisi() {
   }, []);
 
   return (
-    <section className="w-full min-h-screen bg-slate-50/60 py-16 px-4 flex flex-col items-center justify-center space-y-16">
-      
+    <section className="w-full min-h-screen bg-[#F2F5FF] py-16 px-4 flex flex-col items-center justify-center space-y-16">
       <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-xl shadow-blue-900/5 p-8 pt-12 md:p-12 md:pt-14 text-center border border-slate-100">
-        
         <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#4b8cc0] text-white font-serif tracking-widest text-lg md:text-xl font-medium px-16 py-2.5 rounded-lg shadow-md">
           {t("judulvisi")}
         </div>
@@ -32,7 +30,6 @@ function VisiMisi() {
       </div>
 
       <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-xl shadow-blue-900/5 p-8 pt-12 md:p-12 md:pt-14 border border-slate-100">
-        
         <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-[#4b8cc0] text-white font-serif tracking-widest text-lg md:text-xl font-medium px-16 py-2.5 rounded-lg shadow-md">
           {t("judulmisi")}
         </div>
@@ -59,9 +56,7 @@ function VisiMisi() {
             <span>{t("isimisi5")}</span>
           </li>
         </ul>
-
       </div>
-
     </section>
   );
 }

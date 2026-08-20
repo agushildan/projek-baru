@@ -5,7 +5,7 @@ import i18n from "../i18n";
 import Produk from "./produk";
 
 function Beranda() {
-  const whatsappNumber = "6289519808548";
+  const whatsappNumber = "621234567890";
   const message =
     "Halo, saya ingin bertanya mengenai layanan PT. Digi Tekno Indonesia.";
 
@@ -16,6 +16,7 @@ function Beranda() {
 
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
   const t = (key) => i18n.t(key);
+
   useEffect(() => {
     const handleLanguageChange = (lng) => {
       setCurrentLang(lng);
@@ -30,8 +31,13 @@ function Beranda() {
 
   return (
     <div>
-      <section className="w-full min-h-[85vh] flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-sky-50 to-blue-100 px-4 py-12 text-center overflow-x-auto">
-        <div className="max-w-6xl mx-auto flex flex-col items-center w-full">
+      <section className="relative w-full min-h-[85vh] flex items-center justify-center bg-[#F2F5FF] px-4 py-12 text-center overflow-hidden">
+        
+        <div className="absolute -bottom-30 left-40 w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] bg-sky-200/60 rounded-full blur-[700px] pointer-events-none z-0"></div>
+
+        <div className="absolute -bottom-30 right-40 w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] bg-rose-200/50 rounded-full blur-[400px] pointer-events-none z-0"></div>
+
+        <div className="max-w-6xl mx-auto flex flex-col items-center w-full relative z-10">
           <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight md:leading-snug tracking-wide mb-6">
             <span className="text-[#4b8cc0] drop-shadow-[2px_2px_3px_rgba(0,0,0,0.15)] block">
               {t("biru1")}
