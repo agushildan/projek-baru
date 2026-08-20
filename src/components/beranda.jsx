@@ -3,6 +3,8 @@ import TentangKami from "./tentang";
 import VisiMisi from "./visimisi";
 import i18n from "../i18n";
 import Produk from "./produk";
+import Portfolio from "./portfolio";
+import Layanan from "./layanan";
 
 function Beranda() {
   const whatsappNumber = "621234567890";
@@ -85,6 +87,8 @@ function Beranda() {
       <TentangKami />
       <VisiMisi />
       <Produk />
+      <Portfolio />
+      <Layanan />
     </div>
   );
 }
