@@ -11,6 +11,8 @@ import Faq from "./components/faq";
 import Blog from "./components/blog";
 import Sertifikasi from "./components/sertifikasi";
 import VisiMisi from "./components/visimisi";
+import ProdukDetail from "./components/ProdukDetail";
+import SoftwareDetail from "./components/SoftwareDetail";
 
 function App() {
   return (
@@ -18,18 +20,25 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Beranda />} />
-        <Route path="/sertifikasi" element={<Sertifikasi />} />
-        <Route path="/visimisi" element={<VisiMisi />} />
-        
-        <Route path="/produklain" element={<Produk />} />
-        <Route path="/layanan" element={<Layanan />} />
-        <Route path="/mitra" element={<Mitra />} />
-        <Route path="/kegiatan" element={<Kegiatan />} />
-        <Route path="/karir" element={<Karir />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
+  <Route path="/" element={<Beranda />} />
+
+  <Route path="/sertifikasi" element={<Sertifikasi />} />
+  <Route path="/visimisi" element={<VisiMisi />} />
+
+  <Route path="/produklain" element={<ProdukDetail />} />
+
+  <Route
+    path="/produk/software"
+    element={<SoftwareDetail />}
+  />
+
+  <Route path="/layanan" element={<Layanan />} />
+  <Route path="/mitra" element={<Mitra />} />
+  <Route path="/kegiatan" element={<Kegiatan />} />
+  <Route path="/karir" element={<Karir />} />
+  <Route path="/faq" element={<Faq />} />
+  <Route path="/blog" element={<Blog />} />
+</Routes>
     </div>
   );
 }
