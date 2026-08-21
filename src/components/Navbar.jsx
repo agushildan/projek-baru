@@ -21,7 +21,9 @@ function Navbar() {
     setCurrentLang(lng);
   };
 
-  const isTentangAktif = ["/sertifikasi", "/visimisi"].includes(location.pathname);
+  const isTentangAktif = ["/sertifikasi", "/visimisi"].includes(
+    location.pathname,
+  );
   const isInfoAktif = ["/karir", "/faq", "/blog"].includes(location.pathname);
 
   const isSectionActive = (hash) => {
@@ -29,17 +31,154 @@ function Navbar() {
   };
 
   const menuRoutes = [
-    { keywords: ["beranda", "home", "utama", "halaman utama", "homepage", "menu utama", "menu", "dashbord"], route: "/" },
-    { keywords: ["produk", "product", "barang", "produk kami", "item", "equipment", "peralatan", "sparepart", "spare part", "componen", "daftar barang", "produk list"], route: "/#produk" },
-    { keywords: ["layanan", "service", "jasa", "services", "pelayanan", "layanan kami", "service kami", "jasa kami", "support", "dukungan"], route: "/layanan" },
-    { keywords: ["mitra", "partner", "kerjasama", "mitra kami", "kerja sama", "partners", "kolaborasi", "rekan"], route: "/#mitra" },
-    { keywords: ["kegiatan", "activity", "event", "acara", "events", "aktivitas", "dokumentasi", "agenda", "kegiatan perusahaan", "event perusahaan"], route: "/#kegiatan" },
-    { keywords: ["sertifikasi", "sertifikat", "penghargaan", "sertifikasi perusahaan", "dokumen", "certifikasi"], route: "/sertifikasi" },
-    { keywords: ["visi", "misi", "visi misi", "vision mission", "vision", "mission"], route: "/visimisi" },
-    { keywords: ["tentang", "about", "tentang kami", "about us", "profil", "company profile", "company"], route: "/#tentang" },
-    { keywords: ["karir", "career", "job", "jobs", "lowongan", "lowongan kerja", "rekrutmen", "recruitment", "join us", "bekerja"], route: "/karir" },
-    { keywords: ["faq", "help", "bantuan", "tanya jawab", "question", "informasi umum"], route: "/faq" },
-    { keywords: ["blog", "tes", "artikel", "articles", "berita", "news", "informasi", "berita perusahaan", "tips", "update"], route: "/blog" },
+    {
+      keywords: [
+        "beranda",
+        "home",
+        "utama",
+        "halaman utama",
+        "homepage",
+        "menu utama",
+        "menu",
+        "dashbord",
+      ],
+      route: "/",
+    },
+    {
+      keywords: [
+        "produk",
+        "product",
+        "barang",
+        "produk kami",
+        "item",
+        "equipment",
+        "peralatan",
+        "sparepart",
+        "spare part",
+        "componen",
+        "daftar barang",
+        "produk list",
+      ],
+      route: "/#produk",
+    },
+    {
+      keywords: [
+        "layanan",
+        "service",
+        "jasa",
+        "services",
+        "pelayanan",
+        "layanan kami",
+        "service kami",
+        "jasa kami",
+        "support",
+        "dukungan",
+      ],
+      route: "/layanan",
+    },
+    {
+      keywords: [
+        "mitra",
+        "partner",
+        "kerjasama",
+        "mitra kami",
+        "kerja sama",
+        "partners",
+        "kolaborasi",
+        "rekan",
+      ],
+      route: "/#mitra",
+    },
+    {
+      keywords: [
+        "kegiatan",
+        "activity",
+        "event",
+        "acara",
+        "events",
+        "aktivitas",
+        "dokumentasi",
+        "agenda",
+        "kegiatan perusahaan",
+        "event perusahaan",
+      ],
+      route: "/#kegiatan",
+    },
+    {
+      keywords: [
+        "sertifikasi",
+        "sertifikat",
+        "penghargaan",
+        "sertifikasi perusahaan",
+        "dokumen",
+        "certifikasi",
+      ],
+      route: "/sertifikasi",
+    },
+    {
+      keywords: [
+        "visi",
+        "misi",
+        "visi misi",
+        "vision mission",
+        "vision",
+        "mission",
+      ],
+      route: "/visimisi",
+    },
+    {
+      keywords: [
+        "tentang",
+        "about",
+        "tentang kami",
+        "about us",
+        "profil",
+        "company profile",
+        "company",
+      ],
+      route: "/#tentang",
+    },
+    {
+      keywords: [
+        "karir",
+        "career",
+        "job",
+        "jobs",
+        "lowongan",
+        "lowongan kerja",
+        "rekrutmen",
+        "recruitment",
+        "join us",
+        "bekerja",
+      ],
+      route: "/karir",
+    },
+    {
+      keywords: [
+        "faq",
+        "help",
+        "bantuan",
+        "tanya jawab",
+        "question",
+        "informasi umum",
+      ],
+      route: "/faq",
+    },
+    {
+      keywords: [
+        "blog",
+        "tes",
+        "artikel",
+        "articles",
+        "berita",
+        "news",
+        "informasi",
+        "berita perusahaan",
+        "tips",
+        "update",
+      ],
+      route: "/blog",
+    },
   ];
 
   const closeAllMenus = () => {
@@ -67,7 +206,7 @@ function Navbar() {
     if (!kataKunci) return;
 
     const match = menuRoutes.find((item) =>
-      item.keywords.some((key) => kataKunci.includes(key))
+      item.keywords.some((key) => kataKunci.includes(key)),
     );
 
     if (match) {
@@ -116,9 +255,7 @@ function Navbar() {
       </div>
 
       <button className="hp-btn" onClick={() => setIsMobileMenuOpen(true)}>
-        
         ☰
-        
       </button>
 
       {isMobileMenuOpen && (
@@ -190,8 +327,17 @@ function Navbar() {
 
           <li>
             <span
-              className={`dropdown-trigger ${isSectionActive("mitra") ? "menu-aktif" : ""}`}
-              onClick={() => scrollToBerandaSection("mitra")}
+              className={`dropdown-trigger ${
+                location.pathname === "/mitra" ? "menu-aktif" : ""
+              }`}
+              onClick={() => {
+                closeAllMenus();
+                navigate("/mitra");
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
             >
               {t("mitra")}
             </span>
@@ -199,8 +345,17 @@ function Navbar() {
 
           <li>
             <span
-              className={`dropdown-trigger ${isSectionActive("kegiatan") ? "menu-aktif" : ""}`}
-              onClick={() => scrollToBerandaSection("kegiatan")}
+              className={`dropdown-trigger ${
+                location.pathname === "/kegiatan" ? "menu-aktif" : ""
+              }`}
+              onClick={() => {
+                closeAllMenus();
+                navigate("/kegiatan");
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
             >
               {t("kegiatan")}
             </span>

@@ -5,6 +5,9 @@ import i18n from "../i18n";
 import Produk from "./produk";
 import Portfolio from "./portfolio";
 import Layanan from "./layanan";
+import Kegiatan from "./kegiatan";
+import Mitra from "./mitra";
+import Kontak from "./kontak";
 
 function Beranda() {
   const whatsappNumber = "621234567890";
@@ -89,6 +92,9 @@ function Beranda() {
       <Produk />
       <Portfolio />
       <Layanan />
+      <Kegiatan />
+      <Mitra />
+      <Kontak />
     </div>
   );
 }
