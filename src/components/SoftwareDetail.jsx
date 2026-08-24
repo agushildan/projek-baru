@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+
 import i18n from "../i18n";
+
+import landscape from "../assets/produk/landscape.png";
 
 function SoftwareDetail() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const t = (key, defaultValue) =>
-    i18n.t(key, { defaultValue });
+  const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
     const handleLanguageChange = (lng) => {
@@ -19,16 +22,40 @@ function SoftwareDetail() {
     };
   }, []);
 
+  const produkSoftware = [
+    {
+      title: "SIM DIGI",
+      description: "( Sistem Informasi Manajemen DIGI )",
+    },
+    {
+      title: "SIM DIGI",
+      description: "( Sistem Informasi Manajemen DIGI )",
+    },
+    {
+      title: "SIM DIGI",
+      description: "( Sistem Informasi Manajemen DIGI )",
+    },
+    {
+      title: "SIM DIGI",
+      description: "( Sistem Informasi Manajemen DIGI )",
+    },
+    {
+      title: "SIM DIGI",
+      description: "( Sistem Informasi Manajemen DIGI )",
+    },
+    {
+      title: "SIM DIGI",
+      description: "( Sistem Informasi Manajemen DIGI )",
+    },
+  ];
+
   return (
     <section className="w-full min-h-screen bg-[#e9eefc]">
-
       {/* =========================
-          HEADER SOFTWARE IT
+          HEADER
       ========================== */}
       <div className="w-full bg-[#e9eefc] px-6 pt-8 pb-8 md:pt-10 md:pb-10">
-
         <div className="max-w-[1100px] mx-auto text-center">
-
           <h1
             className="
               font-['Cormorant_Garamond']
@@ -60,24 +87,239 @@ function SoftwareDetail() {
               "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
             )}
           </p>
-
         </div>
-
       </div>
 
       {/* =========================
-          CONTENT SOFTWARE IT
-          SEMENTARA KOSONG
+          LIST SOFTWARE
       ========================== */}
-      <div
-        className="
+      <div className="w-full px-5 pb-16 md:px-6 md:pb-20">
+        <div
+          className="
+            max-w-[1100px]
+            mx-auto
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            md:grid-cols-3
+            gap-5
+          "
+        >
+          {produkSoftware.map((produk, index) => (
+            <div
+              key={index}
+              className="
+    w-full
+    bg-white
+    rounded-[14px]
+    border
+    border-[#777777]
+    p-[8px]
+    shadow-[0_2px_6px_rgba(0,0,0,0.12)]
+  "
+            >
+              {/* ISI CARD */}
+              <div
+                className="
+      bg-white
+      rounded-[10px]
+      overflow-hidden
+    "
+              >
+                {/* GAMBAR */}
+                <div
+                  className="
+        w-full
+        aspect-[16/9]
+        bg-white
+        overflow-hidden
+        rounded-[10px]
+      "
+                >
+                  <img
+                    src={landscape}
+                    alt={produk.title}
+                    className="
           w-full
-          min-h-[340px]
-          bg-[#f1f4ff]
+          h-full
+          object-contain
+          rounded-[10px]
         "
-      >
-      </div>
+                  />
+                </div>
 
+                {/* GARIS PEMISAH */}
+                <div className="mx-2 border-t border-[#dddddd]" />
+
+                {/* INFORMASI */}
+                <div className="px-4 py-6 text-center">
+                  <h2
+                    className="
+          font-['Nunito']
+          text-[#3f4543]
+          text-xl
+          font-bold
+        "
+                  >
+                    SIM DIGI
+                  </h2>
+
+                  <p
+                    className="
+          mt-2
+          font-['Nunito']
+          text-[#555555]
+          text-sm
+        "
+                  >
+                    ( Sistem Informasi Manajemen DIGI )
+                  </p>
+
+                  <p
+                    className="
+          mt-8
+          font-['Nunito']
+          text-[#555555]
+          text-sm
+          leading-relaxed
+          text-left
+        "
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
+                    ornare nisl. Nam congue sed nulla in blandit.
+                  </p>
+
+                  <button
+                    type="button"
+                    className="
+          mt-10
+          w-full
+          h-[48px]
+          bg-[#b94d4d]
+          hover:bg-[#a94444]
+          text-white
+          font-['Nunito']
+          text-sm
+          font-bold
+          rounded-[7px]
+          border
+          border-[#733737]
+          shadow-[0_2px_4px_rgba(0,0,0,0.2)]
+          transition-all
+          duration-200
+          cursor-pointer
+        "
+                  >
+                    Lihat Detail Produk
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* =========================
+    PAGINATION
+========================== */}
+        <div
+          className="
+    max-w-[1100px]
+    mx-auto
+    flex
+    justify-end
+    mt-7
+  "
+        >
+<div
+  className="
+    flex
+    items-center
+    bg-white
+    p-[3px]
+    rounded-[10px]
+    overflow-hidden
+    border
+    border-[#dddddd]
+    shadow-[0_2px_5px_rgba(0,0,0,0.15)]
+  "
+>
+            {/* PREVIOUS */}
+            <button
+              type="button"
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="
+        w-[38px]
+        h-[38px]
+        flex
+        items-center
+        justify-center
+        text-[#7d8580]
+        text-xl
+        font-light
+        border-r
+        border-[#eeeeee]
+        hover:bg-[#f5f5f5]
+        transition
+        disabled:opacity-50
+        cursor-pointer
+      "
+            >
+              ‹
+            </button>
+
+            {/* PAGE 1 */}
+            {[1, 2, 3, 4].map((page) => (
+              <button
+                key={page}
+                type="button"
+                onClick={() => setCurrentPage(page)}
+                className={`
+  w-[38px]
+  h-[38px]
+  flex
+  items-center
+  justify-center
+  text-sm
+  font-semibold
+  transition
+  cursor-pointer
+  ${
+    currentPage === page
+      ? "bg-[#c8e3f7] text-[#6f7f7a] rounded-[3px] shadow-sm"
+      : "bg-white text-[#7d8580] hover:bg-[#f5f5f5]"
+  }
+`}
+              >
+                {page}
+              </button>
+            ))}
+
+            {/* NEXT */}
+            <button
+              type="button"
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, 4))}
+              disabled={currentPage === 4}
+              className="
+        w-[38px]
+        h-[38px]
+        flex
+        items-center
+        justify-center
+        text-[#7d8580]
+        text-xl
+        font-light
+        hover:bg-[#f5f5f5]
+        transition
+        disabled:opacity-50
+        cursor-pointer
+      "
+            >
+              ›
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
