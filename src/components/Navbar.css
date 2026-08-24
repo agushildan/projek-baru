@@ -6,7 +6,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 40px; 
+  padding: 4px 40px; 
   background-color: rgba(243, 245, 252, 0.75);
 backdrop-filter: blur(10px);
 -webkit-backdrop-filter: blur(10px);
@@ -25,7 +25,7 @@ backdrop-filter: blur(10px);
 }
 
 .logo img {
-  height: 70px; 
+  height: 50px; 
   width: auto;
   display: block;
 }

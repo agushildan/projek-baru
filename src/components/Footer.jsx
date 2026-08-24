@@ -24,7 +24,7 @@ const Footer = () => {
 
         <div className="flex-1 md:min-w-[250px] flex flex-col items-start text-left">
           <h2 className="text-[1.4rem] font-extrabold mt-0 mb-2.5 text-left">
-            PT Digi Tekno indonesia
+            PT. Digi Tekno Indonesia
           </h2>
 
           <img
@@ -126,7 +126,7 @@ const Footer = () => {
           </div>
 
           <p className="text-sm text-[#e0e0e0] m-0 text-left">
-            Copyright © 2025 Digi tekno indonesai
+            Copyright © 2026 Digi Tekno Indonesia
           </p>
         </div>
 
@@ -136,22 +136,22 @@ const Footer = () => {
           </h3>
           <ul className="list-disc pl-[18px] md:pl-5 m-0 text-center md:text-left w-full">
             <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Sofware Development
+              Software Development
             </li>
             <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
               Services And Maintanance
             </li>
             <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              IT Equipment/hardware & Networking
+              IT Equipment/Hardware &amp; Networking
             </li>
             <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              IT Consultant & Problem Solving
+              IT Consultant &amp; Problem Solving
             </li>
             <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Procurement of Engine and Turbine Components and Spare part
+              Procurement of Engine and Turbine Components and Spare Parts
             </li>
             <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Installing Electrical and Automatic Equipment
+              Installation Electrical and Automation Equipment
             </li>
           </ul>
         </div>
@@ -169,8 +169,8 @@ const Footer = () => {
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
               </svg>
               <p className="m-0 text-[0.95rem] leading-[1.6] text-left">
-                Sumarecon Magma Commercial Blok MD-18,Summarecon Gedebage
-                Bandung - Jawa Barat 40294
+                Summarecon Magna Commercial Blok MD-18, Summarecon Gedebage
+                Bandung - Jawa Barat 40293
               </p>
             </li>
             <li className="flex items-start gap-[15px]">

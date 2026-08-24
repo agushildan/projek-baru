@@ -77,7 +77,7 @@ function Beranda() {
           <div className="w-full overflow-x-auto pb-2">
             <div
               className="flex flex-nowrap justify-center items-center gap-3 text-[#08283F] font-bold text-xs sm:text-sm md:text-base whitespace-nowrap min-w-max mx-auto"
-              style={{ fontFamily: "'Baloo 2', sans-serif" }}
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               <span>{t("solusiit")}</span>
               <span className="font-bold">•</span>
