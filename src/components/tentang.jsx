@@ -15,7 +15,9 @@ function TentangKami() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
-  }, []);
+
+  },
+   []);
 
   return (
     <section
