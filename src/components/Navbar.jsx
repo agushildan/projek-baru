@@ -45,6 +45,11 @@ function Navbar() {
     setActiveMenu(null);
   };
 
+  const navigateToHomeSection = (sectionId) => {
+    closeAllMenus();
+    navigate(`/#${sectionId}`);
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
     const kataKunci = keyword.trim().toLowerCase();
@@ -71,7 +76,7 @@ function Navbar() {
     } else {
       alert(`Kata kunci "${keyword}" tidak ditemukan.`);
     }
-
+                
     setKeyword("");
     closeAllMenus();
   };
@@ -92,6 +97,21 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (location.pathname !== "/" || !location.hash) return;
+
+    const sectionId = location.hash.slice(1);
+    const scrollToSection = () => {
+      document.getElementById(sectionId)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    };
+
+    const timeoutId = setTimeout(scrollToSection, 100);
+    return () => clearTimeout(timeoutId);
+  }, [location.pathname, location.hash]);
 
   return (
     <nav className="navbar">
@@ -123,8 +143,17 @@ function Navbar() {
               className={({ isActive }) =>
                 isActive && !location.hash ? "menu-aktif" : ""
               }
-              onClick={closeAllMenus}
+              onClick={() => {
+                closeAllMenus();
+                navigate("/");
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+            
             >
+
               {t("beranda")}
             </NavLink>
           </li>
@@ -173,16 +202,9 @@ function Navbar() {
           <li>
             <span
               className={`dropdown-trigger ${
-                location.pathname === "/mitra" ? "menu-aktif" : ""
+                location.hash === "#mitra" ? "menu-aktif" : ""
               }`}
-              onClick={() => {
-                closeAllMenus();
-                navigate("/mitra");
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              }}
+              onClick={() => navigateToHomeSection("mitra")}
             >
               {t("mitra")}
             </span>
@@ -191,16 +213,9 @@ function Navbar() {
           <li>
             <span
               className={`dropdown-trigger ${
-                location.pathname === "/kegiatan" ? "menu-aktif" : ""
+                location.hash === "#kegiatan" ? "menu-aktif" : ""
               }`}
-              onClick={() => {
-                closeAllMenus();
-                navigate("/kegiatan");
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              }}
+              onClick={() => navigateToHomeSection("kegiatan")}
             >
               {t("kegiatan")}
             </span>

@@ -1,6 +1,8 @@
 function Faq(){
     return(
-        <h1>faq</h1>
+        <div>
+            <h1>Faq</h1>
+        </div>
     )
 }
 export default Faq
