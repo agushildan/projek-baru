@@ -8,18 +8,18 @@ import Layanan from "./layanan";
 import Kegiatan from "./kegiatan";
 import Mitra from "./mitra";
 import Kontak from "./kontak";
+import Footer from "./Footer";
 
 function Beranda() {
-  const whatsappNumber = "621234567890";
-  const message =
-    "Halo, saya ingin bertanya mengenai layanan PT. Digi Tekno Indonesia.";
+  const whatsappNumber = "62123456789";
+  const message = "Halo, saya ingin bertanya mengenai layanan PT. Digi Tekno Indonesia.";
 
   const handleWhatsapp = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
-  const [currentLang, setCurrentLang] = useState(i18n.language || "id");
+  const [, setCurrentLang] = useState(i18n.language || "id");
   const t = (key) => i18n.t(key);
 
   useEffect(() => {
@@ -37,20 +37,21 @@ function Beranda() {
   return (
     <div>
       <section className="relative w-full min-h-[85vh] flex items-center justify-center bg-[#F2F5FF] px-4 py-12 text-center overflow-hidden">
-        
         <div className="absolute -bottom-30 left-40 w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] bg-sky-200/60 rounded-full blur-[700px] pointer-events-none z-0"></div>
-
         <div className="absolute -bottom-30 right-40 w-[350px] h-[350px] sm:w-[450px] sm:h-[450px] bg-rose-200/50 rounded-full blur-[400px] pointer-events-none z-0"></div>
 
         <div className="max-w-6xl mx-auto flex flex-col items-center w-full relative z-10">
-          <h1 className="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight md:leading-snug tracking-wide mb-6">
-            <span className="text-[#4b8cc0] drop-shadow-[2px_2px_3px_rgba(0,0,0,0.15)] block">
+          <h1
+            className="font-extrabold text-3xl sm:text-4xl md:text-5xl leading-tight md:leading-snug tracking-wide mb-6"
+            style={{ fontFamily: "'Baloo 2', sans-serif" }}
+          >
+            <span className="text-[#4F8DC0] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.12)] block">
               {t("biru1")}
             </span>
-            <span className="text-[#7a2828] drop-shadow-[2px_2px_3px_rgba(0,0,0,0.15)] block">
+            <span className="text-[#743032] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.12)] block">
               {t("merah")}
             </span>
-            <span className="text-[#4b8cc0] drop-shadow-[2px_2px_3px_rgba(0,0,0,0.15)] block">
+            <span className="text-[#4F8DC0] drop-shadow-[1px_1px_2px_rgba(0,0,0,0.12)] block">
               {t("biru2")}
             </span>
           </h1>
@@ -61,7 +62,7 @@ function Beranda() {
 
           <button
             onClick={handleWhatsapp}
-            className="bg-[#4cd964] hover:bg-[#42c65a] border border-[#3dbb53] text-white px-7 py-3 text-lg font-bold rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2.5 mb-16 cursor-pointer"
+            className="bg-[#4ED967] hover:bg-[#42c65a] border border-[#000000] text-white px-7 py-3 text-lg font-bold rounded-xl shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2.5 mb-16 cursor-pointer"
           >
             <svg
               className="w-6 h-6 fill-current"
@@ -74,7 +75,10 @@ function Beranda() {
           </button>
 
           <div className="w-full overflow-x-auto pb-2">
-            <div className="flex flex-nowrap justify-center items-center gap-3 text-[#131838] font-black text-xs sm:text-sm md:text-base whitespace-nowrap min-w-max mx-auto">
+            <div
+              className="flex flex-nowrap justify-center items-center gap-3 text-[#08283F] font-bold text-xs sm:text-sm md:text-base whitespace-nowrap min-w-max mx-auto"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
               <span>{t("solusiit")}</span>
               <span className="font-bold">•</span>
               <span>{t("mekanik")}</span>
@@ -95,6 +99,7 @@ function Beranda() {
       <Kegiatan />
       <Mitra />
       <Kontak />
+      <Footer />
     </div>
   );
 }

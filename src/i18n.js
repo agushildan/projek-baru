@@ -18,32 +18,36 @@ const resources = {
       blog: "Blog",
       cari_placeholder:"Cari",
 
-      /**beranda */
+/**beranda */
 biru1:"SOLUSI IT,",
 merah:"MEKANIKAL & ENGINEERING",
 biru2:"UNTUK INDUSTRI BISNIS",
 isi_beranda:"PT. Digi Tekno Indonesia merupakan perusahaan yang menyediakan Solusi Teknologi Informasi (IT), Konsultasi IT, Mekanikal & Engineering, Jasa Service Mesin Manufaktur, serta Pengadaan Sparepart dan Material Industri dengan pelayanan profesional dan produk berkualitas untuk mendukung kebutuhan industri dan bisnis anda.",
-wakami:"Whatsapp Kami",
+wakami:"Whatsapp Kami", 
 solusiit:"Solusi IT",
 mekanik:"Mekanik & Engineering",
 perawatan:"Perawatan Mesin Manufaktur",
 spareart:"Pengadaan Sparepart & Material Industri",
 
-                                               /**tentang kami */
-judul_tentang:"Tentang Kami",
+/**tentang kami */
+judul_tentang:"TENTANG KAMI",
 paragraft1:"PT Digi Tekno Indonesia didirikan pada tahun 2022 dan berlokasi di Summarecon Gedebage, Bandung. Kami menyediakan jasa Konsultasi IT, Mekanikal dan Engineering, Service Mesin Manufaktur, serta Pengadaan Sparepart dan Material Industri.",
 paragraft2:"Didukung tim yang profesional, inovatif, dan berkompeten, kami membantu meningkatkan efisiensi operasional dan produktivitas bisnis melalui solusi teknologi dan engineering yang tepat guna.",
 paragraft3:"Kami berkomitmen memberikan produk berkualitas, pelayanan profesional, dan solusi yang optimal untuk mendukung kebutuhan industri dan pertumbuhan bisnis pelanggan.",
 
 /**visi misi */
 judulvisi:"Visi",
-judulmisi:"Misi",
-isivisi:"Menjadi perusahaan yang inovatif,berperforma tinggi, independen,profesional, kerkomitment dan bertanggung jawab dalam bidang teknologi, industri dan teknis",
+judulmisi:"Misi", 
+isivisi:"Menjadi perusahaan yang inovatif, berperforma tinggi, independen, profesional, berkomitmen dan bertanggung jawab dalam bidang teknologi, industri dan teknik.",
 isimisi1:"Memberikan solusi dan produk terbaik sesuai kebutuhan",
 isimisi2:"Menjalin kerjasama dan hubungan baik dengan mitra usaha dan proses yang berkualitas tinggi",
 isimisi3:"Mengembangkan sumber daya manusia,fasilitas dan proses yang berkualitas tinggi ",
 isimisi4:"Memperhatikan kesehatan,keselamatan kerja dan perlindungan lingkungan",
-isimisi5:"menghasilkan produk dengan kualitas yang bermutu"
+isimisi5:"menghasilkan produk dengan kualitas yang bermutu",
+
+/**footer*/
+layanan_digi:"Layanan Digi",
+kontak_kami:"Kontak kami",
 },
   },
   en: {
@@ -62,7 +66,7 @@ isimisi5:"menghasilkan produk dengan kualitas yang bermutu"
       blog: "Blog",
       cari_placeholder: "Search...",
 
-                                                    /**beranda */
+/**beranda */
     biru1:"IT SOLUTIONS,",
     merah:"Mechanical & Engineering",
     biru2:"FOR THE BUSINESS INDUSTRY",
@@ -73,14 +77,13 @@ mekanik:"Mechanics & Engineering",
 perawatan:"Manufacturing Machinery Maintenance",
 spareart:"Procurement of Industrial Spare Parts & Materials",
 
-                                                /**tentang kami */
+/**tentang kami */
 judul_tentang:"About Us",
 paragraft1:"PT Digi Tekno Indonesia was established in 2022 and is located in Summarecon Gedebage, Bandung. We provide services in IT consulting, mechanical and engineering, manufacturing machinery maintenance, as well as the procurement of industrial spare parts and materials.",
 paragraft2:"Supported by a professional, innovative, and competent team, we help enhance operational efficiency and business productivity through effective technology and engineering solutions.",
 paragraft3:"We are committed to providing quality products, professional service, and optimal solutions to support industrial needs and our customers' business growth.",
     
 /**visi dan misi */
-
 judulvisi:"Vision",
 judulmisi:"Mission",
 isivisi:"To become an innovative, high performing, independent, professional, committed, and responsible company in the fields of technology, industry, and engineering.",
@@ -90,6 +93,9 @@ isimisi3:"Developing high quality human resources, facilities, and processes.",
 isimisi4:"Prioritizing occupational health and safety and environmental protection.",
 isimisi5:"Producing high quality products.",
 
+/**footer */
+layanan_digi:"Digi services",
+kontak_kami:"Contact us",
 },
   },
 };
