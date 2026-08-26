@@ -59,7 +59,20 @@ return (
         {/* =========================
             HEADER
         ========================== */}
-        <div className="w-full bg-[#e9eefc] px-6 pt-8 pb-8 md:pt-10 md:pb-10">
+<div
+  className="
+    w-full
+    px-6
+    pt-8
+    pb-8
+    md:pt-10
+    md:pb-10
+  "
+  style={{
+    background:
+      "radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #DEE4F7 100%)",
+  }}
+>
           <div className="max-w-[1100px] mx-auto text-center">
             <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
               {t("judul_produk_jasa", "PRODUK & JASA")}
@@ -77,7 +90,7 @@ return (
         {/* =========================
             CARD PRODUK
         ========================== */}
-        <div className="w-full px-4 pb-16 md:px-6 md:pb-20">
+        <div className="w-full px-4 pt-12 pb-16 md:px-6 md:pt-14 md:pb-20">
           <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
             {produkList.map((produk, index) => (
               <div

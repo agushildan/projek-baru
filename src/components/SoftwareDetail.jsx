@@ -53,7 +53,20 @@ function SoftwareDetail() {
     <div>
       <section className="w-full min-h-screen bg-[#e9eefc]">
         {/* HEADER */}
-        <div className="w-full bg-[#e9eefc] px-6 pt-8 pb-8 md:pt-10 md:pb-10">
+        <div
+  className="
+    w-full
+    px-6
+    pt-8
+    pb-8
+    md:pt-10
+    md:pb-10
+  "
+  style={{
+    background:
+      "radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(212, 201, 235, 0.5) 100%)",
+  }}
+>
           <div className="max-w-[1100px] mx-auto text-center">
             <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
               SOFTWARE IT
@@ -69,7 +82,7 @@ function SoftwareDetail() {
         </div>
 
         {/* LIST SOFTWARE */}
-        <div className="w-full px-5 pb-16 md:px-6 md:pb-20">
+        <div className="w-full px-5 pt-10 pb-16 md:px-6 md:pt-12 md:pb-20">
           <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {produkSoftware.map((produk, index) => (
               <div
