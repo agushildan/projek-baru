@@ -65,7 +65,7 @@ function Mitra() {
       <div className="w-full max-w-[1280px] mx-auto">
         <div className="flex justify-center mb-12">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
-            {t("judul_mitra", "MITRA KAMI")}
+            {t("judul_mitra")}
           </h2>
         </div>
 

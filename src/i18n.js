@@ -48,6 +48,10 @@ isimisi5:"menghasilkan produk dengan kualitas yang bermutu",
 /**footer*/
 layanan_digi:"Layanan Digi",
 kontak_kami:"Kontak kami",
+
+/**mitra kami */
+judul_mitra:"MITRA KAMI"
+
 },
   },
   en: {
@@ -96,6 +100,9 @@ isimisi5:"Producing high quality products.",
 /**footer */
 layanan_digi:"Digi services",
 kontak_kami:"Contact us",
+
+/**mitra kami */
+judul_mitra:"OUR PARTNERS"
 },
   },
 };
