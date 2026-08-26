@@ -11,7 +11,7 @@ import Kontak from "./kontak";
 import Footer from "./Footer";
 
 function Beranda() {
-  const whatsappNumber = "62123456789";
+  const whatsappNumber = "6285924101807";
   const message = "Halo, saya ingin bertanya mengenai layanan PT. Digi Tekno Indonesia.";
 
   const handleWhatsapp = () => {
