@@ -102,10 +102,10 @@ function Kontak() {
             w-full
             h-[40px]
             bg-white
-            border-[3px]
+            border-[2px]
             border-[#D9D9D9]
             rounded-[10px]
-            shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)]
+            shadow-[inset_0_2px_2px_rgba(0,0,0,0.12)]
             px-4
             font-['Nunito']
             text-[16px]
@@ -143,10 +143,10 @@ function Kontak() {
         w-full
         h-[40px]
         bg-white
-        border-[3px]
+        border-[2px]
         border-[#D9D9D9]
         rounded-[10px]
-        shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)]
+        shadow-[inset_0_2px_2px_rgba(0,0,0,0.12)]
         px-4
         font-['Nunito']
         text-[16px]
@@ -183,10 +183,10 @@ function Kontak() {
                 w-full
                 h-[102px]
                 bg-white
-                border-[3px]
+                border-[2px]
                 border-[#D9D9D9]
                 rounded-[10px]
-                shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)]
+                shadow-[inset_0_2px_2px_rgba(0,0,0,0.12)]
                 px-4
                 py-3
                 font-['Nunito']
