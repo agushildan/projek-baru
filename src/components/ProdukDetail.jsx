@@ -125,45 +125,46 @@ function ProdukDetail() {
       PRODUK 1 - iMAC
   ========================== */}
                   {index === 0 ? (
-                    <div className="relative w-full h-full flex items-center justify-center">
-                      {/* iMac */}
-                      <img
-                        src={produk.image}
-                        alt={produk.title}
-                        className="
-          absolute
-          w-[82%]
-          h-full
-          object-contain
-          z-10
-        "
-                      />
+  <div className="relative w-full h-full flex items-center justify-center">
 
-                      {/* Website Digi di dalam layar iMac */}
-                      <div
-                        className="
-          absolute
-          left-[27%]
-          top-[24%]
-          w-[46%]
-          h-[43%]
-          overflow-hidden
-          z-20
-        "
-                      >
-                        <img
-                          src={webDigi}
-                          alt="Digi Website"
-                          className="
-            w-full
-            h-full
-            object-cover
-            object-center
-          "
-                        />
-                      </div>
-                    </div>
-                  ) : (
+    {/* iMac */}
+    <img
+      src={produk.image}
+      alt={produk.title}
+      className="
+        absolute
+        w-[82%]
+        h-full
+        object-contain
+        z-10
+      "
+    />
+
+    <div
+  className="
+    absolute
+    left-[20%]
+    top-[5%]
+    w-[60%]
+    h-[62%]
+    overflow-hidden
+    z-20
+  "
+>
+  <img
+    src={webDigi}
+    alt="Digi Website"
+    className="
+      w-full
+      h-full
+      object-fill
+      block
+    "
+  />
+</div>
+
+  </div>
+) : (
                     /* =========================
        PRODUK 2 & 3
     ========================== */

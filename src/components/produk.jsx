@@ -227,28 +227,28 @@ function Produk() {
                         />
 
                         {/* WEBSITE DI LAYAR iMAC */}
-                        <div
-                          className="
-                            absolute
-                            left-[14%]
-                            top-[20%]
-                            w-[72%]
-                            h-[39%]
-                            overflow-hidden
-                            z-20
-                          "
-                        >
-                          <img
-                            src={webDigi}
-                            alt="Digi Website"
-                            className="
-                              w-full
-                              h-full
-                              object-cover
-                              object-center
-                            "
-                          />
-                        </div>
+<div
+  className="
+    absolute
+    left-[5.66%]
+    top-[13%]
+    w-[89%]
+    h-[52%]
+    overflow-hidden
+    z-20
+  "
+>
+  <img
+    src={webDigi}
+    alt="Digi Website"
+    className="
+      w-full
+      h-full
+      object-fill
+      block
+    "
+  />
+</div>
 
                       </div>
                     ) : (
