@@ -53,14 +53,14 @@ function ProdukDetail() {
     },
   ];
 
-return (
+  return (
     <div>
       <section className="w-full bg-[#e9eefc]">
         {/* =========================
             HEADER
         ========================== */}
-<div
-  className="
+        <div
+          className="
     w-full
     px-6
     pt-8
@@ -68,11 +68,11 @@ return (
     md:pt-10
     md:pb-10
   "
-  style={{
-    background:
-      "radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #DEE4F7 100%)",
-  }}
->
+          style={{
+            background:
+              "radial-gradient(50% 50% at 50% 50%, #F8F9FF 0%, #D4DCF3 100%)",
+          }}
+        >
           <div className="max-w-[1100px] mx-auto text-center">
             <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
               {t("judul_produk_jasa", "PRODUK & JASA")}
@@ -81,7 +81,7 @@ return (
             <p className="mt-3 mx-auto max-w-[900px] font-['Nunito'] text-[#666666] text-[10px] sm:text-xs md:text-sm leading-relaxed">
               {t(
                 "deskripsi_produk_jasa",
-                "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP, Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis."
+                "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP, Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
               )}
             </p>
           </div>
@@ -95,11 +95,25 @@ return (
             {produkList.map((produk, index) => (
               <div
                 key={index}
-                className="relative w-full h-[350px] md:h-[360px] bg-white rounded-[8px] overflow-hidden shadow-[0_3px_8px_rgba(0,0,0,0.15)]"
+                className="relative w-full h-[390px] md:h-[400px] bg-white rounded-[8px] overflow-hidden shadow-[0_3px_8px_rgba(0,0,0,0.15)]"
                 style={{ backgroundColor: produk.bg }}
               >
+                {/* FIELD GAMBAR */}
+                <div
+                  className="
+    absolute
+    top-[12px]
+    left-[12px]
+    right-[12px]
+    h-[180px]
+    bg-white
+    rounded-[4px]
+  "
+                >
+                  {/* NANTI GAMBAR PRODUK DI SINI */}
+                </div>
                 {/* INFORMASI PRODUK */}
-                <div className="absolute left-[12px] right-[12px] bottom-[12px] h-[145px] bg-white rounded-[6px] flex flex-col items-center justify-center text-center px-3 py-3">
+                <div className="absolute left-[12px] right-[12px] bottom-[12px] h-[165px] bg-white rounded-[6px] flex flex-col items-center justify-center text-center px-3 py-3">
                   <h2 className="font-['Nunito'] text-[#222222] text-[12px] md:text-sm font-bold min-h-[18px] flex items-center justify-center">
                     {produk.title}
                   </h2>

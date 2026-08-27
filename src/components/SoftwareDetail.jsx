@@ -62,10 +62,10 @@ function SoftwareDetail() {
     md:pt-10
     md:pb-10
   "
-  style={{
-    background:
-      "radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, rgba(212, 201, 235, 0.5) 100%)",
-  }}
+style={{
+  background:
+    "radial-gradient(50% 50% at 50% 50%, #F8F7FC 0%, rgba(204, 191, 230, 0.65) 100%)",
+}}
 >
           <div className="max-w-[1100px] mx-auto text-center">
             <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
