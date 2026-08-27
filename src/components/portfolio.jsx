@@ -40,9 +40,10 @@ function Portfolio() {
   ];
 
   return (
-    <section className="w-full bg-[#e9eefc] px-4 py-12 md:py-16">
+    /* pt-24 md:pt-32 digunakan untuk menurunkan Judul & seluruh isinya ke bawah */
+    <section className="w-full bg-[#e9eefc] px-4 pt-24 md:pt-32 pb-16 md:pb-24">
       <div className="max-w-6xl mx-auto">
-        {/* JUDUL */}
+        {/* JUDUL DAN DESKRIPSI (Tutup Turun Ke Bawah) */}
         <div className="text-center">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
             PORTOFOLIO
@@ -55,10 +56,10 @@ function Portfolio() {
             )}
           </p>
 
-          {/* TOMBOL */}
+          {/* TOMBOL LIHAT SELENGKAPNYA */}
           <button
             type="button"
-            className="mt-4 bg-[#c8e3f7] hover:bg-[#b5d9f2] text-gray-600 text-xs md:text-sm px-5 py-2.5 rounded-md shadow-md hover:shadow-lg transition-all duration-200 inline-flex items-center gap-3 cursor-pointer"
+            className="mt-6 bg-[#c8e3f7] hover:bg-[#b5d9f2] text-gray-600 text-xs md:text-sm px-5 py-2.5 rounded-md shadow-md hover:shadow-lg transition-all duration-200 inline-flex items-center gap-3 cursor-pointer"
           >
             Lihat Selengkapnya
             <span className="text-base md:text-lg">→</span>
@@ -66,16 +67,16 @@ function Portfolio() {
         </div>
 
         {/* CARD PORTOFOLIO */}
-       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5 max-w-[900px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-[900px] mx-auto">
           {portfolioList.map((portfolio, index) => (
             <div
               key={index}
               className="bg-white rounded-lg overflow-hidden shadow-md flex flex-col"
             >
-              {/* GAMBAR SEMENTARA */}
-              <div className="w-full h-[140px] md:h-[145px] bg-[#dddddd]"></div>
+              {/* GAMBAR SEMENTARA (Mepet sisi atas, kiri, kanan) */}
+              <div className="w-full h-[150px] md:h-[160px] bg-[#dddddd]"></div>
 
-              {/* CONTENT */}
+              {/* KONTEN TEKS */}
               <div className="p-4 flex flex-col flex-1">
                 <h3 className="font-nunito text-sm font-semibold text-[#111111]">
                   {portfolio.title}
@@ -88,6 +89,7 @@ function Portfolio() {
 
                 {/* GARIS */}
                 <div className="border-t border-gray-300 mt-3"></div>
+
                 {/* TAGS */}
                 <div className="mt-3">
                   <p className="font-nunito text-[9px] text-gray-600 mb-2">
@@ -106,10 +108,10 @@ function Portfolio() {
                   </div>
                 </div>
 
-                {/* BUTTON */}
+                {/* TOMBOL CARD */}
                 <button
                   type="button"
-                  className="font-nunito mt-2 self-start bg-[#333333] hover:bg-[#222222] text-white text-[8px] px-3 py-1.5 rounded-md transition-colors duration-200 cursor-pointer"
+                  className="font-nunito mt-4 self-start bg-[#333333] hover:bg-[#222222] text-white text-[8px] px-3 py-1.5 rounded-md transition-colors duration-200 cursor-pointer"
                 >
                   Lihat Selengkapnya
                 </button>
