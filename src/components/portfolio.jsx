@@ -92,13 +92,17 @@ function Portfolio() {
               className="bg-white rounded-lg overflow-hidden shadow-md flex flex-col"
             >
               {/* GAMBAR PORTOFOLIO */}
-              <div className="w-full h-[150px] md:h-[160px] overflow-hidden">
-                <img
-                  src={portfolio.image}
-                  alt={portfolio.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+<div className="w-full h-[150px] md:h-[160px] overflow-hidden">
+  <img
+    src={portfolio.image}
+    alt={portfolio.title}
+    className={
+      index === 0
+        ? "w-full h-full object-contain mx-auto scale-x-[1.15]"
+        : "w-full h-full object-cover"
+    }
+  />
+</div>
 
               {/* KONTEN TEKS */}
               <div className="p-4 flex flex-col flex-1">
