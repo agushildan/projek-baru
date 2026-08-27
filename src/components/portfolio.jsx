@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
+
 import i18n from "../i18n";
+
+import webBerita from "../assets/produk/web_berita.png";
+import machin from "../assets/produk/machin.png";
+import tube from "../assets/produk/tube.png";
 
 function Portfolio() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
@@ -21,20 +26,33 @@ function Portfolio() {
   const portfolioList = [
     {
       title: "Website Sistem Informasi Manajemen",
-      description:
-        "Please add your content here. Keep it short and simple. And smile :)",
+
+      description: "Website Landing Page Dispangtan Kota Cimahi",
+
+      image: webBerita,
+
       tags: ["Software IT", "Website", "SIM", "Dashboard"],
     },
+
     {
       title: "Jasa Machining Torque Tube Seal",
+
       description:
         "Industri Komponen dan Suku Cadang Mesin dan Turbin (KBLI 28113)",
+
+      image: machin,
+
       tags: ["Mekanikal Engineering", "Machining", "PT. JAPA INDOTAMA"],
     },
+
     {
       title: "Starret Back Plunger",
+
       description:
-        "Please add your content here. Keep it short and simple. And smile :)",
+        "Industri Komponen dan Suku Cadang Mesin dan Turbin (KBLI 28113)",
+
+      image: tube,
+
       tags: ["Pengadaan Sparepart", "PT. TAKA"],
     },
   ];
@@ -43,7 +61,7 @@ function Portfolio() {
     /* pt-24 md:pt-32 digunakan untuk menurunkan Judul & seluruh isinya ke bawah */
     <section className="w-full bg-[#e9eefc] px-4 pt-24 md:pt-32 pb-16 md:pb-24">
       <div className="max-w-6xl mx-auto">
-        {/* JUDUL DAN DESKRIPSI (Tutup Turun Ke Bawah) */}
+        {/* JUDUL DAN DESKRIPSI */}
         <div className="text-center">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
             PORTOFOLIO
@@ -73,11 +91,18 @@ function Portfolio() {
               key={index}
               className="bg-white rounded-lg overflow-hidden shadow-md flex flex-col"
             >
-              {/* GAMBAR SEMENTARA (Mepet sisi atas, kiri, kanan) */}
-              <div className="w-full h-[150px] md:h-[160px] bg-[#dddddd]"></div>
+              {/* GAMBAR PORTOFOLIO */}
+              <div className="w-full h-[150px] md:h-[160px] overflow-hidden">
+                <img
+                  src={portfolio.image}
+                  alt={portfolio.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
               {/* KONTEN TEKS */}
               <div className="p-4 flex flex-col flex-1">
+                {/* JUDUL */}
                 <h3 className="font-nunito text-sm font-semibold text-[#111111]">
                   {portfolio.title}
                 </h3>
