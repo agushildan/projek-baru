@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import i18n from "../i18n";
+import { useNavigate } from "react-router-dom";
 
 import landscape from "../assets/produk/landscape.png";
 
 function SoftwareDetail() {
+  const navigate = useNavigate();
   const [, setCurrentLang] = useState(i18n.language || "id");
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -54,7 +56,7 @@ function SoftwareDetail() {
       <section className="w-full min-h-screen bg-[#e9eefc]">
         {/* HEADER */}
         <div
-  className="
+          className="
     w-full
     px-6
     pt-8
@@ -62,11 +64,11 @@ function SoftwareDetail() {
     md:pt-10
     md:pb-10
   "
-style={{
-  background:
-    "radial-gradient(50% 50% at 50% 50%, #F8F7FC 0%, rgba(204, 191, 230, 0.65) 100%)",
-}}
->
+          style={{
+            background:
+              "radial-gradient(50% 50% at 50% 50%, #F8F7FC 0%, rgba(204, 191, 230, 0.65) 100%)",
+          }}
+        >
           <div className="max-w-[1100px] mx-auto text-center">
             <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
               SOFTWARE IT
@@ -75,7 +77,7 @@ style={{
             <p className="mt-3 mx-auto max-w-[900px] font-['Nunito'] text-[#666666] text-[10px] sm:text-xs md:text-sm leading-relaxed">
               {t(
                 "deskripsi_produk_jasa",
-                "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis."
+                "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
               )}
             </p>
           </div>
@@ -110,12 +112,13 @@ style={{
                     </p>
 
                     <p className="mt-8 font-['Nunito'] text-[#555555] text-sm leading-relaxed text-left">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                      ornare nisl. Nam congue sed nulla in blandit.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      In ornare nisl. Nam congue sed nulla in blandit.
                     </p>
 
                     <button
                       type="button"
+                      onClick={() => navigate("/produk/software/detail")}
                       className="mt-10 w-full h-[48px] bg-[#b94d4d] hover:bg-[#a94444] text-white font-['Nunito'] text-sm font-bold rounded-[7px] border border-[#733737] shadow-[0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200 cursor-pointer"
                     >
                       Lihat Detail Produk
@@ -155,9 +158,7 @@ style={{
 
               <button
                 type="button"
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, 4))
-                }
+                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, 4))}
                 disabled={currentPage === 4}
                 className="w-[38px] h-[38px] flex items-center justify-center text-[#7d8580] text-xl font-light hover:bg-[#f5f5f5] transition disabled:opacity-50 cursor-pointer"
               >

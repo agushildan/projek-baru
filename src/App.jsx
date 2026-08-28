@@ -13,6 +13,7 @@ import Sertifikasi from "./components/sertifikasi";
 import VisiMisi from "./components/visimisi";
 import ProdukDetail from "./components/ProdukDetail";
 import SoftwareDetail from "./components/SoftwareDetail";
+import ProdukSoftwareDetail from "./components/ProdukSoftwareDetail";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
   <Route path="/karir" element={<Karir />} />
   <Route path="/faq" element={<Faq />} />
   <Route path="/blog" element={<Blog />} />
+  <Route
+  path="/produk/software/detail"
+  element={<ProdukSoftwareDetail />}
+/>
 </Routes>
     </div>
   );

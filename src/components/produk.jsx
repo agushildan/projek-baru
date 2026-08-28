@@ -83,7 +83,6 @@ function Produk() {
   return (
     <section className="w-full bg-[#e9eefc] px-4 py-10 md:py-12">
       <div className="max-w-6xl mx-auto">
-
         {/* JUDUL */}
         <div className="mb-6">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-2xl md:text-3xl font-semibold tracking-wide">
@@ -154,7 +153,6 @@ function Produk() {
                   min-w-0
                 "
               >
-
                 {/* AREA GAMBAR */}
                 <div
                   className="
@@ -164,7 +162,6 @@ function Produk() {
                     overflow-visible
                   "
                 >
-
                   {/* BACKGROUND WARNA CARD */}
                   <div
                     className="
@@ -181,7 +178,6 @@ function Produk() {
                       backgroundColor: produk.bg,
                     }}
                   >
-
                     {/* STRIP ATAS */}
                     <div
                       className="
@@ -211,7 +207,6 @@ function Produk() {
                           justify-center
                         "
                       >
-
                         {/* iMAC */}
                         <img
                           src={produk.image}
@@ -227,8 +222,8 @@ function Produk() {
                         />
 
                         {/* WEBSITE DI LAYAR iMAC */}
-<div
-  className="
+                        <div
+                          className="
     absolute
     left-[5.66%]
     top-[13%]
@@ -237,22 +232,20 @@ function Produk() {
     overflow-hidden
     z-20
   "
->
-  <img
-    src={webDigi}
-    alt="Digi Website"
-    className="
+                        >
+                          <img
+                            src={webDigi}
+                            alt="Digi Website"
+                            className="
       w-full
       h-full
       object-fill
       block
     "
-  />
-</div>
-
+                          />
+                        </div>
                       </div>
                     ) : (
-
                       /* =========================
                          PRODUK 2 & 3
                       ========================== */
@@ -275,7 +268,6 @@ function Produk() {
                         />
                       </div>
                     )}
-
                   </div>
 
                   {/* NOMOR */}
@@ -307,7 +299,6 @@ function Produk() {
                   >
                     {produk.nomor}
                   </div>
-
                 </div>
 
                 {/* JUDUL */}
@@ -336,12 +327,10 @@ function Produk() {
                 >
                   {produk.description}
                 </p>
-
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
