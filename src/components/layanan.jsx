@@ -5,6 +5,7 @@ import servicesMaintenance from "../assets/layanan/Services_and_Maintanance.png"
 import itEquipment from "../assets/layanan/IT_EquipmentHardware_&_Networking.png";
 import itConsultant from "../assets/layanan/IT_Consultant_&_Problem_Solving.png";
 import procurementEngine from "../assets/layanan/Procurement_of_Engine.png";
+import instalasiListrik from "../assets/layanan/Installlation_Electrical.png";
 
 function Layanan() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
@@ -54,6 +55,12 @@ function Layanan() {
       "Kami siap membantu dalam pengadaan komponen industri baik berupa komponen yang sudah jadi ataupun masih berupa bahan baku atau masih berupa material.",
     image: procurementEngine,
   },
+  {
+  title: "Instalasi Peralatan Listrik dan Otomasi",
+  description:
+    "Mengembangkan aplikasi perangkat lunak dengan teknologi informasi berbasis web dan mobile aplikasi.",
+  image: instalasiListrik,
+},
 ];
 
   return (
