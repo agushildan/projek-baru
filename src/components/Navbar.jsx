@@ -27,17 +27,223 @@ function Navbar() {
   const isInfoAktif = ["/karir", "/faq", "/blog"].includes(location.pathname);
 
   const menuRoutes = [
-    { keywords: ["beranda", "home", "utama", "halaman utama", "homepage", "menu utama", "menu", "dashbord", "tampilan awal", "home page", "awal", "welcome page", "main menu", "landing page", "welcome", "start page"], route: "/" },
-    { keywords: ["produk", "product", "barang", "produk kami", "item", "equipment", "peralatan", "sparepart", "spare part", "componen", "daftar barang", "produk list", "list produk", "alat alat", "mesin", "hardware", "perangkat", "produk unggulan", "produk terbaru", "katalog"], route: "/#produk" },
-    { keywords: ["layanan", "service", "jasa", "services", "pelayanan", "layanan kami", "service kami", "jasa kami", "support", "dukungan", "our services", "professional service", "maintanance", "instalation"], route: "/layanan" },
-    { keywords: ["mitra", "partner", "kerjasama", "mitra kami", "kerja sama", "partners", "kolaborasi", "rekan", "partnership", "our partners", "mitra perusahaan", "partner perusahaan", "rekan perusahaan"], route: "/#mitra" },
-    { keywords: ["kegiatan", "activity", "event", "acara", "events", "aktivitas", "dokumentasi", "agenda", "kegiatan perusahaan", "event perusahaan", "company activty", "company event", "our activty", "our event", "event terbaru"], route: "/#kegiatan" },
-    { keywords: ["sertifikasi", "sertifikat", "penghargaan", "sertifikasi perusahaan", "dokumen", "certifikasi", "penghargaan perusahaan", "sertifikasi kami", "company certification"], route: "/sertifikasi" },
-    { keywords: ["visi", "misi", "visi misi", "vision mission", "vision", "mission", "tujuan", "tujuan perusahaan", "arah perusahaan", "company vision", "company mision", "our vision", "our mision"], route: "/visimisi" },
-    { keywords: ["tentang", "about", "tentang kami", "about us", "profil", "company profile", "company", "informasi tentang perusahaan", "our company", "company history", "sejarah perusahaan", "identitass perusahaan", "tentang bisnis kami"], route: "/#tentang" },
-    { keywords: ["karir", "career", "job", "jobs", "lowongan", "lowongan kerja", "rekrutmen", "recruitment", "join us", "bekerja", "gabung", "bergabung dengan kami", "work with us", "working with us", "our careeers"], route: "/karir" },
-    { keywords: ["faq", "help", "bantuan", "tanya jawab", "question", "informasi umum", "pertanyaan", "jawaban", "pertanyaan yang sering di tanyakan", "pusat bantuan", "help center", "pusat informasi", "bantuan umum", "common question", "common answer"], route: "/faq" },
-    { keywords: ["blog", "tes", "artikel", "articles", "berita", "news", "informasi", "berita perusahaan", "tips", "update", "company blog", "company news", "latest news", "latest update", "informasi teknologi", "berita teknologi", "kabar terbaru", "publikasi", "publication"], route: "/blog" },
+    {
+      keywords: [
+        "beranda",
+        "home",
+        "utama",
+        "halaman utama",
+        "homepage",
+        "menu utama",
+        "menu",
+        "dashbord",
+        "tampilan awal",
+        "home page",
+        "awal",
+        "welcome page",
+        "main menu",
+        "landing page",
+        "welcome",
+        "start page",
+      ],
+      route: "/",
+    },
+    {
+      keywords: [
+        "produk",
+        "product",
+        "barang",
+        "produk kami",
+        "item",
+        "equipment",
+        "peralatan",
+        "sparepart",
+        "spare part",
+        "componen",
+        "daftar barang",
+        "produk list",
+        "list produk",
+        "alat alat",
+        "mesin",
+        "hardware",
+        "perangkat",
+        "produk unggulan",
+        "produk terbaru",
+        "katalog",
+      ],
+      route: "/#produk",
+    },
+    {
+      keywords: [
+        "layanan",
+        "service",
+        "jasa",
+        "services",
+        "pelayanan",
+        "layanan kami",
+        "service kami",
+        "jasa kami",
+        "support",
+        "dukungan",
+        "our services",
+        "professional service",
+        "maintanance",
+        "instalation",
+      ],
+      route: "/layanan",
+    },
+    {
+      keywords: [
+        "mitra",
+        "partner",
+        "kerjasama",
+        "mitra kami",
+        "kerja sama",
+        "partners",
+        "kolaborasi",
+        "rekan",
+        "partnership",
+        "our partners",
+        "mitra perusahaan",
+        "partner perusahaan",
+        "rekan perusahaan",
+      ],
+      route: "/#mitra",
+    },
+    {
+      keywords: [
+        "kegiatan",
+        "activity",
+        "event",
+        "acara",
+        "events",
+        "aktivitas",
+        "dokumentasi",
+        "agenda",
+        "kegiatan perusahaan",
+        "event perusahaan",
+        "company activty",
+        "company event",
+        "our activty",
+        "our event",
+        "event terbaru",
+      ],
+      route: "/#kegiatan",
+    },
+    {
+      keywords: [
+        "sertifikasi",
+        "sertifikat",
+        "penghargaan",
+        "sertifikasi perusahaan",
+        "dokumen",
+        "certifikasi",
+        "penghargaan perusahaan",
+        "sertifikasi kami",
+        "company certification",
+      ],
+      route: "/sertifikasi",
+    },
+    {
+      keywords: [
+        "visi",
+        "misi",
+        "visi misi",
+        "vision mission",
+        "vision",
+        "mission",
+        "tujuan",
+        "tujuan perusahaan",
+        "arah perusahaan",
+        "company vision",
+        "company mision",
+        "our vision",
+        "our mision",
+      ],
+      route: "/visimisi",
+    },
+    {
+      keywords: [
+        "tentang",
+        "about",
+        "tentang kami",
+        "about us",
+        "profil",
+        "company profile",
+        "company",
+        "informasi tentang perusahaan",
+        "our company",
+        "company history",
+        "sejarah perusahaan",
+        "identitass perusahaan",
+        "tentang bisnis kami",
+      ],
+      route: "/#tentang",
+    },
+    {
+      keywords: [
+        "karir",
+        "career",
+        "job",
+        "jobs",
+        "lowongan",
+        "lowongan kerja",
+        "rekrutmen",
+        "recruitment",
+        "join us",
+        "bekerja",
+        "gabung",
+        "bergabung dengan kami",
+        "work with us",
+        "working with us",
+        "our careeers",
+      ],
+      route: "/karir",
+    },
+    {
+      keywords: [
+        "faq",
+        "help",
+        "bantuan",
+        "tanya jawab",
+        "question",
+        "informasi umum",
+        "pertanyaan",
+        "jawaban",
+        "pertanyaan yang sering di tanyakan",
+        "pusat bantuan",
+        "help center",
+        "pusat informasi",
+        "bantuan umum",
+        "common question",
+        "common answer",
+      ],
+      route: "/faq",
+    },
+    {
+      keywords: [
+        "blog",
+        "tes",
+        "artikel",
+        "articles",
+        "berita",
+        "news",
+        "informasi",
+        "berita perusahaan",
+        "tips",
+        "update",
+        "company blog",
+        "company news",
+        "latest news",
+        "latest update",
+        "informasi teknologi",
+        "berita teknologi",
+        "kabar terbaru",
+        "publikasi",
+        "publication",
+      ],
+      route: "/blog",
+    },
   ];
 
   const closeAllMenus = () => {
@@ -76,7 +282,7 @@ function Navbar() {
     } else {
       alert(`Kata kunci "${keyword}" tidak ditemukan.`);
     }
-                
+
     setKeyword("");
     closeAllMenus();
   };
@@ -151,9 +357,7 @@ function Navbar() {
                   behavior: "smooth",
                 });
               }}
-            
             >
-
               {t("beranda")}
             </NavLink>
           </li>
@@ -182,7 +386,12 @@ function Navbar() {
           <li>
             <NavLink
               to="/produklain"
-              className={({ isActive }) => (isActive ? "menu-aktif" : "")}
+              className={() =>
+                location.pathname === "/produklain" ||
+                location.pathname.startsWith("/produk/")
+                  ? "menu-aktif"
+                  : ""
+              }
               onClick={closeAllMenus}
             >
               {t("produk")}

@@ -209,7 +209,7 @@ function Kontak() {
               className="
         w-[120px]
         h-[34px]
-        rounded-[14px]
+        rounded-[12px]
         bg-[#1C3759]
         border-[2px]
         border-[#C97173]

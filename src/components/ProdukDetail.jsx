@@ -125,23 +125,22 @@ function ProdukDetail() {
       PRODUK 1 - iMAC
   ========================== */}
                   {index === 0 ? (
-  <div className="relative w-full h-full flex items-center justify-center">
-
-    {/* iMac */}
-    <img
-      src={produk.image}
-      alt={produk.title}
-      className="
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      {/* iMac */}
+                      <img
+                        src={produk.image}
+                        alt={produk.title}
+                        className="
         absolute
         w-[82%]
         h-full
         object-contain
         z-10
       "
-    />
+                      />
 
-    <div
-  className="
+                      <div
+                        className="
     absolute
     left-[20%]
     top-[5%]
@@ -150,21 +149,20 @@ function ProdukDetail() {
     overflow-hidden
     z-20
   "
->
-  <img
-    src={webDigi}
-    alt="Digi Website"
-    className="
+                      >
+                        <img
+                          src={webDigi}
+                          alt="Digi Website"
+                          className="
       w-full
       h-full
       object-fill
       block
     "
-  />
-</div>
-
-  </div>
-) : (
+                        />
+                      </div>
+                    </div>
+                  ) : (
                     /* =========================
        PRODUK 2 & 3
     ========================== */
@@ -199,6 +197,8 @@ function ProdukDetail() {
                     onClick={() => {
                       if (index === 0) {
                         navigate("/produk/software");
+                      } else if (index === 1) {
+                        navigate("/produk/mekanik-engineering");
                       }
                     }}
                     className="

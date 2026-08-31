@@ -47,11 +47,11 @@ function ProdukSoftwareDetail() {
   ];
 
   const nextImage = () => {
-    setCurrentImage((prev) => Math.min(prev + 1, gallery.length - 1));
+    setCurrentImage((prev) => (prev + 1) % gallery.length);
   };
 
   const previousImage = () => {
-    setCurrentImage((prev) => Math.max(prev - 1, 0));
+    setCurrentImage((prev) => (prev - 1 + gallery.length) % gallery.length);
   };
 
   return (
@@ -135,7 +135,7 @@ function ProdukSoftwareDetail() {
                     (tag, index) => (
                       <span
                         key={index}
-className="
+                        className="
   px-3
   py-1
   text-[14px]
@@ -153,20 +153,20 @@ className="
 
                 {/* TITLE */}
 
-<h2
-  className="
+                <h2
+                  className="
     font-['Nunito']
     text-[#3f4543]
     text-3xl
     md:text-[34px]
     font-bold
   "
->
-  SIM DIGI
-</h2>
+                >
+                  SIM DIGI
+                </h2>
 
-<p
-  className="
+                <p
+                  className="
     mt-2
     font-['Nunito']
     text-[#444444]
@@ -174,15 +174,14 @@ className="
     md:text-[19px]
     font-bold
   "
->
-  ( Sistem Informasi Manajemen DIGI )
-</p>
-
+                >
+                  ( Sistem Informasi Manajemen DIGI )
+                </p>
 
                 {/* DESCRIPTION */}
 
-<p
-  className="
+                <p
+                  className="
     mt-7
     max-w-[700px]
     font-['Nunito']
@@ -192,21 +191,20 @@ className="
     leading-[1.7]
     text-justify
   "
->
-  Sistem Informasi Manajemen atau biasa disebut
-  juga dengan ERP (Enterprise Resource Planning)
-  merupakan platform digital terpusat yang
-  menghubungkan seluruh alur kerja, data, dan
-  proses bisnis dari setiap departemen perusahaan
-  ke dalam satu sistem yang sama.
-</p>
+                >
+                  Sistem Informasi Manajemen atau biasa disebut juga dengan ERP
+                  (Enterprise Resource Planning) merupakan platform digital
+                  terpusat yang menghubungkan seluruh alur kerja, data, dan
+                  proses bisnis dari setiap departemen perusahaan ke dalam satu
+                  sistem yang sama.
+                </p>
 
                 {/* BUTTON */}
 
                 <div className="flex flex-wrap gap-2 mt-5">
-<button
-  type="button"
-  className="
+                  <button
+                    type="button"
+                    className="
     h-[42px]
     px-8
     bg-[#4c98cf]
@@ -223,13 +221,13 @@ className="
     duration-200
     cursor-pointer
   "
->
-  Beli Sekarang
-</button>
+                  >
+                    Beli Sekarang
+                  </button>
 
                   <button
-  type="button"
-  className="
+                    type="button"
+                    className="
     h-[42px]
     px-7
     bg-[#35c96b]
@@ -250,7 +248,7 @@ className="
     items-center
     gap-2
   "
->
+                  >
                     <span className="flex items-center justify-center">
                       <svg
                         width="15"
@@ -322,13 +320,10 @@ className="
                 <button
                   type="button"
                   onClick={previousImage}
-                  disabled={currentImage === 0}
                   className="
     flex-shrink-0
-    w-[58px]
-    h-[58px]
-    md:w-[60px]
-    md:h-[60px]
+    w-[60px]
+    h-[60px]
     rounded-full
     bg-white
     border
@@ -338,25 +333,24 @@ className="
     items-center
     justify-center
     hover:bg-gray-50
-    disabled:opacity-40
     cursor-pointer
     transition-all
     duration-200
-  "
+"
                 >
-                  <span
-                    className="
-      block
-      w-[18px]
-      h-[18px]
-      md:w-[20px]
-      md:h-[20px]
-      border-l-[5px]
-      border-b-[5px]
-      border-[#444444]
-      rotate-45
-    "
-                  />
+                  <svg
+                    width="23"
+                    height="24"
+                    viewBox="0 0 24 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="translate-x-[0px]"
+                  >
+                    <path
+                      d="M23.0098 0.915055C23.5957 1.50109 23.9249 2.29584 23.9249 3.12453C23.9249 3.95321 23.5957 4.74797 23.0098 5.334L7.54103 20.8028L23.0098 36.2715C23.5611 36.8638 23.8613 37.6468 23.847 38.4558C23.8328 39.2648 23.5053 40.0368 22.9334 40.6093C22.3616 41.1818 21.59 41.5101 20.781 41.5253C19.972 41.5404 19.1886 41.2411 18.5957 40.6904L0.915131 23.0147C0.329097 22.4286 -0.0000610352 21.6339 -0.0000610352 20.8052C-0.0000610352 19.9765 0.329097 19.1818 0.915131 18.5957L18.5908 0.915055C19.1768 0.329148 19.9716 0 20.8003 0C21.6289 0 22.4237 0.329148 23.0098 0.915055Z"
+                      fill="#3B413B"
+                    />
+                  </svg>
                 </button>
 
                 {/* THUMBNAILS */}
@@ -401,13 +395,10 @@ className="
                 <button
                   type="button"
                   onClick={nextImage}
-                  disabled={currentImage === gallery.length - 1}
                   className="
     flex-shrink-0
-    w-[58px]
-    h-[58px]
-    md:w-[60px]
-    md:h-[60px]
+    w-[60px]
+    h-[60px]
     rounded-full
     bg-white
     border
@@ -417,25 +408,24 @@ className="
     items-center
     justify-center
     hover:bg-gray-50
-    disabled:opacity-40
     cursor-pointer
     transition-all
     duration-200
   "
                 >
-                  <span
-                    className="
-      block
-      w-[18px]
-      h-[18px]
-      md:w-[20px]
-      md:h-[20px]
-      border-t-[5px]
-      border-r-[5px]
-      border-[#444444]
-      rotate-45
-    "
-                  />
+                  <svg
+                    width="23"
+                    height="24"
+                    viewBox="0 0 24 42"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="-translate-x-[0px]"
+                  >
+                    <path
+                      d="M0.915024 0.915055C0.329117 1.50109 -3.05176e-05 2.29584 -3.05176e-05 3.12453C-3.05176e-05 3.95321 0.329117 4.74797 0.915024 5.334L16.3838 20.8028L0.915024 36.2715C0.36368 36.8638 0.0635567 37.6468 0.0777988 38.4558C0.092041 39.2648 0.419537 40.0368 0.991383 40.6093C1.56323 41.1818 2.33484 41.5101 3.14386 41.5253C3.95288 41.5404 4.73623 41.2411 5.32909 40.6904L23.0097 23.0147C23.5957 22.4286 23.9248 21.6339 23.9248 20.8052C23.9248 19.9765 23.5957 19.1818 23.0097 18.5957L5.33397 0.915055C4.74794 0.329148 3.95318 0 3.1245 0C2.29581 0 1.50105 0.329148 0.915024 0.915055Z"
+                      fill="#3B413B"
+                    />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -1158,99 +1148,107 @@ className="
               </div>
 
               {/* =================================================
-        KEBUTUHAN KHUSUS
-    ================================================== */}
+    KEBUTUHAN KHUSUS
+================================================== */}
 
               <div
                 className="
-        bg-[#f1f4ff]
-        rounded-[8px]
-        border
-        border-[#dddddd]
-        shadow-[0_2px_7px_rgba(0,0,0,0.15)]
-        px-6
-        py-6
-      "
+    bg-[#f1f4ff]
+    rounded-[8px]
+    border
+    border-[#dddddd]
+    shadow-[0_2px_7px_rgba(0,0,0,0.15)]
+    px-5
+    py-4
+    h-full
+  "
               >
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-4 h-full">
                   {/* ICON */}
-
                   <div
                     className="
-            flex-shrink-0
-            w-[54px]
-            h-[54px]
-            rounded-full
-            bg-[#dceef1]
-            flex
-            items-center
-            justify-center
-          "
+        flex-shrink-0
+        w-[42px]
+        h-[42px]
+        rounded-full
+        bg-[#dceef1]
+        flex
+        items-center
+        justify-center
+      "
                   >
                     <svg
-                      width="25"
-                      height="26"
+                      width="20"
+                      height="20"
                       viewBox="0 0 42 40"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M29.2187 39.5833L28.5937 36.4583C28.1771 36.2847 27.7868 36.1028 27.4229 35.9125C27.059 35.7222 26.6854 35.4875 26.3021 35.2083L23.2812 36.1458L21.1979 32.6042L23.5937 30.5208C23.5243 30.1042 23.4896 29.6528 23.4896 29.1667C23.4896 28.6806 23.5243 28.2292 23.5937 27.8125L21.1979 25.7292L23.2812 22.1875L26.3021 23.125C26.684 22.8472 27.0576 22.6132 27.4229 22.4229C27.7882 22.2326 28.1785 22.05 28.5937 21.875L29.2187 18.75H33.3854L34.0104 21.875C34.4271 22.0486 34.8181 22.2312 35.1833 22.4229C35.5486 22.6146 35.9215 22.8486 36.3021 23.125L39.3229 22.1875L41.4062 25.7292L39.0104 27.8125C39.0799 28.2292 39.1146 28.6806 39.1146 29.1667C39.1146 29.6528 39.0799 30.1042 39.0104 30.5208L41.4062 32.6042L39.3229 36.1458L36.3021 35.2083C35.9201 35.4861 35.5472 35.7208 35.1833 35.9125C34.8194 36.1042 34.4285 36.2861 34.0104 36.4583L33.3854 39.5833H29.2187ZM0 37.5V0H37.5V15.9375C36.8403 15.625 36.1632 15.3729 35.4687 15.1812C34.7743 14.9896 34.0625 14.8431 33.3333 14.7417V4.16667H4.16667V22.9167H12.9167C13.2292 23.8542 13.75 24.6701 14.4792 25.3646C15.2083 26.059 16.0243 26.5451 16.9271 26.8229C16.6146 28.6979 16.6583 30.5556 17.0583 32.3958C17.4583 34.2361 18.2132 35.9375 19.3229 37.5H0ZM34.2458 32.1083C35.0611 31.2931 35.4687 30.3125 35.4687 29.1667C35.4687 28.0208 35.0611 27.0403 34.2458 26.225C33.4306 25.4097 32.4493 25.0014 31.3021 25C30.1549 24.9986 29.1743 25.4069 28.3604 26.225C27.5465 27.0431 27.1382 28.0236 27.1354 29.1667C27.1326 30.3097 27.541 31.291 28.3604 32.1104C29.1799 32.9299 30.1604 33.3375 31.3021 33.3333C32.4437 33.3292 33.425 32.9194 34.2458 32.1083Z"
+                        d="M29.2187 39.5833L28.5937 36.4583C28.1771 36.2847 27.7868 36.1028 27.4229 35.9125C27.059 35.7222 26.6854 35.5472 26.3021 35.3875L26.3021 31.25C26.3021 30.7292 26.0937 30.2344 25.7292 29.8437C25.3646 29.4531 24.8958 29.2187 24.375 29.1667C23.4375 29.0625 22.526 28.8281 21.6406 28.4635C20.7552 28.099 19.9219 27.6042 19.1667 26.9792L16.0417 24.8437C15.3125 24.3229 14.7135 23.6458 14.2708 22.8646C13.8281 22.0833 13.5937 21.1979 13.5937 20.2865V15.9375C13.5937 14.9479 13.8281 13.9844 14.2708 13.0729C14.7135 12.1615 15.3646 11.3802 16.1979 10.7812C17.0312 10.1823 18.0208 9.79167 19.0625 9.63542C20.1042 9.47917 21.1458 9.58333 22.1354 9.94792L29.2187 12.3958V39.5833ZM0 37.5V0H37.5V15.9375C36.8403 15.625 36.1632 15.3729 35.4687 15.1812C34.7743 14.9896 34.0625 14.8431 33.3333 14.7417V4.16667H4.16667V22.9167H12.9167C13.2292 23.8542 13.75 24.6701 14.4792 25.3646C15.2083 26.059 16.0243 26.5451 16.9271 26.8229C16.6146 28.6979 16.6583 30.5556 17.0583 32.3958C17.4583 34.2361 18.2132 35.9375 19.3229 37.5H0ZM34.2458 32.1083C35.0611 31.2931 35.4687 30.3125 35.4687 29.1667C35.4687 28.0208 35.0611 27.0403 34.2458 26.225C33.4306 25.4097 32.4493 25.0014 31.3021 25C30.1549 24.9986 29.1743 25.4069 28.3604 26.225C27.5465 27.0431 27.1382 28.0236 27.1354 29.1667C27.1326 30.3097 27.541 31.291 28.3604 32.1104C29.1799 32.9299 30.1604 33.3375 31.3021 33.3333C32.4437 33.3292 33.425 32.9194 34.2458 32.1083Z"
                         fill="#4F8DC0"
                       />
                     </svg>
                   </div>
 
-                  <div className="flex-1">
+                  {/* CONTENT */}
+                  <div className="flex-1 min-w-0">
+                    {/* TITLE */}
                     <h2
                       className="
-              font-['Nunito']
-              text-[#3f4543]
-              text-[25px]
-              font-bold
-            "
+          font-['Nunito']
+          text-[#3f4543]
+          text-[20px]
+          font-bold
+          leading-[1.2]
+        "
                     >
                       Kebutuhan Khusus?
                     </h2>
 
+                    {/* DESCRIPTION */}
                     <p
                       className="
-              mt-2
-              font-['Nunito']
-              text-[10px]
-              leading-[1.5]
-              text-[#555555]
-              max-w-[300px]
-            "
+          mt-1
+          font-['Nunito']
+          text-[9px]
+          leading-[1.45]
+          text-[#555555]
+          max-w-[300px]
+        "
                     >
                       Kami siap membantu menyesuaikan produk sesuai kebutuhan
                       proyek anda.
                     </p>
 
+                    {/* BUTTON */}
                     <button
                       type="button"
                       className="
-              mt-4
-              h-[36px]
-              px-4
-              bg-white
-              border
-              border-[#999999]
-              rounded-[6px]
-              shadow-[0_1px_3px_rgba(0,0,0,0.15)]
-              font-['Nunito']
-              text-[9px]
-              text-[#444444]
-              flex
-              items-center
-              gap-3
-              hover:bg-gray-50
-              transition
-              cursor-pointer
-            "
+          mt-2
+          w-[120px]
+          h-[26px]
+          text-[#3B413B]
+          border
+          border-[#999999]
+          rounded-[5px]
+          shadow-[0_1px_3px_rgba(0,0,0,0.15)]
+          flex
+          items-center
+          justify-center
+          gap-2
+          text-[9px]
+          font-['Nunito']
+          leading-none
+          transition-all
+          duration-200
+          hover:bg-[#f8f8f8]
+          cursor-pointer
+        "
                     >
-                      Konsultasi Sekarang
-                      <span className="text-[16px]">→</span>
+                      <span>Konsultasi Sekarang</span>
+
+                      <span className="text-[13px] leading-none">→</span>
                     </button>
                   </div>
                 </div>

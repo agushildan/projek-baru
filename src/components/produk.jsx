@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import i18n from "../i18n";
 
 import appleimac from "../assets/produk/appleimac.png";
@@ -8,6 +8,7 @@ import sparepart from "../assets/produk/sparepart.png";
 import webDigi from "../assets/produk/web_digi.png";
 
 function Produk() {
+  const navigate = useNavigate();
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
 
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
@@ -325,8 +326,10 @@ function Produk() {
                     text-gray-500
                   "
                 >
+
                   {produk.description}
                 </p>
+                
               </div>
             ))}
           </div>
