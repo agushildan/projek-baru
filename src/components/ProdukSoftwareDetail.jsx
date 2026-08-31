@@ -158,16 +158,14 @@ const gallery = [
                     <span
                       key={index}
                       className="
-                        font-['Nunito']
-                        text-[7px]
-                        md:text-[8px]
-                        text-[#555555]
-                        border
-                        border-[#999999]
-                        rounded-full
-                        px-2
-                        py-1
-                      "
+  px-3
+  py-1
+  text-[14px]
+  rounded-full
+  border
+  border-[#999999]
+  text-[#555555]
+"
                     >
                       {tag}
                     </span>
@@ -178,113 +176,120 @@ const gallery = [
 
                 {/* TITLE */}
 
-                <h2
-                  className="
-                    font-['Nunito']
-                    text-[#3f4543]
-                    text-2xl
-                    md:text-[24px]
-                    font-bold
-                  "
-                >
-                  SIM DIGI
-                </h2>
+<h2
+  className="
+    font-['Nunito']
+    text-[#3f4543]
+    text-3xl
+    md:text-[34px]
+    font-bold
+  "
+>
+  SIM DIGI
+</h2>
 
-                <p
-                  className="
-                    mt-1
-                    font-['Nunito']
-                    text-[#444444]
-                    text-xs
-                    md:text-sm
-                    font-bold
-                  "
-                >
-                  ( Sistem Informasi Manajemen DIGI )
-                </p>
-
-
+<p
+  className="
+    mt-2
+    font-['Nunito']
+    text-[#444444]
+    text-base
+    md:text-[19px]
+    font-bold
+  "
+>
+  ( Sistem Informasi Manajemen DIGI )
+</p>
                 {/* DESCRIPTION */}
 
-                <p
-                  className="
-                    mt-5
-                    max-w-[470px]
-                    font-['Nunito']
-                    text-[#555555]
-                    text-[10px]
-                    md:text-[11px]
-                    leading-[1.65]
-                    text-justify
-                  "
-                >
-                  Sistem Informasi Manajemen atau biasa disebut
-                  juga dengan ERP (Enterprise Resource Planning)
-                  merupakan platform digital terpusat yang
-                  menghubungkan seluruh alur kerja, data, dan
-                  proses bisnis dari setiap departemen perusahaan
-                  ke dalam satu sistem yang sama.
-                </p>
+<p
+  className="
+    mt-7
+    max-w-[700px]
+    font-['Nunito']
+    text-[#555555]
+    text-[15px]
+    md:text-[16px]
+    leading-[1.7]
+    text-justify
+  "
+>
+  Sistem Informasi Manajemen atau biasa disebut
+  juga dengan ERP (Enterprise Resource Planning)
+  merupakan platform digital terpusat yang
+  menghubungkan seluruh alur kerja, data, dan
+  proses bisnis dari setiap departemen perusahaan
+  ke dalam satu sistem yang sama.
+</p>
 
 
                 {/* BUTTON */}
 
                 <div className="flex flex-wrap gap-2 mt-5">
 
-                  <button
-                    type="button"
-                    className="
-                      h-[34px]
-                      px-5
-                      bg-[#4c98cf]
-                      hover:bg-[#3e88be]
-                      text-white
-                      font-['Nunito']
-                      text-[10px]
-                      md:text-[11px]
-                      rounded-[5px]
-                      border
-                      border-[#367baa]
-                      shadow-[0_1px_3px_rgba(0,0,0,0.2)]
-                      transition-all
-                      duration-200
-                      cursor-pointer
-                    "
-                  >
-                    Beli Sekarang
-                  </button>
+<button
+  type="button"
+  className="
+    h-[42px]
+    px-8
+    bg-[#4c98cf]
+    hover:bg-[#3e88be]
+    text-white
+    font-['Nunito']
+    text-[12px]
+    md:text-[14px]
+    rounded-[6px]
+    border
+    border-[#367baa]
+    shadow-[0_2px_4px_rgba(0,0,0,0.2)]
+    transition-all
+    duration-200
+    cursor-pointer
+  "
+>
+  Beli Sekarang
+</button>
 
 
-                  <button
-                    type="button"
-                    className="
-                      h-[34px]
-                      px-4
-                      bg-[#35c96b]
-                      hover:bg-[#29b95d]
-                      text-white
-                      font-['Nunito']
-                      text-[10px]
-                      md:text-[11px]
-                      font-bold
-                      rounded-[5px]
-                      border
-                      border-[#269d50]
-                      shadow-[0_1px_3px_rgba(0,0,0,0.2)]
-                      transition-all
-                      duration-200
-                      cursor-pointer
-                      flex
-                      items-center
-                      gap-1.5
-                    "
-                  >
-                    <span className="text-sm">
-                      ◉
-                    </span>
+<button
+  type="button"
+  className="
+    h-[42px]
+    px-7
+    bg-[#35c96b]
+    hover:bg-[#29b95d]
+    text-white
+    font-['Nunito']
+    text-[12px]
+    md:text-[14px]
+    font-bold
+    rounded-[6px]
+    border
+    border-[#269d50]
+    shadow-[0_2px_4px_rgba(0,0,0,0.2)]
+    transition-all
+    duration-200
+    cursor-pointer
+    flex
+    items-center
+    gap-2
+  "
+>
+  <svg
+    width="18"
+    height="18"
+    viewBox="0 0 25 25"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M21.25 3.63757C20.1038 2.4802 18.7388 1.56253 17.2344 0.93802C15.73 0.313516 14.1164 -0.00532896 12.4875 6.73689e-05C5.6625 6.73689e-05 0.1 5.56257 0.1 12.3876C0.1 14.5751 0.675 16.7001 1.75 18.5751L0 25.0001L6.5625 23.2751C8.375 24.2626 10.4125 24.7876 12.4875 24.7876C19.3125 24.7876 24.875 19.2251 24.875 12.4001C24.875 9.08757 23.5875 5.97507 21.25 3.63757ZM12.4875 22.6876C10.6375 22.6876 8.825 22.1876 7.2375 21.2501L6.8625 21.0251L2.9625 22.0501L4 18.2501L3.75 17.8626C2.72193 16.2214 2.17616 14.3242 2.175 12.3876C2.175 6.71257 6.8 2.08757 12.475 2.08757C15.225 2.08757 17.8125 3.16257 19.75 5.11257C20.7095 6.0674 21.4699 7.20325 21.987 8.45423C22.5042 9.70521 22.7677 11.0464 22.7625 12.4001C22.7875 18.0751 18.1625 22.6876 12.4875 22.6876ZM18.1375 14.9876C17.825 14.8376 16.3 14.0876 16.025 13.9751C15.7375 13.8751 15.5375 13.8251 15.325 14.1251C15.1125 14.4376 14.525 15.1376 14.35 15.3376C14.175 15.5501 13.9875 15.5751 13.675 15.4126C13.3625 15.2626 12.3625 14.9251 11.1875 13.8751C10.2625 13.0501 9.65 12.0376 9.4625 11.7251C9.2875 11.4126 9.4375 11.2501 9.6 11.0876C9.7375 10.9501 9.9125 10.7251 10.0625 10.5501C10.2125 10.3751 10.275 10.2376 10.375 10.0376C10.475 9.82507 10.425 9.65007 10.35 9.50007C10.275 9.35007 9.65 7.82507 9.4 7.20007C9.15 6.60007 8.8875 6.67507 8.7 6.66257H8.1C7.8875 6.66257 7.5625 6.73757 7.275 7.05007C7 7.36257 6.2 8.11257 6.2 9.63757C6.2 11.1626 7.3125 12.6376 7.4625 12.8376C7.6125 13.0501 9.65 16.1751 12.75 17.5126C13.4875 17.8376 14.0625 18.0251 14.5125 18.1626C15.25 18.4001 15.925 18.3626 16.4625 18.2876C17.0625 18.2001 18.3 17.5376 18.55 16.8126C18.8125 16.0876 18.8125 15.4751 18.725 15.3376C18.6375 15.2001 18.45 15.1376 18.1375 14.9876Z"
+      fill="white"
+    />
+  </svg>
 
-                    Whatsapp Kami
-                  </button>
+  Whatsapp Kami
+</button>
 
                 </div>
 
