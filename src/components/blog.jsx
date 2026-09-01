@@ -1,7 +1,10 @@
 function Blog(){
     return(
 
-        <h1> hi</h1>
+        <div>
+            <h1>Blog</h1>
+            <p>ini adalah bagian blog</p>
+        </div>
         
     )
 }

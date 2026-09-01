@@ -4,7 +4,7 @@ import machining from "../assets/layanan_mekanikal/mchnng.png";
 import repairMaintenance from "../assets/layanan_mekanikal/repairnmnt.png";
 import engineeringService from "../assets/layanan_mekanikal/engser.png";
 import fabrication from "../assets/layanan_mekanikal/fabr.png";
-
+import Footer from "./Footer";
 import machin from "../assets/produk/machin.png";
 
 function MekanikEngineering() {
@@ -996,6 +996,8 @@ function MekanikEngineering() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }
