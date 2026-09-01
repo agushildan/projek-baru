@@ -76,9 +76,18 @@ function Kegiatan() {
                 </div>
 
                 {/* THREE DOT */}
-                <span className="text-[#444444] text-[16px] font-bold tracking-[2px]">
-                  •••
-                </span>
+                <svg
+                  className="mr-2"
+                  width="17"
+                  height="4"
+                  viewBox="0 0 27 7"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="3.5" cy="3.5" r="3.5" fill="#3B413B" />
+                  <circle cx="13.5" cy="3.5" r="3.5" fill="#3B413B" />
+                  <circle cx="23.5" cy="3.5" r="3.5" fill="#3B413B" />
+                </svg>
               </div>
 
               {/* =========================
@@ -92,11 +101,23 @@ function Kegiatan() {
                     className="block w-full aspect-square object-cover rounded-[2px]"
                   />
 
-                  {/* DOT INDICATOR */}
-                  <div className="absolute left-1/2 -translate-x-1/2 -bottom-[15px] flex items-center gap-[4px]">
-                    <span className="w-[5px] h-[5px] rounded-full bg-[#b8b8b8]" />
-                    <span className="w-[6px] h-[6px] rounded-full bg-[#4b8cc0]" />
-                    <span className="w-[5px] h-[5px] rounded-full bg-[#b8b8b8]" />
+                  <div className="absolute left-1/2 -translate-x-1/2 -bottom-[17px]">
+                    <svg
+                      className="w-[28px] h-auto"
+                      viewBox="0 0 46 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ellipse cx="5.5" cy="5" rx="5.5" ry="5" fill="#C9C8C7" />
+                      <circle cx="23" cy="5" r="5" fill="#4C8AAE" />
+                      <ellipse
+                        cx="40.5"
+                        cy="5"
+                        rx="5.5"
+                        ry="5"
+                        fill="#C9C8C7"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
