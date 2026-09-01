@@ -1,11 +1,14 @@
 import React from "react";
 
 import machining from "../assets/layanan_mekanikal/mchnng.png";
-import repairMaintenance from "../assets/layanan_mekanikal/repair n mnt.png";
-import engineeringService from "../assets/layanan_mekanikal/eng ser.png";
+import repairMaintenance from "../assets/layanan_mekanikal/repairnmnt.png";
+import engineeringService from "../assets/layanan_mekanikal/engser.png";
 import fabrication from "../assets/layanan_mekanikal/fabr.png";
 
+import machin from "../assets/produk/machin.png";
+
 function MekanikEngineering() {
+  const [currentPage, setCurrentPage] = React.useState(1);
   const layananList = [
     {
       title: "Machining",
@@ -35,7 +38,6 @@ function MekanikEngineering() {
 
   return (
     <div className="w-full min-h-screen bg-white">
-
       {/* =========================
           HERO MEKANIKAL ENGINEERING
       ========================== */}
@@ -92,7 +94,6 @@ function MekanikEngineering() {
         </div>
       </section>
 
-
       {/* =========================
           LAYANAN KAMI
       ========================== */}
@@ -113,7 +114,6 @@ function MekanikEngineering() {
             px-4
           "
         >
-
           {/* TITLE */}
           <div className="flex flex-col items-center">
             <h2
@@ -139,7 +139,6 @@ function MekanikEngineering() {
               "
             />
           </div>
-
 
           {/* =========================
               CARD LIST
@@ -167,7 +166,6 @@ function MekanikEngineering() {
                   shadow-[0_3px_10px_rgba(0,0,0,0.16)]
                 "
               >
-
                 {/* GAMBAR */}
                 <div
                   className="
@@ -187,7 +185,6 @@ function MekanikEngineering() {
                   />
                 </div>
 
-
                 {/* CONTENT CARD */}
                 <div
                   className="
@@ -199,7 +196,6 @@ function MekanikEngineering() {
                     flex-col
                   "
                 >
-
                   {/* TITLE CARD */}
                   <h3
                     className="
@@ -213,7 +209,6 @@ function MekanikEngineering() {
                   >
                     {layanan.title}
                   </h3>
-
 
                   {/* DESCRIPTION */}
                   <p
@@ -229,7 +224,6 @@ function MekanikEngineering() {
                   >
                     {layanan.description}
                   </p>
-
 
                   {/* BUTTON */}
                   <button
@@ -283,14 +277,12 @@ function MekanikEngineering() {
                       />
                     </svg>
                   </button>
-
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
 
       {/* =========================
           PROSES MEKANIKAL & ENGINEERING
@@ -315,10 +307,8 @@ function MekanikEngineering() {
             px-4
           "
         >
-
           {/* TITLE */}
           <div className="flex flex-col items-center">
-
             <h2
               className="
                 font-['Nunito Sans']
@@ -342,18 +332,15 @@ function MekanikEngineering() {
                 mt-7
               "
             />
-
           </div>
-
 
           {/* =========================
               TIMELINE
           ========================== */}
           <div className="relative mt-16 px-4 md:px-10">
-
             {/* GARIS PENGHUBUNG */}
-<div
-  className="
+            <div
+              className="
     absolute
     left-[75px]
     right-[75px]
@@ -362,18 +349,14 @@ function MekanikEngineering() {
     bg-[#B9D1EA]
     z-0
   "
-/>
-
+            />
 
             {/* TIMELINE ITEMS */}
             <div className="relative z-10 flex items-start justify-between">
-
-
               {/* =========================
                   ITEM 1 - KONSULTASI
               ========================== */}
               <div className="flex flex-col items-center text-center w-[150px]">
-
                 <div
                   className="
                     w-[92px]
@@ -387,7 +370,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-
                   {/* SVG KONSULTASI */}
                   <svg
                     width="43"
@@ -401,7 +383,6 @@ function MekanikEngineering() {
                       fill="#AE4A4A"
                     />
                   </svg>
-
                 </div>
 
                 <h3
@@ -431,15 +412,12 @@ function MekanikEngineering() {
                 >
                   Diskusi kebutuhan dan permasalahan mesin anda.
                 </p>
-
               </div>
-
 
               {/* =========================
                   ITEM 2 - ANALISA
               ========================== */}
               <div className="flex flex-col items-center text-center w-[150px]">
-
                 <div
                   className="
                     w-[92px]
@@ -453,7 +431,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-
                   {/* SVG ANALISA */}
                   <svg
                     width="38"
@@ -479,7 +456,6 @@ function MekanikEngineering() {
                       fill="#AE4A4A"
                     />
                   </svg>
-
                 </div>
 
                 <h3
@@ -509,15 +485,12 @@ function MekanikEngineering() {
                 >
                   Analisa teknis dan penentuan solusi terbaik.
                 </p>
-
               </div>
-
 
               {/* =========================
                   ITEM 3 - PELAKSANAAN
               ========================== */}
               <div className="flex flex-col items-center text-center w-[150px]">
-
                 <div
                   className="
                     w-[92px]
@@ -531,7 +504,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-
                   {/* SVG PELAKSANAAN */}
                   <svg
                     width="45"
@@ -545,7 +517,6 @@ function MekanikEngineering() {
                       fill="#AE4A4A"
                     />
                   </svg>
-
                 </div>
 
                 <h3
@@ -575,15 +546,12 @@ function MekanikEngineering() {
                 >
                   Proses pengerjaan oleh Tim Profesional.
                 </p>
-
               </div>
-
 
               {/* =========================
                   ITEM 4 - QUALITY KONTROL
               ========================== */}
               <div className="flex flex-col items-center text-center w-[150px]">
-
                 <div
                   className="
                     w-[92px]
@@ -597,7 +565,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-
                   {/* SVG QUALITY KONTROL */}
                   <svg
                     width="38"
@@ -616,7 +583,6 @@ function MekanikEngineering() {
                       fill="#AE4A4A"
                     />
                   </svg>
-
                 </div>
 
                 <h3
@@ -646,15 +612,12 @@ function MekanikEngineering() {
                 >
                   Pemeriksaan kualitas untuk memastikan hasil terbaik.
                 </p>
-
               </div>
-
 
               {/* =========================
                   ITEM 5 - SERAH TERIMA
               ========================== */}
               <div className="flex flex-col items-center text-center w-[150px]">
-
                 <div
                   className="
                     w-[92px]
@@ -668,7 +631,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-
                   {/* SVG SERAH TERIMA */}
                   <svg
                     width="46"
@@ -682,7 +644,6 @@ function MekanikEngineering() {
                       fill="#AE4A4A"
                     />
                   </svg>
-
                 </div>
 
                 <h3
@@ -712,15 +673,329 @@ function MekanikEngineering() {
                 >
                   Penyerahan hasil pekerjaan sesuai Standar.
                 </p>
-
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
 
+      {/* =========================
+    PORTFOLIO MEKANIKAL
+========================== */}
+      <section
+        className="
+    w-full
+    bg-[#DDE6F8]
+    py-12
+    md:py-14
+  "
+      >
+        <div
+          className="
+      max-w-[1100px]
+      mx-auto
+      px-4
+    "
+        >
+          <div
+            className="
+        w-full
+        bg-white
+        rounded-[6px]
+        px-5
+        py-8
+        md:px-6
+        md:py-9
+      "
+          >
+            {/* TITLE */}
+            <div className="flex flex-col items-center">
+              <h2
+                className="
+            font-['Nunito Sans']
+            text-[#3B413B]
+            text-2xl
+            md:text-[27px]
+            font-bold
+            leading-[100%]
+            text-center
+          "
+              >
+                Portofolio Mekanikal & Engineering
+              </h2>
+
+              {/* STRIP BIRU */}
+              <div
+                className="
+            w-[65px]
+            h-[2.5px]
+            bg-[#4F8DC0]
+            mt-7
+          "
+              />
+            </div>
+
+            {/* =========================
+          PORTFOLIO GRID
+      ========================== */}
+            <div
+              className="
+              mt-8
+              grid
+              grid-cols-1
+              sm:grid-cols-2
+              lg:grid-cols-4
+              gap-3 
+              md:gap-4
+            "
+            >
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="
+                    relative
+                    w-full
+                    aspect-[1.5/1]
+                    rounded-[7px]
+                    overflow-hidden
+                    bg-[#E5E5E5]
+  "
+                >
+                  {/* GAMBAR PORTFOLIO */}
+                  <img
+                    src={machin}
+                    alt={`Portfolio Mekanikal ${index + 1}`}
+                    className="
+                w-full
+                h-full
+                object-cover
+              "
+                  />
+
+                  {/* LABEL */}
+                  <div
+                    className="
+                    absolute
+                    top-2
+                    left-2
+                    bg-[#E5E5E6]
+                    text-[#4B4B4B]
+                    text-[10px]
+                    font-medium
+                    px-2
+                    py-1
+                    rounded-full
+                  "
+                  >
+                    Machining Torque Tube Seal
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* =========================
+          PAGINATION
+      ========================== */}
+            <div className="flex justify-end items-center mt-6">
+              <div
+                className="
+      flex
+      items-center
+      h-[43px]
+      bg-white
+      border
+      border-[#E5E5E5]
+      rounded-[9px]
+      shadow-[0_2px_3px_rgba(0,0,0,0.15)]
+      overflow-hidden
+    "
+              >
+                {/* Previous */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  className="
+        w-[40px]
+        h-full
+        flex
+        items-center
+        justify-center
+        text-[#6B7280]
+        text-[24px]
+        font-light
+        border-r
+        border-[#E5E5E5]
+        hover:bg-[#F8F8F8]
+      "
+                >
+                  ‹
+                </button>
+
+                {/* Page 1 */}
+                <button
+                  onClick={() => setCurrentPage(1)}
+                  className="
+        w-[38px]
+        h-full
+        flex
+        items-center
+        justify-center
+        border-r
+        border-[#E5E5E5]
+      "
+                >
+                  <span
+                    className={`
+          flex
+          items-center
+          justify-center
+          w-[26px]
+          h-[28px]
+          rounded-[3px]
+          text-[16px]
+          font-medium
+          transition
+          ${
+            currentPage === 1
+              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+              : "bg-transparent text-[#666666]"
+          }
+        `}
+                  >
+                    1
+                  </span>
+                </button>
+
+                {/* Page 2 */}
+                <button
+                  onClick={() => setCurrentPage(2)}
+                  className="
+        w-[38px]
+        h-full
+        flex
+        items-center
+        justify-center
+        border-r
+        border-[#E5E5E5]
+      "
+                >
+                  <span
+                    className={`
+          flex
+          items-center
+          justify-center
+          w-[26px]
+          h-[28px]
+          rounded-[3px]
+          text-[16px]
+          font-medium
+          transition
+          ${
+            currentPage === 2
+              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+              : "bg-transparent text-[#666666]"
+          }
+        `}
+                  >
+                    2
+                  </span>
+                </button>
+
+                {/* Page 3 */}
+                <button
+                  onClick={() => setCurrentPage(3)}
+                  className="
+        w-[38px]
+        h-full
+        flex
+        items-center
+        justify-center
+        border-r
+        border-[#E5E5E5]
+      "
+                >
+                  <span
+                    className={`
+          flex
+          items-center
+          justify-center
+          w-[26px]
+          h-[28px]
+          rounded-[3px]
+          text-[16px]
+          font-medium
+          transition
+          ${
+            currentPage === 3
+              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+              : "bg-transparent text-[#666666]"
+          }
+        `}
+                  >
+                    3
+                  </span>
+                </button>
+
+                {/* Page 4 */}
+                <button
+                  onClick={() => setCurrentPage(4)}
+                  className="
+        w-[38px]
+        h-full
+        flex
+        items-center
+        justify-center
+        border-r
+        border-[#E5E5E5]
+      "
+                >
+                  <span
+                    className={`
+          flex
+          items-center
+          justify-center
+          w-[26px]
+          h-[28px]
+          rounded-[3px]
+          text-[16px]
+          font-medium
+          transition
+          ${
+            currentPage === 4
+              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+              : "bg-transparent text-[#666666]"
+          }
+        `}
+                  >
+                    4
+                  </span>
+                </button>
+
+                {/* Next */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, 4))
+                  }
+                  className="
+        w-[40px]
+        h-full
+        flex
+        items-center
+        justify-center
+        text-[#6B7280]
+        text-[24px]
+        font-light
+        hover:bg-[#F8F8F8]
+      "
+                >
+                  ›
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
