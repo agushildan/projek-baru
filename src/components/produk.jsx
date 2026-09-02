@@ -26,60 +26,57 @@ function Produk() {
   }, []);
 
   const produkList = [
-    {
-      nomor: "1.",
-      image: appleimac,
+  {
+    nomor: "1.",
+    image: appleimac,
 
-      // BACKGROUND CARD
-      bg: "#E2F0F1",
+    // BACKGROUND CARD
+    bg: "#F1ECE2",
 
-      // STRIP ATAS
-      strip: "#C4E2EF",
+    // STRIP ATAS
+    strip: "#E2DCCF",
 
-      title: t("produk_software_title", "Software IT"),
+    title: t("produk_software_title", "Software IT"),
+    description: t(
+      "produk_software_desc",
+      "Website Manajemen Informasi Sistem, Landing Page, Company Profile, Enterprise Resource Planning",
+    ),
+  },
 
-      description: t(
-        "produk_software_desc",
-        "Website Manajemen Informasi Sistem, Landing Page, Company Profile, Enterprise Resource Planning",
-      ),
-    },
+  {
+    nomor: "2.",
+    image: mknk,
 
-    {
-      nomor: "2.",
-      image: mknk,
+    // BACKGROUND CARD
+    bg: "#E2F0F1",
 
-      // BACKGROUND CARD
-      bg: "#E8E1F2",
+    // STRIP ATAS
+    strip: "#CDE3E5",
 
-      // STRIP ATAS
-      strip: "#D4C9EB",
+    title: t("produk_mekanik_title", "Mekanik & Engineering"),
+    description: t(
+      "produk_mekanik_desc",
+      "Jasa Repair dan Service Mesin Manufaktur",
+    ),
+  },
 
-      title: t("produk_mekanik_title", "Mekanik & Engineering"),
+  {
+    nomor: "3.",
+    image: sparepart,
 
-      description: t(
-        "produk_mekanik_desc",
-        "Jasa Repair dan Service Mesin Manufaktur",
-      ),
-    },
+    // BACKGROUND CARD
+    bg: "#E7E2F1",
 
-    {
-      nomor: "3.",
-      image: sparepart,
+    // STRIP ATAS
+    strip: "#D8D0E5",
 
-      // BACKGROUND CARD
-      bg: "#F5EAE3",
-
-      // STRIP ATAS
-      strip: "#F2DED7",
-
-      title: t("produk_sparepart_title", "Pengadaan Sparepart"),
-
-      description: t(
-        "produk_sparepart_desc",
-        "Pengadaan Sparepart dan Material Industri",
-      ),
-    },
-  ];
+    title: t("produk_sparepart_title", "Pengadaan Sparepart"),
+    description: t(
+      "produk_sparepart_desc",
+      "Pengadaan Sparepart dan Material Industri",
+    ),
+  },
+];
 
   return (
     <section className="w-full bg-[#e9eefc] px-4 py-10 md:py-12">
