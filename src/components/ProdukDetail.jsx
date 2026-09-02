@@ -201,6 +201,8 @@ function ProdukDetail() {
                         navigate("/produk/software");
                       } else if (index === 1) {
                         navigate("/produk/mekanik-engineering");
+                      } else if (index === 2) {
+                        navigate("/produk/pengadaan-sparepart"); // Navigate ke halaman Sparepart
                       }
                     }}
                     className="

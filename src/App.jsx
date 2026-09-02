@@ -15,6 +15,7 @@ import ProdukDetail from "./components/ProdukDetail";
 import SoftwareDetail from "./components/SoftwareDetail";
 import ProdukSoftwareDetail from "./components/ProdukSoftwareDetail";
 import MekanikEngineering from "./components/MekanikEngineering";
+import SparepartDetail from "./components/SparepartDetail";
 
 function App() {
   return (
@@ -30,8 +31,7 @@ function App() {
         <Route path="/produklain" element={<ProdukDetail />} />
 
         <Route path="/produk/software" element={<SoftwareDetail />} />
-
-        <Route path="/layanan" element={<Layanan />} />
+<Route path="/produk/pengadaan-sparepart" element={<SparepartDetail />} />        <Route path="/layanan" element={<Layanan />} />
         <Route path="/mitra" element={<Mitra />} />
         <Route path="/kegiatan" element={<Kegiatan />} />
         <Route path="/karir" element={<Karir />} />
