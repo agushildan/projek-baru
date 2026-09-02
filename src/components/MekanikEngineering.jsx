@@ -288,16 +288,10 @@ function MekanikEngineering() {
           PROSES MEKANIKAL & ENGINEERING
       ========================== */}
       <section
-        className="
-          w-full
-          pt-7
-          pb-16
-          md:pt-8
-          md:pb-20
-        "
+        className="w-full pt-7 pb-16 md:pt-8 md:pb-20"
         style={{
           background:
-            "linear-gradient(to bottom, #FFFFFF 0%, #F1F5FC 20%, #E4EBF9 55%, #DCE5F7 100%)",
+            "linear-gradient(to bottom, #FFFFFF 0%, #F8F9FD 20%, #E9EDFA 55%, #DEE4F7 100%)",
         }}
       >
         <div
@@ -320,7 +314,7 @@ function MekanikEngineering() {
                 text-center
               "
             >
-              Proses Mekanikal & Engineering
+             Alur Mekanikal & Engineering
             </h2>
 
             {/* STRIP BIRU */}
@@ -682,21 +676,8 @@ function MekanikEngineering() {
       {/* =========================
     PORTFOLIO MEKANIKAL
 ========================== */}
-      <section
-        className="
-    w-full
-    bg-[#DDE6F8]
-    py-12
-    md:py-14
-  "
-      >
-        <div
-          className="
-      max-w-[1100px]
-      mx-auto
-      px-4
-    "
-        >
+      <section className="w-full bg-[#DEE4F7] py-12 md:py-14">
+        <div className="max-w-[1100px] mx-auto px-4">
           <div
             className="
         w-full
@@ -706,6 +687,7 @@ function MekanikEngineering() {
         py-8
         md:px-6
         md:py-9
+        shadow-[0_4px_12px_rgba(0,0,0,0.12)]
       "
           >
             {/* TITLE */}
