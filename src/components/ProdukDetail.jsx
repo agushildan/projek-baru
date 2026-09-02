@@ -27,6 +27,7 @@ function ProdukDetail() {
     };
   }, []);
 
+  /* KODE WARNA CARD DIATUR PRESISI SESUAI DESAIN REFERENSI */
   const produkList = [
     {
       nomor: "1.",
@@ -36,17 +37,17 @@ function ProdukDetail() {
         "produk_software_desc",
         "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
       ),
-      bg: "#cfc3e8",
+      bg: "#f7e3d7", // Peach / Krem Soft
     },
     {
       nomor: "2.",
       image: mknk,
-      title: t("produk_mekanik_title", "Mekanik & Engineering"),
+      title: t("produk_mekanik_title", "Mekanikal & Engineering"),
       description: t(
         "produk_mekanik_desc",
         "Jasa Repair dan Service Mesin Manufaktur",
       ),
-      bg: "#b9deed",
+      bg: "#cbe3f0", // Biru Muda Soft
     },
     {
       nomor: "3.",
@@ -56,15 +57,15 @@ function ProdukDetail() {
         "produk_sparepart_desc",
         "Pengadaan Sparepart dan Material Industri",
       ),
-      bg: "#efd8d0",
+      bg: "#dcd4f0", // Ungu Muda Soft
     },
   ];
 
   return (
     <div>
-      <section className="w-full bg-[#e9eefc]">
+      <section className="w-full bg-[#F2F5FF]">
         {/* =========================
-            HEADER
+            HEADER TITLE
         ========================== */}
         <div
           className="
@@ -95,95 +96,96 @@ function ProdukDetail() {
         </div>
 
         {/* =========================
-            CARD PRODUK
+            GRID CARD PRODUK
         ========================== */}
-        <div className="w-full px-4 pt-12 pb-16 md:px-6 md:pt-14 md:pb-20">
+        <div className="w-full px-4 pt-12 pb-16 md:px-6 md:pt-14 md:pb-20 bg-[#F2F5FF]">
           <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
             {produkList.map((produk, index) => (
               <div
                 key={index}
-                className="relative w-full h-[390px] md:h-[400px] bg-white rounded-[8px] overflow-hidden shadow-[0_3px_8px_rgba(0,0,0,0.15)]"
+                className="relative w-full h-[390px] md:h-[400px] rounded-[8px] overflow-hidden shadow-[0_3px_8px_rgba(0,0,0,0.1)] transition-transform duration-200 hover:-translate-y-1"
                 style={{ backgroundColor: produk.bg }}
               >
                 {/* FIELD GAMBAR */}
                 <div
                   className="
-    absolute
-    top-[12px]
-    left-[12px]
-    right-[12px]
-    h-[180px]
-    bg-transparent
-    rounded-[4px]
-    overflow-hidden
-    flex
-    items-center
-    justify-center
-  "
+                    absolute
+                    top-[12px]
+                    left-[12px]
+                    right-[12px]
+                    h-[180px]
+                    bg-transparent
+                    rounded-[4px]
+                    overflow-hidden
+                    flex
+                    items-center
+                    justify-center
+                  "
                 >
                   {/* =========================
-      PRODUK 1 - iMAC
-  ========================== */}
+                      PRODUK 1 - iMAC
+                  ========================== */}
                   {index === 0 ? (
                     <div className="relative w-full h-full flex items-center justify-center">
-                      {/* iMac */}
+                      {/* Frame Monitor iMac */}
                       <img
                         src={produk.image}
                         alt={produk.title}
                         className="
-        absolute
-        w-[82%]
-        h-full
-        object-contain
-        z-10
-      "
+                          absolute
+                          w-[82%]
+                          h-full
+                          object-contain
+                          z-10
+                        "
                       />
 
+                      {/* Layar Website di Dalam Monitor */}
                       <div
                         className="
-    absolute
-    left-[20%]
-    top-[5%]
-    w-[60%]
-    h-[62%]
-    overflow-hidden
-    z-20
-  "
+                          absolute
+                          left-[20%]
+                          top-[5%]
+                          w-[60%]
+                          h-[62%]
+                          overflow-hidden
+                          z-20
+                        "
                       >
                         <img
                           src={webDigi}
                           alt="Digi Website"
                           className="
-      w-full
-      h-full
-      object-fill
-      block
-    "
+                            w-full
+                            h-full
+                            object-fill
+                            block
+                          "
                         />
                       </div>
                     </div>
                   ) : (
                     /* =========================
-       PRODUK 2 & 3
-    ========================== */
+                        PRODUK 2 & 3
+                    ========================== */
                     <img
                       src={produk.image}
                       alt={produk.title}
                       className="
-        w-full
-        h-full
-        object-cover
-        object-center
-        rounded-[4px]
-      "
+                        w-full
+                        h-full
+                        object-cover
+                        object-center
+                        rounded-[4px]
+                      "
                     />
                   )}
                 </div>
 
                 {/* =========================
-                    INFORMASI PRODUK
+                    INFORMASI PRODUK (KOTAK PUTIH)
                 ========================== */}
-                <div className="absolute left-[12px] right-[12px] bottom-[12px] h-[165px] bg-white rounded-[6px] flex flex-col items-center justify-center text-center px-3 py-3">
+                <div className="absolute left-[12px] right-[12px] bottom-[12px] h-[165px] bg-white rounded-[6px] flex flex-col items-center justify-center text-center px-3 py-3 shadow-sm">
                   <h2 className="font-['Nunito'] text-[#222222] text-[12px] md:text-sm font-bold min-h-[18px] flex items-center justify-center">
                     {produk.title}
                   </h2>
@@ -212,7 +214,7 @@ function ProdukDetail() {
                       md:text-[9px]
                       px-4
                       rounded-[4px]
-                      shadow-[0_1px_2px_rgba(0,0,0,0.15)]
+                      shadow-[0_1px_2px_rgba(0,0,0,0.1)]
                       hover:bg-gray-50
                       transition-all
                       duration-200

@@ -53,24 +53,26 @@ function SoftwareDetail() {
 
   return (
     <div>
-      <section className="w-full min-h-screen bg-[#e9eefc]">
-        {/* HEADER */}
+      <section className="w-full min-h-screen bg-[#F2F5FF]">
+        {/* =========================
+            HEADER TITLE (Soft Peach Pink Gradient)
+        ========================== */}
         <div
           className="
-    w-full
-    px-6
-    pt-8
-    pb-8
-    md:pt-10
-    md:pb-10
-  "
+            w-full
+            px-6
+            pt-8
+            pb-8
+            md:pt-10
+            md:pb-10
+          "
           style={{
             background:
-              "radial-gradient(50% 50% at 50% 50%, #F8F7FC 0%, rgba(204, 191, 230, 0.65) 100%)",
+              "radial-gradient(50% 50% at 50% 50%, #FAF0EB 0%, #F4DCD1 100%)",
           }}
         >
           <div className="max-w-[1100px] mx-auto text-center">
-            <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
+            <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide uppercase">
               SOFTWARE IT
             </h1>
 
@@ -83,13 +85,15 @@ function SoftwareDetail() {
           </div>
         </div>
 
-        {/* LIST SOFTWARE */}
-        <div className="w-full px-5 pt-10 pb-16 md:px-6 md:pt-12 md:pb-20">
+        {/* =========================
+            LIST SOFTWARE
+        ========================== */}
+        <div className="w-full px-5 pt-10 pb-16 md:px-6 md:pt-12 md:pb-20 bg-[#F2F5FF]">
           <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {produkSoftware.map((produk, index) => (
               <div
                 key={index}
-                className="w-full bg-white rounded-[14px] border border-[#777777] p-[8px] shadow-[0_2px_6px_rgba(0,0,0,0.12)]"
+                className="w-full bg-white rounded-[14px] border border-[#d2d6e0] p-[8px] shadow-[0_2px_6px_rgba(0,0,0,0.08)] transition-transform duration-200 hover:-translate-y-1"
               >
                 <div className="bg-white rounded-[10px] overflow-hidden">
                   <div className="w-full aspect-[16/9] bg-white overflow-hidden rounded-[10px]">
@@ -104,11 +108,11 @@ function SoftwareDetail() {
 
                   <div className="px-4 py-6 text-center">
                     <h2 className="font-['Nunito'] text-[#3f4543] text-xl font-bold">
-                      SIM DIGI
+                      {produk.title}
                     </h2>
 
                     <p className="mt-2 font-['Nunito'] text-[#555555] text-sm">
-                      ( Sistem Informasi Manajemen DIGI )
+                      {produk.description}
                     </p>
 
                     <p className="mt-8 font-['Nunito'] text-[#555555] text-sm leading-relaxed text-left">
@@ -119,7 +123,7 @@ function SoftwareDetail() {
                     <button
                       type="button"
                       onClick={() => navigate("/produk/software/detail")}
-                      className="mt-10 w-full h-[48px] bg-[#b94d4d] hover:bg-[#a94444] text-white font-['Nunito'] text-sm font-bold rounded-[7px] border border-[#733737] shadow-[0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200 cursor-pointer"
+                      className="mt-10 w-full h-[48px] bg-[#b94d4d] hover:bg-[#a94444] text-white font-['Nunito'] text-sm font-bold rounded-[7px] border border-[#733737] shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-200 cursor-pointer"
                     >
                       Lihat Detail Produk
                     </button>
@@ -129,9 +133,11 @@ function SoftwareDetail() {
             ))}
           </div>
 
-          {/* PAGINATION */}
-          <div className="max-w-[1100px] mx-auto flex justify-end mt-7">
-            <div className="flex items-center bg-white p-[3px] rounded-[10px] overflow-hidden border border-[#dddddd] shadow-[0_2px_5px_rgba(0,0,0,0.15)]">
+          {/* =========================
+              PAGINATION
+          ========================== */}
+          <div className="max-w-[1100px] mx-auto flex justify-end mt-8">
+            <div className="flex items-center bg-white p-[3px] rounded-[10px] overflow-hidden border border-[#dddddd] shadow-[0_2px_5px_rgba(0,0,0,0.1)]">
               <button
                 type="button"
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -148,7 +154,7 @@ function SoftwareDetail() {
                   onClick={() => setCurrentPage(page)}
                   className={`w-[38px] h-[38px] flex items-center justify-center text-sm font-semibold transition cursor-pointer ${
                     currentPage === page
-                      ? "bg-[#c8e3f7] text-[#6f7f7a] rounded-[3px] shadow-sm"
+                      ? "bg-[#f7e3d7] text-[#6f4b3e] rounded-[3px] shadow-sm"
                       : "bg-white text-[#7d8580] hover:bg-[#f5f5f5]"
                   }`}
                 >

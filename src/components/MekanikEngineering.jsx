@@ -39,7 +39,7 @@ function MekanikEngineering() {
   return (
     <div className="w-full min-h-screen bg-white">
       {/* =========================
-          HERO MEKANIKAL ENGINEERING
+          HERO MEKANIKAL ENGINEERING (Soft Light Blue Gradient)
       ========================== */}
       <section
         className="
@@ -49,7 +49,7 @@ function MekanikEngineering() {
         "
         style={{
           background:
-            "radial-gradient(50% 50% at 50% 50%, #F8F9FF 0%, #C4E2EF 100%)",
+            "radial-gradient(50% 50% at 50% 50%, #EEF7FC 0%, #CDE6F5 100%)",
         }}
       >
         <div
@@ -63,11 +63,12 @@ function MekanikEngineering() {
           <h1
             className="
               font-['Cormorant_Garamond']
-              text-[#3B413B]
+              text-[#222222]
               text-3xl
               md:text-4xl
               font-semibold
               tracking-wide
+              uppercase
             "
           >
             Mekanikal & Engineering
@@ -341,21 +342,19 @@ function MekanikEngineering() {
             {/* GARIS PENGHUBUNG */}
             <div
               className="
-    absolute
-    left-[75px]
-    right-[75px]
-    top-[46px]
-    h-[2px]
-    bg-[#B9D1EA]
-    z-0
-  "
+                absolute
+                left-[75px]
+                right-[75px]
+                top-[46px]
+                h-[2px]
+                bg-[#B9D1EA]
+                z-0
+              "
             />
 
             {/* TIMELINE ITEMS */}
             <div className="relative z-10 flex items-start justify-between">
-              {/* =========================
-                  ITEM 1 - KONSULTASI
-              ========================== */}
+              {/* ITEM 1 - KONSULTASI */}
               <div className="flex flex-col items-center text-center w-[150px]">
                 <div
                   className="
@@ -370,7 +369,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-                  {/* SVG KONSULTASI */}
                   <svg
                     width="43"
                     height="47"
@@ -414,9 +412,7 @@ function MekanikEngineering() {
                 </p>
               </div>
 
-              {/* =========================
-                  ITEM 2 - ANALISA
-              ========================== */}
+              {/* ITEM 2 - ANALISA */}
               <div className="flex flex-col items-center text-center w-[150px]">
                 <div
                   className="
@@ -431,7 +427,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-                  {/* SVG ANALISA */}
                   <svg
                     width="38"
                     height="40"
@@ -487,9 +482,7 @@ function MekanikEngineering() {
                 </p>
               </div>
 
-              {/* =========================
-                  ITEM 3 - PELAKSANAAN
-              ========================== */}
+              {/* ITEM 3 - PELAKSANAAN */}
               <div className="flex flex-col items-center text-center w-[150px]">
                 <div
                   className="
@@ -504,7 +497,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-                  {/* SVG PELAKSANAAN */}
                   <svg
                     width="45"
                     height="45"
@@ -548,9 +540,7 @@ function MekanikEngineering() {
                 </p>
               </div>
 
-              {/* =========================
-                  ITEM 4 - QUALITY KONTROL
-              ========================== */}
+              {/* ITEM 4 - QUALITY KONTROL */}
               <div className="flex flex-col items-center text-center w-[150px]">
                 <div
                   className="
@@ -565,7 +555,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-                  {/* SVG QUALITY KONTROL */}
                   <svg
                     width="38"
                     height="50"
@@ -614,9 +603,7 @@ function MekanikEngineering() {
                 </p>
               </div>
 
-              {/* =========================
-                  ITEM 5 - SERAH TERIMA
-              ========================== */}
+              {/* ITEM 5 - SERAH TERIMA */}
               <div className="flex flex-col items-center text-center w-[150px]">
                 <div
                   className="
@@ -631,7 +618,6 @@ function MekanikEngineering() {
                     shrink-0
                   "
                 >
-                  {/* SVG SERAH TERIMA */}
                   <svg
                     width="46"
                     height="28"
@@ -680,46 +666,46 @@ function MekanikEngineering() {
       </section>
 
       {/* =========================
-    PORTFOLIO MEKANIKAL
-========================== */}
+          PORTFOLIO MEKANIKAL
+      ========================== */}
       <section
         className="
-    w-full
-    bg-[#DDE6F8]
-    py-12
-    md:py-14
-  "
+          w-full
+          bg-[#DDE6F8]
+          py-12
+          md:py-14
+        "
       >
         <div
           className="
-      max-w-[1100px]
-      mx-auto
-      px-4
-    "
+            max-w-[1100px]
+            mx-auto
+            px-4
+          "
         >
           <div
             className="
-        w-full
-        bg-white
-        rounded-[6px]
-        px-5
-        py-8
-        md:px-6
-        md:py-9
-      "
+              w-full
+              bg-white
+              rounded-[6px]
+              px-5
+              py-8
+              md:px-6
+              md:py-9
+            "
           >
             {/* TITLE */}
             <div className="flex flex-col items-center">
               <h2
                 className="
-            font-['Nunito Sans']
-            text-[#3B413B]
-            text-2xl
-            md:text-[27px]
-            font-bold
-            leading-[100%]
-            text-center
-          "
+                  font-['Nunito Sans']
+                  text-[#3B413B]
+                  text-2xl
+                  md:text-[27px]
+                  font-bold
+                  leading-[100%]
+                  text-center
+                "
               >
                 Portofolio Mekanikal & Engineering
               </h2>
@@ -727,27 +713,27 @@ function MekanikEngineering() {
               {/* STRIP BIRU */}
               <div
                 className="
-            w-[65px]
-            h-[2.5px]
-            bg-[#4F8DC0]
-            mt-7
-          "
+                  w-[65px]
+                  h-[2.5px]
+                  bg-[#4F8DC0]
+                  mt-7
+                "
               />
             </div>
 
             {/* =========================
-          PORTFOLIO GRID
-      ========================== */}
+                PORTFOLIO GRID
+            ========================== */}
             <div
               className="
-              mt-8
-              grid
-              grid-cols-1
-              sm:grid-cols-2
-              lg:grid-cols-4
-              gap-3 
-              md:gap-4
-            "
+                mt-8
+                grid
+                grid-cols-1
+                sm:grid-cols-2
+                lg:grid-cols-4
+                gap-3 
+                md:gap-4
+              "
             >
               {Array.from({ length: 8 }).map((_, index) => (
                 <div
@@ -759,33 +745,33 @@ function MekanikEngineering() {
                     rounded-[7px]
                     overflow-hidden
                     bg-[#E5E5E5]
-  "
+                  "
                 >
                   {/* GAMBAR PORTFOLIO */}
                   <img
                     src={machin}
                     alt={`Portfolio Mekanikal ${index + 1}`}
                     className="
-                w-full
-                h-full
-                object-cover
-              "
+                      w-full
+                      h-full
+                      object-cover
+                    "
                   />
 
                   {/* LABEL */}
                   <div
                     className="
-                    absolute
-                    top-2
-                    left-2
-                    bg-[#E5E5E6]
-                    text-[#4B4B4B]
-                    text-[10px]
-                    font-medium
-                    px-2
-                    py-1
-                    rounded-full
-                  "
+                      absolute
+                      top-2
+                      left-2
+                      bg-[#E5E5E6]
+                      text-[#4B4B4B]
+                      text-[10px]
+                      font-medium
+                      px-2
+                      py-1
+                      rounded-full
+                    "
                   >
                     Machining Torque Tube Seal
                   </div>
@@ -794,200 +780,104 @@ function MekanikEngineering() {
             </div>
 
             {/* =========================
-          PAGINATION
-      ========================== */}
+                PAGINATION
+            ========================== */}
             <div className="flex justify-end items-center mt-6">
               <div
                 className="
-      flex
-      items-center
-      h-[43px]
-      bg-white
-      border
-      border-[#E5E5E5]
-      rounded-[9px]
-      shadow-[0_2px_3px_rgba(0,0,0,0.15)]
-      overflow-hidden
-    "
+                  flex
+                  items-center
+                  h-[43px]
+                  bg-white
+                  border
+                  border-[#E5E5E5]
+                  rounded-[9px]
+                  shadow-[0_2px_3px_rgba(0,0,0,0.15)]
+                  overflow-hidden
+                "
               >
                 {/* Previous */}
                 <button
+                  type="button"
                   onClick={() =>
                     setCurrentPage((prev) => Math.max(prev - 1, 1))
                   }
                   className="
-        w-[40px]
-        h-full
-        flex
-        items-center
-        justify-center
-        text-[#6B7280]
-        text-[24px]
-        font-light
-        border-r
-        border-[#E5E5E5]
-        hover:bg-[#F8F8F8]
-      "
+                    w-[40px]
+                    h-full
+                    flex
+                    items-center
+                    justify-center
+                    text-[#6B7280]
+                    text-[24px]
+                    font-light
+                    border-r
+                    border-[#E5E5E5]
+                    hover:bg-[#F8F8F8]
+                    cursor-pointer
+                  "
                 >
                   ‹
                 </button>
 
-                {/* Page 1 */}
-                <button
-                  onClick={() => setCurrentPage(1)}
-                  className="
-        w-[38px]
-        h-full
-        flex
-        items-center
-        justify-center
-        border-r
-        border-[#E5E5E5]
-      "
-                >
-                  <span
-                    className={`
-          flex
-          items-center
-          justify-center
-          w-[26px]
-          h-[28px]
-          rounded-[3px]
-          text-[16px]
-          font-medium
-          transition
-          ${
-            currentPage === 1
-              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
-              : "bg-transparent text-[#666666]"
-          }
-        `}
+                {/* Page Buttons */}
+                {[1, 2, 3, 4].map((page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => setCurrentPage(page)}
+                    className="
+                      w-[38px]
+                      h-full
+                      flex
+                      items-center
+                      justify-center
+                      border-r
+                      border-[#E5E5E5]
+                      cursor-pointer
+                    "
                   >
-                    1
-                  </span>
-                </button>
-
-                {/* Page 2 */}
-                <button
-                  onClick={() => setCurrentPage(2)}
-                  className="
-        w-[38px]
-        h-full
-        flex
-        items-center
-        justify-center
-        border-r
-        border-[#E5E5E5]
-      "
-                >
-                  <span
-                    className={`
-          flex
-          items-center
-          justify-center
-          w-[26px]
-          h-[28px]
-          rounded-[3px]
-          text-[16px]
-          font-medium
-          transition
-          ${
-            currentPage === 2
-              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
-              : "bg-transparent text-[#666666]"
-          }
-        `}
-                  >
-                    2
-                  </span>
-                </button>
-
-                {/* Page 3 */}
-                <button
-                  onClick={() => setCurrentPage(3)}
-                  className="
-        w-[38px]
-        h-full
-        flex
-        items-center
-        justify-center
-        border-r
-        border-[#E5E5E5]
-      "
-                >
-                  <span
-                    className={`
-          flex
-          items-center
-          justify-center
-          w-[26px]
-          h-[28px]
-          rounded-[3px]
-          text-[16px]
-          font-medium
-          transition
-          ${
-            currentPage === 3
-              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
-              : "bg-transparent text-[#666666]"
-          }
-        `}
-                  >
-                    3
-                  </span>
-                </button>
-
-                {/* Page 4 */}
-                <button
-                  onClick={() => setCurrentPage(4)}
-                  className="
-        w-[38px]
-        h-full
-        flex
-        items-center
-        justify-center
-        border-r
-        border-[#E5E5E5]
-      "
-                >
-                  <span
-                    className={`
-          flex
-          items-center
-          justify-center
-          w-[26px]
-          h-[28px]
-          rounded-[3px]
-          text-[16px]
-          font-medium
-          transition
-          ${
-            currentPage === 4
-              ? "bg-[#DCECF9] text-[#4A7192] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
-              : "bg-transparent text-[#666666]"
-          }
-        `}
-                  >
-                    4
-                  </span>
-                </button>
+                    <span
+                      className={`
+                        flex
+                        items-center
+                        justify-center
+                        w-[26px]
+                        h-[28px]
+                        rounded-[3px]
+                        text-[16px]
+                        font-medium
+                        transition
+                        ${
+                          currentPage === page
+                            ? "bg-[#CDE6F5] text-[#3B6682] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+                            : "bg-transparent text-[#666666]"
+                        }
+                      `}
+                    >
+                      {page}
+                    </span>
+                  </button>
+                ))}
 
                 {/* Next */}
                 <button
+                  type="button"
                   onClick={() =>
                     setCurrentPage((prev) => Math.min(prev + 1, 4))
                   }
                   className="
-        w-[40px]
-        h-full
-        flex
-        items-center
-        justify-center
-        text-[#6B7280]
-        text-[24px]
-        font-light
-        hover:bg-[#F8F8F8]
-      "
+                    w-[40px]
+                    h-full
+                    flex
+                    items-center
+                    justify-center
+                    text-[#6B7280]
+                    text-[24px]
+                    font-light
+                    hover:bg-[#F8F8F8]
+                    cursor-pointer
+                  "
                 >
                   ›
                 </button>
