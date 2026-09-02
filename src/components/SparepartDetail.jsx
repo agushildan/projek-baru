@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import i18n from "../i18n";
-
+import Footer from "./Footer";
 import mekanikImg from "../assets/sparepart/komponen_mekanik.png";
 import industriImg from "../assets/sparepart/komponen_industri.png";
 import materialImg from "../assets/sparepart/material_industri.png";
@@ -355,6 +355,7 @@ function SparepartDetail() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
