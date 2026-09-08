@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import i18n from "../i18n";
 import fotoKegiatan from "../assets/Kegiatan/foto kegiatan.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Kegiatan() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
+  const navigate = useNavigate();
 
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
@@ -44,6 +46,7 @@ function Kegiatan() {
             </p>
             <button
               type="button"
+              onClick={() => navigate("/kegiatanDetail")}
               className="mt-8 bg-[#c84d4d] hover:bg-[#b94343] text-white font-['Nunito'] font-semibold text-sm md:text-base px-5 md:px-6 py-3 rounded-md shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer"
             >
               {t("tombol_kegiatan", "Lihat Kegiatan Lainnya Disini")}

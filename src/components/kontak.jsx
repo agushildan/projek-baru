@@ -32,7 +32,7 @@ function Kontak() {
             className="
               font-['Cormorant_Garamond']
               text-[#666666]
-              text-[69px]
+              text-[65px]
               leading-none
               font-semibold
               text-center

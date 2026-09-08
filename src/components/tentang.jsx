@@ -23,9 +23,24 @@ function TentangKami() {
       className="relative w-full py-16 px-6 md:px-16 lg:px-24 bg-[#F2F5FF] overflow-hidden"
     >
       {/* POLA TITIK DEKORATIF */}
-      <div className="absolute top-28 left-0 grid grid-cols-4 gap-2 opacity-70 pointer-events-none z-0">
-        {[...Array(24)].map((_, i) => (
-          <div key={i} className="w-1.5 h-1.5 bg-[#4b8cc0] rounded-full"></div>
+      <div
+        className="
+    absolute
+    top-[80px]
+    left-0
+    grid
+    grid-cols-4
+    gap-[10px]
+    opacity-70
+    pointer-events-none
+    z-0
+  "
+      >
+        {[...Array(40)].map((_, i) => (
+          <div
+            key={i}
+            className="w-[6px] h-[6px] bg-[#4b8cc0] rounded-full"
+          ></div>
         ))}
       </div>
 
@@ -36,10 +51,9 @@ function TentangKami() {
       <div className="absolute bottom-6 left-[45%] w-1.5 h-1.5 bg-sky-400 rounded-full opacity-80 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-        
         {/* KOLOM TEKS */}
         <div className="lg:col-span-7 flex flex-col justify-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-['Cormorant_Garamond'] font-normal text-[#222222] tracking-wider uppercase">
+          <h2 className="text-3xl md:text-4xl font-['Cormorant_Garamond'] font-bold text-[#222222] tracking-wider uppercase">
             {t("judul_tentang", "TENTANG KAMI")}
           </h2>
 
@@ -54,18 +68,16 @@ function TentangKami() {
         <div className="lg:col-span-5 flex justify-center lg:justify-end">
           {/* Ditambahkan bg-white & shadow-md di sini agar seluruh area di dalam bingkai biru menjadi putih */}
           <div className="relative p-3 md:p-4 border-2 border-[#4b8cc0] rounded-t-[200px] rounded-b-xl w-full max-w-sm md:max-w-md bg-white shadow-md">
-            
             <div className="relative w-full aspect-[4/5] rounded-t-[190px] rounded-b-lg overflow-hidden bg-white flex items-center justify-center">
               <img
                 src="/digi.jpg"
                 alt="PT Digi Tekno Indonesia"
                 className="w-full h-full object-cover"
+                style={{ objectPosition: "center 30%" }}
               />
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

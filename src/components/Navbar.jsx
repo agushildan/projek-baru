@@ -420,14 +420,13 @@ function Navbar() {
           </li>
 
           <li>
-            <span
-              className={`dropdown-trigger ${
-                location.hash === "#kegiatan" ? "menu-aktif" : ""
-              }`}
-              onClick={() => navigateToHomeSection("kegiatan")}
+            <NavLink
+              to="/kegiatanDetail"
+              className={({ isActive }) => (isActive ? "menu-aktif" : "")}
+              onClick={closeAllMenus}
             >
               {t("kegiatan")}
-            </span>
+            </NavLink>
           </li>
 
           <li>
@@ -468,61 +467,89 @@ function Navbar() {
 
             <button type="submit">
               <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
+                width="15"
+                height="15"
+                viewBox="0 0 17 17"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="7"
-                  stroke="#131838"
-                  strokeWidth="2"
-                />
                 <path
-                  d="M16.5 16.5L21 21"
-                  stroke="#131838"
-                  strokeWidth="2"
-                  strokeLinecap="round"
+                  d="M5.95833 11.9167C4.29306 11.9167 2.88383 11.3398 1.73067 10.186C0.5775 9.03222 0.000611596 7.623 4.85009e-07 5.95833C-0.000610626 4.29367 0.576278 2.88444 1.73067 1.73067C2.88506 0.576889 4.29428 0 5.95833 0C7.62239 0 9.03192 0.576889 10.1869 1.73067C11.3419 2.88444 11.9185 4.29367 11.9167 5.95833C11.9167 6.63056 11.8097 7.26458 11.5958 7.86042C11.3819 8.45625 11.0917 8.98333 10.725 9.44167L15.8583 14.575C16.0264 14.7431 16.1104 14.9569 16.1104 15.2167C16.1104 15.4764 16.0264 15.6903 15.8583 15.8583C15.6903 16.0264 15.4764 16.1104 15.2167 16.1104C14.9569 16.1104 14.7431 16.0264 14.575 15.8583L9.44167 10.725C8.98333 11.0917 8.45625 11.3819 7.86042 11.5958C7.26458 11.8097 6.63056 11.9167 5.95833 11.9167ZM5.95833 10.0833C7.10417 10.0833 8.07828 9.68244 8.88067 8.88067C9.68306 8.07889 10.0839 7.10478 10.0833 5.95833C10.0827 4.81189 9.68183 3.83808 8.88067 3.03692C8.0795 2.23575 7.10539 1.83456 5.95833 1.83333C4.81128 1.83211 3.83747 2.23331 3.03692 3.03692C2.23636 3.84053 1.83517 4.81433 1.83333 5.95833C1.8315 7.10233 2.23269 8.07644 3.03692 8.88067C3.84114 9.68489 4.81494 10.0858 5.95833 10.0833Z"
+                  fill="#131838"
                 />
               </svg>
             </button>
           </form>
-
-          <div className="language-switcher">
+          <div
+            className="language-switcher"
+            style={{
+              width: "85px",
+              height: "34px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "#FFFFFF",
+              border: "1.5px solid #111827",
+              borderRadius: "9999px",
+              overflow: "hidden",
+              boxShadow: "0 2px 5px rgba(0, 0, 0, 0.15)",
+            }}
+          >
+            {/* INDONESIA */}
             <button
               type="button"
-              className={`lang-btn ${currentLang.startsWith("id") ? "active" : ""}`}
               onClick={() => changeLanguage("id")}
+              style={{
+                width: "50%",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "transparent",
+                border: "none",
+                borderRight: "1px solid #111827",
+                padding: 0,
+                cursor: "pointer",
+              }}
             >
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <defs>
-                  <clipPath id="circle">
+                  <clipPath id="circle-id">
                     <circle cx="16" cy="16" r="16" />
                   </clipPath>
                 </defs>
-                <g clipPath="url(#circle)">
+
+                <g clipPath="url(#circle-id)">
                   <rect width="32" height="16" fill="#FF0000" />
                   <rect y="16" width="32" height="16" fill="#FFFFFF" />
                 </g>
               </svg>
             </button>
-            <span className="lang-divider">|</span>
+
+            {/* ENGLISH */}
             <button
               type="button"
-              className={`lang-btn ${currentLang.startsWith("en") ? "active" : ""}`}
               onClick={() => changeLanguage("en")}
+              style={{
+                width: "50%",
+                height: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "transparent",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+              }}
             >
               <svg
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -531,6 +558,7 @@ function Navbar() {
                     <circle cx="16" cy="16" r="16" />
                   </clipPath>
                 </defs>
+
                 <g clipPath="url(#us-circle)">
                   <rect width="32" height="32" fill="#B22234" />
                   <rect y="4.92" width="32" height="2.46" fill="#FFFFFF" />
@@ -539,7 +567,9 @@ function Navbar() {
                   <rect y="19.69" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="24.62" width="32" height="2.46" fill="#FFFFFF" />
                   <rect y="29.54" width="32" height="2.46" fill="#FFFFFF" />
+
                   <rect width="14" height="17" fill="#3C3B6E" />
+
                   <g fill="#FFFFFF">
                     <circle cx="2" cy="2" r=".65" />
                     <circle cx="5.5" cy="2" r=".65" />

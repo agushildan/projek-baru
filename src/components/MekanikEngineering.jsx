@@ -6,6 +6,10 @@ import engineeringService from "../assets/layanan_mekanikal/engser.png";
 import fabrication from "../assets/layanan_mekanikal/fabr.png";
 import Footer from "./Footer";
 import machin from "../assets/produk/machin.png";
+import balanc from "../assets/produk/balanc.png";
+import bngkkr from "../assets/produk/bngkkr.png";
+import torque from "../assets/produk/torque.png";
+import weld from "../assets/produk/weld.png";
 
 function MekanikEngineering() {
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -39,53 +43,54 @@ function MekanikEngineering() {
   return (
     <div className="w-full min-h-screen bg-white">
       {/* =========================
-          HERO MEKANIKAL ENGINEERING (Soft Light Blue Gradient)
-      ========================== */}
+        HERO MEKANIKAL ENGINEERING
+    ========================== */}
       <section
         className="
-          w-full
-          py-12
-          md:py-14
-        "
+    w-full
+    mt-[64px]
+    py-12
+    md:py-14
+  "
         style={{
           background:
-            "radial-gradient(50% 50% at 50% 50%, #EEF7FC 0%, #CDE6F5 100%)",
+            "radial-gradient(50% 50% at 50% 50%, #FFFFFF 0%, #EAF5FC 55%, #C4E2EF 100%)",
         }}
       >
         <div
           className="
-            max-w-[1100px]
-            mx-auto
-            px-4
-            text-center
-          "
+          max-w-[1100px]
+          mx-auto
+          px-4
+          text-center
+        "
         >
           <h1
             className="
-              font-['Cormorant_Garamond']
-              text-[#222222]
-              text-3xl
-              md:text-4xl
-              font-semibold
-              tracking-wide
-              uppercase
-            "
+            font-['Cormorant_Garamond']
+            text-[#222222]
+            text-3xl
+            md:text-4xl
+            font-semibold
+            tracking-wide
+            uppercase
+          "
           >
             Mekanikal & Engineering
           </h1>
 
           <p
             className="
-              mt-4
-              max-w-[900px]
-              mx-auto
-              font-['Nunito']
-              text-[#666666]
-              text-[10px]
-              sm:text-xs
-              md:text-sm
-              leading-relaxed
-            "
+            mt-4
+            max-w-[900px]
+            mx-auto
+            font-['Nunito']
+            text-[#666666]
+            text-[10px]
+            sm:text-xs
+            md:text-sm
+            leading-relaxed
+          "
           >
             PT. Digi Tekno Indonesia menyediakan Layanan Mekanikal dan
             Engineering, seperti Layanan Repair, Maintenance, Machining, dan
@@ -670,11 +675,11 @@ function MekanikEngineering() {
       ========================== */}
       <section
         className="
-          w-full
-          bg-[#DDE6F8]
-          py-12
-          md:py-14
-        "
+    w-full
+    bg-[#DEE4F7]
+    py-12
+    md:py-14
+  "
       >
         <div
           className="
@@ -692,6 +697,7 @@ function MekanikEngineering() {
               py-8
               md:px-6
               md:py-9
+              shadow-[0_2px_8px_rgba(0,0,0,0.10)]
             "
           >
             {/* TITLE */}
@@ -749,7 +755,17 @@ function MekanikEngineering() {
                 >
                   {/* GAMBAR PORTFOLIO */}
                   <img
-                    src={machin}
+                    src={
+                      index === 0
+                        ? balanc
+                        : index === 1
+                          ? bngkkr
+                          : index === 2
+                            ? torque
+                            : index === 3
+                              ? weld
+                              : machin
+                    }
                     alt={`Portfolio Mekanikal ${index + 1}`}
                     className="
                       w-full
@@ -796,28 +812,39 @@ function MekanikEngineering() {
                   overflow-hidden
                 "
               >
-                {/* Previous */}
+                {/* PREVIOUS */}
                 <button
                   type="button"
                   onClick={() =>
                     setCurrentPage((prev) => Math.max(prev - 1, 1))
                   }
                   className="
-                    w-[40px]
-                    h-full
-                    flex
-                    items-center
-                    justify-center
-                    text-[#6B7280]
-                    text-[24px]
-                    font-light
-                    border-r
-                    border-[#E5E5E5]
-                    hover:bg-[#F8F8F8]
-                    cursor-pointer
-                  "
+    w-[40px]
+    h-full
+    flex
+    items-center
+    justify-center
+    border-r
+    border-[#E5E5E5]
+    hover:bg-[#F8F8F8]
+    cursor-pointer
+  "
                 >
-                  ‹
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 10 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                      filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.18))",
+                    }}
+                  >
+                    <path
+                      d="M8.7446 0.365983C8.96722 0.600393 9.09229 0.918278 9.09229 1.24973C9.09229 1.58119 8.96722 1.89907 8.7446 2.13348L2.86648 8.32098L8.7446 14.5085C8.96091 14.7442 9.08061 15.06 9.0779 15.3877C9.0752 15.7155 8.95031 16.029 8.73014 16.2608C8.50996 16.4925 8.21212 16.624 7.90077 16.6268C7.58941 16.6297 7.28944 16.5037 7.06548 16.276L0.347788 9.20473C0.125167 8.97032 0.000104368 8.65244 0.000104368 8.32098C0.000104368 7.98953 0.125167 7.67164 0.347788 7.43723L7.06548 0.365983C7.28817 0.131644 7.59016 0 7.90504 0C8.21992 0 8.52191 0.131644 8.7446 0.365983Z"
+                      fill="#798379"
+                    />
+                  </svg>
                 </button>
 
                 {/* Page Buttons */}
@@ -867,19 +894,31 @@ function MekanikEngineering() {
                     setCurrentPage((prev) => Math.min(prev + 1, 4))
                   }
                   className="
-                    w-[40px]
-                    h-full
-                    flex
-                    items-center
-                    justify-center
-                    text-[#6B7280]
-                    text-[24px]
-                    font-light
-                    hover:bg-[#F8F8F8]
-                    cursor-pointer
-                  "
+    w-[40px]
+    h-full
+    flex
+    items-center
+    justify-center
+    hover:bg-[#F8F8F8]
+    cursor-pointer
+  "
                 >
-                  ›
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 10 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style={{
+                      transform: "scaleX(-1)",
+                      filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.18))",
+                    }}
+                  >
+                    <path
+                      d="M8.7446 0.365983C8.96722 0.600393 9.09229 0.918278 9.09229 1.24973C9.09229 1.58119 8.96722 1.89907 8.7446 2.13348L2.86648 8.32098L8.7446 14.5085C8.96091 14.7442 9.08061 15.06 9.0779 15.3877C9.0752 15.7155 8.95031 16.029 8.73014 16.2608C8.50996 16.4925 8.21212 16.624 7.90077 16.6268C7.58941 16.6297 7.28944 16.5037 7.06548 16.276L0.347788 9.20473C0.125167 8.97032 0.000104368 8.65244 0.000104368 8.32098C0.000104368 7.98953 0.125167 7.67164 0.347788 7.43723L7.06548 0.365983C7.28817 0.131644 7.59016 0 7.90504 0C8.21992 0 8.52191 0.131644 8.7446 0.365983Z"
+                      fill="#798379"
+                    />
+                  </svg>
                 </button>
               </div>
             </div>

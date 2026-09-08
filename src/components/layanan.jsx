@@ -25,52 +25,52 @@ function Layanan() {
   }, []);
 
   const layananList = [
-  {
-    title: "Software Development",
-    description:
-      "Mengembangkan aplikasi perangkat lunak dengan teknologi informasi berbasis web dan mobile aplikasi.",
-    image: softwareDevelopment,
-  },
-  {
-    title: "Services and Maintenance",
-    description:
-      "Memberikan jasa perbaikan dan pemeliharaan baik untuk software, hardware ataupun infrastruktur.",
-    image: servicesMaintenance,
-  },
-  {
-    title: "IT Equipment/Hardware & Networking",
-    description:
-      "Memasok barang dan suku cadang barang IT untuk bisnis dan produk anda yang menjamin kepuasan pelanggan dan pengiriman cepat.",
-    image: itEquipment,
-  },
-  {
-    title: "IT Consultant & Problem Solving",
-    description:
-      "Memberikan solusi masalah dan mengevaluasi sistem IT di perusahaan anda untuk meningkatkan kinerja perusahaan.",
-    image: itConsultant,
-  },
-  {
-    title: "Procurement of Engine and Turbine Components and Spare Parts",
-    description:
-      "Kami siap membantu dalam pengadaan komponen industri baik berupa komponen yang sudah jadi ataupun masih berupa bahan baku atau masih berupa material.",
-    image: procurementEngine,
-  },
-  {
-  title: "Instalasi Peralatan Listrik dan Otomasi",
-  description:
-    "Mengembangkan aplikasi perangkat lunak dengan teknologi informasi berbasis web dan mobile aplikasi.",
-  image: instalasiListrik,
-},
-];
+    {
+      title: "Software Development",
+      description:
+        "Mengembangkan aplikasi perangkat lunak dengan teknologi informasi berbasis web dan mobile aplikasi.",
+      image: softwareDevelopment,
+    },
+    {
+      title: "Services and Maintenance",
+      description:
+        "Memberikan jasa perbaikan dan pemeliharaan baik untuk software, hardware ataupun infrastruktur.",
+      image: servicesMaintenance,
+    },
+    {
+      title: "IT Equipment/Hardware & Networking",
+      description:
+        "Memasok barang dan suku cadang barang IT untuk bisnis dan produk anda yang menjamin kepuasan pelanggan dan pengiriman cepat.",
+      image: itEquipment,
+    },
+    {
+      title: "IT Consultant & Problem Solving",
+      description:
+        "Memberikan solusi masalah dan mengevaluasi sistem IT di perusahaan anda untuk meningkatkan kinerja perusahaan.",
+      image: itConsultant,
+    },
+    {
+      title: "Procurement of Engine and Turbine Components and Spare Parts",
+      description:
+        "Kami siap membantu dalam pengadaan komponen industri baik berupa komponen yang sudah jadi ataupun masih berupa bahan baku atau masih berupa material.",
+      image: procurementEngine,
+    },
+    {
+      title: "Instalasi Peralatan Listrik dan Otomasi",
+      description:
+        "Mengembangkan aplikasi perangkat lunak dengan teknologi informasi berbasis web dan mobile aplikasi.",
+      image: instalasiListrik,
+    },
+  ];
 
   return (
     <section
-  className="w-full px-4 py-12 md:py-16"
-  style={{
-    background:
-      "linear-gradient(to bottom, #FFFFFF 0%, #EFEFEF 35%, #E1E4EE 70%, #D4D9E7 100%)",
-  }}
->
+      className="w-full px-4 pt-[110px] pb-12 md:pt-[110px] md:pb-16"
+      style={{
+        background:
+          "linear-gradient(to bottom, #FFFFFF 0%, #EFEFEF 35%, #E1E4EE 70%, #D4D9E7 100%)",
+      }}
+    >
       <div className="max-w-5xl mx-auto">
         {/* JUDUL */}
         <div className="text-center mb-7">
@@ -78,7 +78,7 @@ function Layanan() {
             {t("judul_layanan", "LAYANAN")}
           </h2>
 
-          <p className="font-nunito mt-3 max-w-4xl mx-auto text-[9px] md:text-[10px] leading-relaxed text-gray-600">
+          <p className="font-['Nunito Sans'] mt-7 max-w-4xl mx-auto text-[12px] md:text-[12px] leading-relaxed text-[#666666]">
             {t(
               "deskripsi_layanan",
               "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
@@ -91,7 +91,7 @@ function Layanan() {
           {layananList.map((layanan, index) => (
             <div
               key={index}
-              className="w-full min-h-[125px] md:min-h-[135px] bg-[#f2f5ff] border border-[#9eb5d0] rounded-md px-6 py-5 flex items-center justify-between gap-6"
+              className="w-full min-h-[125px] md:min-h-[135px] bg-[#f2f5ff] border border-[#9eb5d0] rounded-md px-6 py-5 flex items-center justify-between gap-6 shadow-[inset_0_4px_4px_rgba(0,0,0,0.12)]"
             >
               {/* TEXT */}
               <div className="flex-1 min-w-0">
@@ -99,7 +99,7 @@ function Layanan() {
                   {layanan.title}
                 </h3>
 
-                <p className="font-['Nunito_Sans'] mt-2 text-[10px] md:text-xs leading-relaxed text-gray-700 max-w-3xl">
+                <p className="font-['Nunito Sans'] mt-2 text-[10px] md:text-xs leading-relaxed text-gray-700 max-w-3xl">
                   {layanan.description}
                 </p>
               </div>

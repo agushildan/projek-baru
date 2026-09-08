@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+
 import Beranda from "./components/beranda";
 import Produk from "./components/produk";
 import Mitra from "./components/mitra";
@@ -16,6 +17,7 @@ import SoftwareDetail from "./components/SoftwareDetail";
 import ProdukSoftwareDetail from "./components/ProdukSoftwareDetail";
 import MekanikEngineering from "./components/MekanikEngineering";
 import SparepartDetail from "./components/SparepartDetail";
+import KegiatanDetail from "./components/KegiatanDetail";
 
 function App() {
   return (
@@ -26,25 +28,39 @@ function App() {
         <Route path="/" element={<Beranda />} />
 
         <Route path="/sertifikasi" element={<Sertifikasi />} />
+
         <Route path="/visimisi" element={<VisiMisi />} />
 
         <Route path="/produklain" element={<ProdukDetail />} />
 
         <Route path="/produk/software" element={<SoftwareDetail />} />
-<Route path="/produk/pengadaan-sparepart" element={<SparepartDetail />} />        <Route path="/layanan" element={<Layanan />} />
+
+        <Route
+          path="/produk/pengadaan-sparepart"
+          element={<SparepartDetail />}
+        />
+
+        <Route path="/layanan" element={<Layanan />} />
+
         <Route path="/mitra" element={<Mitra />} />
-        <Route path="/kegiatan" element={<Kegiatan />} />
+
         <Route path="/karir" element={<Karir />} />
+
         <Route path="/faq" element={<Faq />} />
+
         <Route path="/blog" element={<Blog />} />
+
         <Route
           path="/produk/software/detail"
           element={<ProdukSoftwareDetail />}
         />
+
         <Route
           path="/produk/mekanik-engineering"
           element={<MekanikEngineering />}
         />
+
+        <Route path="/kegiatanDetail" element={<KegiatanDetail />} />
       </Routes>
     </div>
   );

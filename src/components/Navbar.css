@@ -6,17 +6,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 40px; 
-  background-color: rgba(243, 245, 252, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: sticky; 
+  padding: 8px 40px;
+
+  background-color: rgba(243, 245, 252, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  position: fixed;
   top: 0;
+  left: 0;
+  width: 100%;
+
   z-index: 1000;
+
   box-shadow: 0 2px 10px rgba(19, 24, 56, 0.08);
-  border-bottom: 1px solid #D9E2F0;
-  /* Font diset utama ke Inter */
-  font-family: 'Inter', sans-serif;   
+  border-bottom: 1px solid rgba(217, 226, 240, 0.5);
+
+  font-family: "Inter", sans-serif;
 }
 
 .hp-btn,
@@ -26,7 +32,7 @@
 }
 
 .logo img {
-  height: 48px; 
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -58,7 +64,7 @@
   color: #131838;
   font-weight: 600;
   font-size: 0.95rem;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   cursor: pointer;
   white-space: nowrap;
   padding: 6px 10px;
@@ -78,11 +84,12 @@
   background-color: rgba(192, 220, 241, 0.6);
   color: #131838 !important;
   text-shadow: none;
+  box-shadow: 0 2px 5px rgba(19, 24, 56, 0.12);
 }
 
 .menu-aktif,
 .menu a.active {
-  background-color: #C0DCF1;
+  background-color: #c0dcf1;
   color: #131838 !important;
   font-weight: 700;
   box-shadow: 0 2px 6px rgba(19, 24, 56, 0.05);
@@ -94,14 +101,14 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #F8FAFF;
+  background-color: #f8faff;
   box-shadow: 0px 8px 20px rgba(19, 24, 56, 0.12);
   list-style: none;
   padding: 8px 0;
   border-radius: 8px;
   min-width: 150px;
   z-index: 1001;
-  border: 1px solid #DCE5F2;
+  border: 1px solid #dce5f2;
 }
 
 .submenu.show {
@@ -122,28 +129,29 @@
 .search-box {
   display: flex;
   align-items: center;
-  border: 1.5px solid #B8C2D4;
-  border-radius: 20px;
+  border: 1.5px solid #000000;
+  border-radius: 18px;
   overflow: hidden;
-  padding: 2px 5px;
-  background-color: #FFFFFF;
-  width: auto;
-  box-shadow: 0 1px 4px rgba(19, 24, 56, 0.08);
+  padding: 1px 3px;
+  background-color: #ffffff;
+  width: 165px;
+  height: 32px;
+  box-shadow: 0 2px 5px rgba(19, 24, 56, 0.18);
 }
 
 .search-box input {
   border: none;
-  padding: 4px 10px;
+  padding: 2px 7px;
   outline: none;
-  font-size: 0.85rem;
-  width: 150px;
+  font-size: 0.72rem;
+  width: 125px;
   color: #131838;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: transparent;
 }
 
 .search-box input::placeholder {
-  color: #9AA3B5;
+  color: #9aa3b5;
 }
 
 .search-box button {
@@ -162,7 +170,7 @@
 }
 
 .search-box button:hover {
-  background-color: #EEF4FB;
+  background-color: #eef4fb;
 }
 
 .nav-right-container {
@@ -174,22 +182,23 @@
 .language-switcher {
   display: flex;
   align-items: center;
-  gap: 4px;
-  background-color: #F1F5FA;
-  padding: 3px 8px;
-  border-radius: 20px;
-  border: 1px solid #CBD5E1;
-  box-shadow: 0 1px 4px rgba(19, 24, 56, 0.06);
+  justify-content: center;
+  gap: 2px;
+  background-color: #f1f5fa;
+  padding: 2px 4px;
+  border-radius: 18px;
+  border: 1.5px solid #000000;
+  box-shadow: 0 2px 5px rgba(19, 24, 56, 0.16);
 }
 
 .lang-btn {
   background: none;
   border: none;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 600;
-  color: #64748B;
+  color: #64748b;
   cursor: pointer;
-  padding: 2px;
+  padding: 1px;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
@@ -206,7 +215,7 @@
 }
 
 .lang-divider {
-  color: #94A3B8;
+  color: #94a3b8;
   font-size: 12px;
 }
 
@@ -214,8 +223,10 @@
 @media (max-width: 850px) {
   .navbar {
     padding: 10px 20px;
-    background-color: #F3F5FC;
-    border-bottom: 1px solid #D9E2F0;
+    background-color: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.45);
   }
 
   .hp-btn {
@@ -246,11 +257,11 @@
     transform: translateX(-50%);
     width: 85%;
     max-width: 380px;
-    background-color: #F3F5FC;
+    background-color: #f3f5fc;
     border-radius: 20px;
     padding: 22px 20px;
-    box-shadow: 0px 10px 25px rgba(19, 24, 56, 0.20);
-    border: 1px solid #D9E2F0;
+    box-shadow: 0px 10px 25px rgba(19, 24, 56, 0.2);
+    border: 1px solid #d9e2f0;
     z-index: 999;
     flex-direction: column;
     align-items: flex-start;
@@ -267,7 +278,7 @@
     width: 100%;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #DCE5F2;
+    border-bottom: 1px solid #dce5f2;
   }
 
   .mobile-logo {
