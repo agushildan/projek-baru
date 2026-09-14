@@ -33,7 +33,7 @@ function Produk() {
       // BACKGROUND CARD
       bg: "#F1ECE2",
       // STRIP ATAS
-      strip: "#E2DCCF",
+      strip: "#F2DED7",
       title: t("produk_software_title", "Software IT"),
       description: t(
         "produk_software_desc",
@@ -46,7 +46,7 @@ function Produk() {
       // BACKGROUND CARD
       bg: "#E2F0F1",
       // STRIP ATAS
-      strip: "#CDE3E5",
+      strip: "#C4E2EF",
       title: t("produk_mekanik_title", "Mekanik & Engineering"),
       description: t(
         "produk_mekanik_desc",
@@ -59,7 +59,7 @@ function Produk() {
       // BACKGROUND CARD
       bg: "#E7E2F1",
       // STRIP ATAS
-      strip: "#D8D0E5",
+      strip: "#D4C9EB",
       title: t("produk_sparepart_title", "Pengadaan Sparepart"),
       description: t(
         "produk_sparepart_desc",
@@ -209,7 +209,7 @@ function Produk() {
                       <div
                         className="
                           relative
-                          w-[72%]
+                          w-[65%]
                           aspect-square
                           flex
                           items-center
@@ -260,8 +260,8 @@ function Produk() {
                       ========================== */
                       <div
                         className="
-                          w-[68%]
-                          aspect-square
+w-[60%]
+aspect-square
                           overflow-hidden
                           rounded-[2px]
                         "
@@ -278,35 +278,41 @@ function Produk() {
                       </div>
                     )}
                   </div>
-
                   {/* NOMOR */}
                   <div
                     className="
     absolute
-    -bottom-4
+-bottom-6
     left-1/2
     -translate-x-1/2
-    w-10
-    h-10
-    md:w-11
-    md:h-11
+w-[56px]
+h-[56px]
     rounded-full
-    bg-[#111111]
-    border-4
-    border-white
+    bg-white
     flex
     items-center
     justify-center
-    text-white
-    text-[13px]
-    md:text-[14px]
-    font-semibold
-    font-['Montserrat']
-    shadow-md
     z-30
   "
                   >
-                    {produk.nomor}
+                    <div
+                      className="
+w-[38px]
+h-[38px]
+      rounded-full
+      bg-[#111111]
+      flex
+      items-center
+      justify-center
+      text-white
+      text-[14px]
+      md:text-[16px]
+      font-semibold
+      font-['Montserrat']
+    "
+                    >
+                      {produk.nomor}
+                    </div>
                   </div>
                 </div>
 

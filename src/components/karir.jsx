@@ -11,24 +11,32 @@ function Karir() {
         <div className="max-w-[1050px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
             {/* KIRI */}
-            <div>
+            <div className="-translate-x-[60px]">
               <h1
-                className="font-bold leading-[105%] text-[42px] md:text-[52px]"
+                className="font-semibold leading-[100%] text-[55px] md:text-[65px] tracking-[10%] drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
                 style={{
                   fontFamily: "'Belanosima', sans-serif",
                 }}
               >
-                <span className="block text-[#9F3F3F]">Hallo!</span>
+                <span className="block text-[#803436]">Hallo!</span>
 
-                <span className="block text-[#111A45]">Mulai Karir Anda</span>
+                <span className="block text-[#131838] whitespace-nowrap">
+                  Mulai Karir Anda
+                </span>
 
-                <span className="block text-[#111A45]">
-                  di <span className="text-[#4C9BD0]">digi</span>
+                <span className="flex items-center gap-3 text-[#131838]">
+                  <span>di</span>
+
+                  <img
+                    src="/digilogo2.png"
+                    alt="Digi"
+                    className="w-[135px] h-auto object-contain"
+                  />
                 </span>
               </h1>
 
               <p
-                className="mt-5 text-[#172044] text-[14px] md:text-[15px] font-semibold"
+                className="mt-0.1 text-[#172044] text-[23px] md:text-[23px] font-bold"
                 style={{
                   fontFamily: "'Nunito', sans-serif",
                 }}
@@ -37,7 +45,7 @@ function Karir() {
               </p>
 
               <div
-                className="mt-2 text-[#172044] text-[13px] md:text-[14px] leading-[1.5]"
+                className="mt-2 text-[#172044] text-[20px] md:text-[20px] leading-[1.5]"
                 style={{
                   fontFamily: "'Nunito', sans-serif",
                 }}
@@ -61,25 +69,26 @@ function Karir() {
               <button
                 type="button"
                 className="
-                  mt-8
-                  px-6
-                  py-2.5
-                  bg-[#F7DADA]
-                  text-[#172044]
-                  font-bold
-                  text-[13px]
-                  rounded-full
-                  border
-                  border-[#172044]
-                  shadow-[0_4px_0_#172044]
-                  hover:translate-y-[2px]
-                  hover:shadow-[0_2px_0_#172044]
-                  transition-all
-                  duration-200
-                  cursor-pointer
-                "
+    mt-8
+    translate-x-[15px]
+    w-[170px]
+    h-[48px]
+    bg-[#F7DADA]
+    text-[#111A45]
+    text-[18px]
+    font-semibold
+    rounded-full
+    border
+    border-[#111A45]
+    shadow-[-7px_7px_0_#111A45]
+    hover:translate-y-[2px]
+    hover:shadow-[-5px_5px_0_#111A45]
+    transition-all
+    duration-200
+    cursor-pointer
+  "
                 style={{
-                  fontFamily: "'Nunito', sans-serif",
+                  fontFamily: "'Belanosima', sans-serif",
                 }}
               >
                 Lamar Sekarang
@@ -87,41 +96,43 @@ function Karir() {
             </div>
 
             {/* KANAN */}
-            <div className="flex justify-center md:justify-end">
-              <div
-                className="
-                  w-full
-                  max-w-[400px]
-                  aspect-[1.15/1]
-                  rounded-[18px]
-                  border-[5px]
-                  border-[#AE4A4A]
-                  overflow-hidden
-                  shadow-[0_8px_0_rgba(23,32,68,0.18)]
-                  bg-white
-                "
-              >
-                {/* TEMPAT GAMBAR */}
-                <div className="flex justify-center md:justify-end">
-                  <div
-                    className="
-      w-full
-      max-w-[400px]
-      aspect-[1.15/1]
-      rounded-[18px]
-      border-[5px]
-      border-[#AE4A4A]
-      overflow-hidden
-      shadow-[0_8px_0_rgba(23,32,68,0.18)]
-      bg-white
-    "
-                  >
-                    <img
-                      src={karirImage}
-                      alt="Karir Digi"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+            <div className="flex justify-center md:justify-end translate-x-[70px] translate-y-[10px]">
+              <div className="relative w-full max-w-[450px] aspect-[1.5/1]">
+                {/* BINGKAI BIRU DI BELAKANG */}
+                <div
+                  className="
+    absolute
+    left-[-18px]
+    top-[18px]
+    w-full
+    h-full
+    rounded-[18px]
+    border-[5px]
+    border-[#8FC7E8]
+    shadow-[0_6px_10px_rgba(23,32,68,0.18)]
+    z-0
+  "
+                ></div>
+
+                {/* BINGKAI MERAH + GAMBAR */}
+                <div
+                  className="
+        relative
+        w-full
+        h-full
+        rounded-[18px]
+        border-[5px]
+        border-[#AE4A4A]
+        overflow-hidden
+        bg-white
+        z-10
+      "
+                >
+                  <img
+                    src={karirImage}
+                    alt="Karir Digi"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

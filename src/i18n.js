@@ -15,7 +15,7 @@ const resources = {
       info: "Info",
       karir: "Karir",
       faq: "FAQ",
-      blog: "Blog",
+      Artikel: "Artikel",
       cari_placeholder:"Cari",
 
 /**beranda */

@@ -208,24 +208,24 @@ function Beranda() {
           </button>
 
           {/* KATEGORI */}
-          <div className="w-full overflow-x-auto pb-2">
+          <div className="w-full pb-2">
             <div
               className="
-                flex
-                flex-nowrap
-                justify-center
-                items-center
-                gap-3
-                text-white
-                font-bold
-                text-xs
-                sm:text-sm
-                md:text-base
-                whitespace-nowrap
-                min-w-max
-                mx-auto
-                drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
-              "
+      flex
+      flex-wrap
+      justify-center
+      items-center
+      gap-x-3
+      gap-y-2
+      text-white
+      font-bold
+      text-xs
+      sm:text-sm
+      md:text-base
+      text-center
+      mx-auto
+      drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
+    "
               style={{
                 fontFamily: "'Inter', sans-serif",
               }}

@@ -10,6 +10,10 @@ import balanc from "../assets/produk/balanc.png";
 import bngkkr from "../assets/produk/bngkkr.png";
 import torque from "../assets/produk/torque.png";
 import weld from "../assets/produk/weld.png";
+import portome1 from "../assets/produk/portome1.png";
+import portome2 from "../assets/produk/portome2.png";
+import portome3 from "../assets/produk/portome3.png";
+import portome4 from "../assets/produk/portome4.png";
 
 function MekanikEngineering() {
   const [currentPage, setCurrentPage] = React.useState(1);
@@ -164,13 +168,17 @@ function MekanikEngineering() {
               <div
                 key={index}
                 className="
-                  w-full
-                  max-w-[344px]
-                  bg-white
-                  rounded-[6px]
-                  overflow-hidden
-                  shadow-[0_3px_10px_rgba(0,0,0,0.16)]
-                "
+    w-full
+    max-w-[344px]
+    bg-white
+    rounded-[6px]
+    overflow-hidden
+    shadow-[0_3px_10px_rgba(0,0,0,0.16)]
+    transition-all
+    duration-300
+    ease-out
+    hover:-translate-y-[6px]
+  "
               >
                 {/* GAMBAR */}
                 <div
@@ -728,68 +736,95 @@ function MekanikEngineering() {
             </div>
 
             {/* =========================
-                PORTFOLIO GRID
-            ========================== */}
+    PORTFOLIO GRID
+========================== */}
             <div
               className="
-                mt-8
-                grid
-                grid-cols-1
-                sm:grid-cols-2
-                lg:grid-cols-4
-                gap-3 
-                md:gap-4
-              "
+    mt-8
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    lg:grid-cols-4
+    gap-3
+    md:gap-4
+  "
             >
-              {Array.from({ length: 8 }).map((_, index) => (
+              {[
+                {
+                  image: balanc,
+                  title: "Jasa Balancing Motor",
+                },
+                {
+                  image: bngkkr,
+                  title: "Bongkar Pasang Seal",
+                },
+                {
+                  image: torque,
+                  title: "Machining Torque Tube Seal",
+                },
+                {
+                  image: weld,
+                  title: "Jasa Repair Welding",
+                },
+                {
+                  image: portome1,
+                  title: "Overhaul Motor CHP-AG-109",
+                },
+                {
+                  image: portome2,
+                  title: "Foot Bearing and Sleeve",
+                },
+                {
+                  image: portome3,
+                  title: "Jasa Rewinding Shaft Motor",
+                },
+                {
+                  image: portome4,
+                  title: "Inspection & Test Commissioning ARSO",
+                },
+              ].map((portfolio, index) => (
                 <div
                   key={index}
                   className="
-                    relative
-                    w-full
-                    aspect-[1.5/1]
-                    rounded-[7px]
-                    overflow-hidden
-                    bg-[#E5E5E5]
-                  "
+        relative
+        w-full
+        aspect-[1.5/1]
+        rounded-[7px]
+        overflow-hidden
+        bg-[#E5E5E5]
+      "
                 >
-                  {/* GAMBAR PORTFOLIO */}
+                  {/* GAMBAR */}
                   <img
-                    src={
-                      index === 0
-                        ? balanc
-                        : index === 1
-                          ? bngkkr
-                          : index === 2
-                            ? torque
-                            : index === 3
-                              ? weld
-                              : machin
-                    }
-                    alt={`Portfolio Mekanikal ${index + 1}`}
+                    src={portfolio.image}
+                    alt={portfolio.title}
                     className="
-                      w-full
-                      h-full
-                      object-cover
-                    "
+          w-full
+          h-full
+          object-cover
+          block
+        "
                   />
 
-                  {/* LABEL */}
+                  {/* TAG */}
                   <div
                     className="
-                      absolute
-                      top-2
-                      left-2
-                      bg-[#E5E5E6]
-                      text-[#4B4B4B]
-                      text-[10px]
-                      font-medium
-                      px-2
-                      py-1
-                      rounded-full
-                    "
+          absolute
+          top-2
+          left-2
+          bg-[#E5E5E6]
+          text-[#4B4B4B]
+          text-[10px]
+          md:text-[11px]
+          font-medium
+          px-2
+          py-1
+          rounded-full
+          leading-none
+          whitespace-nowrap
+        "
                   >
-                    Machining Torque Tube Seal
+                    {portfolio.title}
                   </div>
                 </div>
               ))}

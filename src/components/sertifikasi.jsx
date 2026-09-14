@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 
 import Footer from "./Footer";
-
 import i18n from "../i18n";
+
+import sertifikat1 from "../assets/sertifikasi/sertifikat1.jpg";
+import sertifikat2 from "../assets/sertifikasi/sertifikat2.jpg";
+import sertifikat3 from "../assets/sertifikasi/sertifikat3.jpg";
+import sertifikat4 from "../assets/sertifikasi/sertifikat4.jpg";
+import sertifikat5 from "../assets/sertifikasi/sertifikat5.jpg";
+import sertifikat6 from "../assets/sertifikasi/sertifikat6.jpg";
 
 function Sertifikasi() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
@@ -24,34 +30,36 @@ function Sertifikasi() {
 
   const sertifikatList = [
     {
-      title: "Software IT",
-      description:
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+      image: sertifikat1,
+      title: "ISO 9001:2015",
+      description: "Sertifikasi Quality Management System",
     },
     {
-      title: "Software IT",
-      description:
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+      image: sertifikat2,
+      title: "ISO 14001:2015",
+      description: "Sertifikasi Environmental Management System",
     },
     {
-      title: "Software IT",
+      image: sertifikat3,
+      title: "ISO 45001:2018",
       description:
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+        "Sertifikasi Occupational Health and Safety Management System",
     },
     {
-      title: "Software IT",
-      description:
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+      image: sertifikat4,
+      title: "ISO 9001:2015",
+      description: "Sertifikasi Quality Management System",
     },
     {
-      title: "Software IT",
-      description:
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+      image: sertifikat5,
+      title: "ISO 14001:2015",
+      description: "Sertifikasi Environmental Management System",
     },
     {
-      title: "Software IT",
+      image: sertifikat6,
+      title: "ISO 45001:2018",
       description:
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+        "Sertifikasi Occupational Health and Safety Management System",
     },
   ];
 
@@ -61,21 +69,49 @@ function Sertifikasi() {
           HEADER SERTIFIKASI
       ========================== */}
       <section
-        className="w-full px-6 pt-[60px] pb-10 md:px-8 md:pt-[60px] md:pb-12"
+        className="
+          w-full
+          px-6
+          pt-[45px]
+          pb-10
+          md:px-8
+          md:pt-[55px]
+          md:pb-12
+        "
         style={{
           background:
             "linear-gradient(90deg, #FBFBFB 0%, #FAF4F4 35%, #F9EDED 60%, #F8E5E5 80%, #F7DEDE 100%)",
         }}
       >
         <div className="max-w-6xl mx-auto">
-          <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
+          <h1
+            className="
+              font-['Cormorant_Garamond']
+              text-[#222222]
+              text-3xl
+              md:text-4xl
+              font-semibold
+              tracking-wide
+            "
+          >
             {t("judul_sertifikasi", "Sertifikat")}
           </h1>
 
-          <p className="mt-3 max-w-5xl font-['Nunito'] text-[#666666] text-[11px] sm:text-xs md:text-[13px] leading-relaxed">
+          <p
+            className="
+              mt-3
+              max-w-5xl
+              font-['Nunito']
+              text-[#666666]
+              text-[11px]
+              sm:text-xs
+              md:text-[13px]
+              leading-relaxed
+            "
+          >
             {t(
               "deskripsi_sertifikasi",
-              "PT Digi Tekno Indonesia menyediakan Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+              "PT. Digi Tekno Indonesia menyediakan Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
             )}
           </p>
         </div>
@@ -84,40 +120,97 @@ function Sertifikasi() {
       {/* =========================
           GRID SERTIFIKAT
       ========================== */}
-      <section className="w-full bg-white px-6 py-10 md:px-8 md:py-12">
+      <section className="w-full bg-white px-6 pt-10 pb-12 md:px-8 md:pt-12 md:pb-14">
         <div className="max-w-[1050px] mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 md:gap-7">
+          <div
+            className="
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    md:grid-cols-3
+    gap-x-[24px]
+    gap-y-[18px]
+  "
+          >
             {sertifikatList.map((sertifikat, index) => (
               <div
                 key={index}
                 className="
+  relative
   bg-white
   border
   border-[#E4E4E4]
   rounded-[8px]
   overflow-hidden
-  shadow-[0_1px_4px_rgba(0,0,0,0.06)]
+  shadow-[0_1px_4px_rgba(0,0,0,0.08)]
   flex
   flex-col
-  max-w-[300px]
-  min-h-[430px]
+w-[300px]
+h-[500px]
   mx-auto
 "
               >
-                {/* GAMBAR SERTIFIKAT */}
-                <div className="mx-2 mt-2 h-[310px] md:h-[310px] bg-[#D9D9D9] rounded-[2px] flex items-center justify-center overflow-hidden">
-                  <span className="text-[#999999] text-xs font-['Nunito']">
-                    Sertifikat
-                  </span>
+                {/* =========================
+      GAMBAR SERTIFIKAT
+  ========================== */}
+                <div
+                  className="
+  mx-[18px]
+mt-[16px]
+h-[390px]
+  flex
+  items-center
+  justify-center
+  overflow-hidden
+"
+                >
+                  <img
+                    src={sertifikat.image}
+                    alt={sertifikat.title}
+                    className="
+        w-full
+        h-full
+        object-contain
+        block
+      "
+                  />
                 </div>
 
-                {/* INFORMASI */}
-                <div className="px-3 py-5 text-center">
-                  <h2 className="font-['Nunito'] text-[#333333] text-[16px] font-bold leading-[100%]">
+                {/* =========================
+      INFORMASI
+  ========================== */}
+                <div
+                  className="
+    px-[16px]
+    pt-[8px]
+    pb-[30px]
+    text-center
+  "
+                >
+                  <h2
+                    className="
+                    mt-[10px]
+        font-['Nunito']
+        text-[#333333]
+text-[17px]
+font-semibold
+leading-[20px]
+      "
+                  >
                     {sertifikat.title}
                   </h2>
 
-                  <p className="mt-3 font-['Nunito'] text-[#666666] text-[12px] font-normal leading-[22px] text-center">
+                  <p
+                    className="
+mt-[15px]
+font-['Nunito']
+text-[#777777]
+text-[15px]
+font-normal
+leading-[14px]
+text-center
+      "
+                  >
                     {sertifikat.description}
                   </p>
                 </div>
@@ -131,24 +224,24 @@ function Sertifikasi() {
           <div className="flex justify-end items-center mt-15">
             <div
               className="
-                  flex
-                  items-center
-                  h-[43px]
-                  bg-white
-                  border
-                  border-[#E5E5E5]
-                  rounded-[9px]
-                  shadow-[0_2px_3px_rgba(0,0,0,0.15)]
-                  overflow-hidden
-                "
+  flex
+  items-center
+  h-[40px]
+  bg-white
+  border
+  border-[#E5E5E5]
+  rounded-[9px]
+  shadow-[0_2px_3px_rgba(0,0,0,0.15)]
+  overflow-hidden
+"
             >
               {/* PREVIOUS */}
               <button
                 type="button"
                 onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
                 className="
-    w-[40px]
-    h-full
+   w-[30px]
+h-full
     flex
     items-center
     justify-center
@@ -174,6 +267,7 @@ function Sertifikasi() {
                   />
                 </svg>
               </button>
+
               {/* Page Buttons */}
               {[1, 2, 3, 4].map((page) => (
                 <button
@@ -181,8 +275,8 @@ function Sertifikasi() {
                   type="button"
                   onClick={() => setCurrentPage(page)}
                   className="
-                      w-[38px]
-                      h-full
+                      w-[40px]
+h-full
                       flex
                       items-center
                       justify-center
@@ -196,16 +290,16 @@ function Sertifikasi() {
                         flex
                         items-center
                         justify-center
-                        w-[26px]
-                        h-[28px]
-                        rounded-[3px]
-                        text-[16px]
+                        w-[25px]
+h-[25px]
+rounded-[3px]
+text-[16px]
                         font-medium
                         transition
                         ${
                           currentPage === page
-                            ? "bg-[#E7919280] text-[#3B6682] font-bold shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
-                            : "text-[#666666] hover:bg-[#F5F5F5]"
+                            ? "bg-[#E7919280] text-[#3B6682] shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+                            : "bg-transparent text-[#666666]"
                         }
                       `}
                   >
@@ -213,6 +307,7 @@ function Sertifikasi() {
                   </span>
                 </button>
               ))}
+
               {/* Next */}
               <button
                 type="button"
@@ -249,6 +344,9 @@ function Sertifikasi() {
         </div>
       </section>
 
+      {/* =========================
+          FOOTER
+      ========================== */}
       <Footer />
     </div>
   );

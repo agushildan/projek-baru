@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Footer from "./Footer";
 
 function Faq() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -29,200 +30,190 @@ function Faq() {
   return (
     <div className="w-full pt-[64px]">
       {/* =========================
-          FAQ
+          HERO FAQ
       ========================== */}
-      <section className="w-full bg-[#B7D3E6] min-h-[570px] py-10 md:py-12">
-        <div className="max-w-[850px] mx-auto px-6">
+      <section
+        className="w-full"
+        style={{
+          background:
+            "linear-gradient(90deg, #FBFBFB 0%, #F2F0F6 25%, #EAE6F2 50%, #DDD6EC 75%, #D4C9EB 100%)",
+        }}
+      >
+        <div className="max-w-[1150px] mx-auto px-8 md:px-[75px] py-[38px] md:py-[40px]">
           {/* TITLE */}
           <h1
-            className="
-              text-center
-              text-white
-              text-[42px]
-              md:text-[48px]
-              font-bold
-              tracking-wide
-              drop-shadow-[2px_3px_2px_rgba(0,0,0,0.20)]
-            "
+            className="text-[34px] md:text-[38px] text-[#3F4241] leading-none"
             style={{
-              fontFamily: "'Belanosima', sans-serif",
+              fontFamily: "'Cormorant Garamond', serif",
+              fontWeight: 600,
             }}
           >
             FAQ
           </h1>
 
-          {/* FAQ LIST */}
-          <div className="mt-6 md:mt-7 space-y-5">
-            {faqList.map((faq, index) => {
-              const isOpen = openFaq === index;
+          {/* DESCRIPTION */}
+          <p
+            className="mt-4 max-w-[850px] text-[11px] md:text-[12px] leading-[1.55] text-[#666666]"
+            style={{
+              fontFamily: "'Nunito', sans-serif",
+            }}
+          >
+            PT. Digi Tekno Indonesia menyediakan Software IT (Website SIM
+            (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP),
+            Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart
+            dan Material Industri untuk mendukung kebutuhan bisnis.
+          </p>
+        </div>
+      </section>
 
-              return (
-                <div key={index}>
-                  {/* QUESTION */}
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="
-                      w-full
-                      min-h-[70px]
-                      bg-[#D8ECFB]
-                      border-[2px]
-                      border-[#172044]
-                      rounded-[18px]
-                      px-7
-                      md:px-9
-                      py-4
-                      flex
-                      items-center
-                      justify-between
-                      text-left
-                      shadow-[0_3px_2px_rgba(0,0,0,0.25)]
-                      hover:bg-[#D2E8F8]
-                      transition-all
-                      duration-200
-                      cursor-pointer
-                    "
+      {/* =========================
+          FAQ LIST
+      ========================== */}
+      <section className="w-full bg-white">
+        <div className="max-w-[850px] mx-auto px-6 md:px-8 py-[38px] md:py-[54px]">
+          <div className="max-w-[740px] mx-auto">
+            <div className="space-y-[20px]">
+              {faqList.map((faq, index) => {
+                const isOpen = openFaq === index;
+
+                return (
+                  <div
+                    key={index}
+                    className={`
+        w-full
+        overflow-hidden
+        rounded-[18px]
+        border-[2px]
+        border-[#172044]
+        shadow-[0_3px_2px_rgba(0,0,0,0.25)]
+        bg-white
+      `}
                   >
-                    <span
-                      className="
-                        text-[#40484A]
-                        text-[13px]
-                        md:text-[14px]
-                        font-bold
-                        pr-5
-                      "
-                      style={{
-                        fontFamily: "'Nunito', sans-serif",
-                      }}
-                    >
-                      {faq.question}
-                    </span>
-
-                    {/* PANAH */}
-                    <svg
+                    {/* QUESTION */}
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
                       className={`
-                        w-[23px]
-                        h-[23px]
-                        shrink-0
-                        transition-transform
-                        duration-200
-                        ${isOpen ? "rotate-180" : ""}
-                      `}
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+          w-full
+          min-h-[64px]
+          px-7
+          md:px-9
+          py-4
+          flex
+          items-center
+          justify-between
+          text-left
+          cursor-pointer
+          bg-[#D8ECFB]
+          ${
+            isOpen
+              ? "rounded-t-[16px] border-b-[1px] border-[#172044]"
+              : "rounded-[16px]"
+          }
+        `}
                     >
-                      <path
-                        d="M6 9L12 15L18 9"
-                        stroke="#40484A"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-
-                  {/* ANSWER */}
-                  {isOpen && (
-                    <div
-                      className="
-                        bg-white
-                        border-[2px]
-                        border-t-0
-                        border-[#172044]
-                        rounded-b-[18px]
-                        px-7
-                        md:px-9
-                        py-6
-                        -mt-[14px]
-                        pt-7
-                        shadow-[0_3px_2px_rgba(0,0,0,0.20)]
-                      "
-                    >
-                      <p
+                      <span
                         className="
-                          text-[#40484A]
-                          text-[12px]
-                          md:text-[13px]
-                          leading-[1.55]
-                        "
+            text-[#40484A]
+            text-[13px]
+            md:text-[14px]
+            font-bold
+            pr-5
+          "
                         style={{
                           fontFamily: "'Nunito', sans-serif",
                         }}
                       >
-                        {faq.answer}
-                      </p>
+                        {faq.question}
+                      </span>
 
-                      {/* PANAH KEMBALI */}
-                      <button
-                        type="button"
-                        onClick={() => setOpenFaq(null)}
-                        className="
-                          mt-5
-                          flex
-                          items-center
-                          cursor-pointer
-                          hover:translate-x-[-2px]
-                          transition-transform
-                        "
-                      >
+                      {/* PANAH ▼ HANYA SAAT CLOSED */}
+                      {!isOpen && (
                         <svg
-                          width="25"
-                          height="20"
-                          viewBox="0 0 25 20"
+                          width="23"
+                          height="23"
+                          viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
+                          className="shrink-0"
                         >
                           <path
-                            d="M23 10H3M3 10L10 3M3 10L10 17"
+                            d="M6 9L12 15L18 9"
                             stroke="#40484A"
                             strokeWidth="3"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                         </svg>
-                      </button>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                      )}
+                    </button>
 
-          {/* KEMBALI */}
-          <button
-            type="button"
-            onClick={() => window.history.back()}
-            className="
+                    {/* ANSWER */}
+                    {isOpen && (
+                      <div
+                        className="
+            bg-white
+            px-7
+            md:px-9
+            pt-7
+            pb-6
+          "
+                      >
+                        <p
+                          className="
+              text-[#40484A]
+              text-[12px]
+              md:text-[13px]
+              leading-[1.55]
+            "
+                          style={{
+                            fontFamily: "'Nunito', sans-serif",
+                          }}
+                        >
+                          {faq.answer}
+                        </p>
+
+                        {/* PANAH TUTUP */}
+                        <button
+                          type="button"
+                          onClick={() => setOpenFaq(null)}
+                          className="
               mt-5
-              px-5
-              py-2
-              bg-[#F3D3C1]
-              text-[#5A4A43]
-              text-[13px]
-              font-bold
-              rounded-full
-              border
-              border-[#5A4A43]
-              shadow-[0_3px_0_#6B554B]
-              hover:translate-y-[1px]
-              hover:shadow-[0_2px_0_#6B554B]
-              transition-all
-              duration-200
               flex
               items-center
-              gap-2
               cursor-pointer
+              hover:-translate-x-[2px]
+              transition-transform
+              duration-200
             "
-            style={{
-              fontFamily: "'Nunito', sans-serif",
-            }}
-          >
-            <span className="text-[20px] leading-none">‹</span>
-            Kembali
-          </button>
+                          aria-label="Tutup FAQ"
+                        >
+                          <svg
+                            width="25"
+                            height="20"
+                            viewBox="0 0 25 20"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M23 10H3M3 10L10 3M3 10L10 17"
+                              stroke="#40484A"
+                              strokeWidth="3"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }

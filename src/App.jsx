@@ -1,5 +1,7 @@
 import Navbar from "./components/Navbar";
+
 import "./App.css";
+
 import { Routes, Route } from "react-router-dom";
 
 import Beranda from "./components/beranda";
@@ -9,7 +11,7 @@ import Layanan from "./components/layanan";
 import Kegiatan from "./components/kegiatan";
 import Karir from "./components/karir";
 import Faq from "./components/faq";
-import Blog from "./components/blog";
+import Artikel from "./components/artikel";
 import Sertifikasi from "./components/sertifikasi";
 import VisiMisi from "./components/visimisi";
 import ProdukDetail from "./components/ProdukDetail";
@@ -18,6 +20,9 @@ import ProdukSoftwareDetail from "./components/ProdukSoftwareDetail";
 import MekanikEngineering from "./components/MekanikEngineering";
 import SparepartDetail from "./components/SparepartDetail";
 import KegiatanDetail from "./components/KegiatanDetail";
+
+// TAMBAHKAN INI
+import ArtikelDetail from "./components/ArtikelDetail";
 
 function App() {
   return (
@@ -48,7 +53,12 @@ function App() {
 
         <Route path="/faq" element={<Faq />} />
 
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/artikel" element={<Artikel />} />
+
+        {/* ================================= */}
+        {/* DETAIL ARTIKEL */}
+        {/* ================================= */}
+        <Route path="/artikeldetail/:id" element={<ArtikelDetail />} />
 
         <Route
           path="/produk/software/detail"

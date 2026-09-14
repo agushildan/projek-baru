@@ -24,7 +24,9 @@ function Navbar() {
   const isTentangAktif = ["/sertifikasi", "/visimisi"].includes(
     location.pathname,
   );
-  const isInfoAktif = ["/karir", "/faq", "/blog"].includes(location.pathname);
+  const isInfoAktif = ["/karir", "/faq", "/artikel"].includes(
+    location.pathname,
+  );
 
   const menuRoutes = [
     {
@@ -448,8 +450,8 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/blog" onClick={closeAllMenus}>
-                  {t("blog")}
+                <NavLink to="/artikel" onClick={closeAllMenus}>
+                  {t("Artikel")}
                 </NavLink>
               </li>
             </ul>
