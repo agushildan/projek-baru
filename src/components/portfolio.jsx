@@ -25,35 +25,26 @@ function Portfolio() {
 
   const portfolioList = [
     {
-      title: "Website Sistem Informasi Manajemen",
-
-      description: "Website Landing Page Dispangtan Kota Cimahi",
-
-      image: webBerita,
-
-      tags: ["Software IT", "Website", "Dashboard"],
-    },
-
-    {
       title: "Jasa Machining Torque Tube Seal",
-
       description:
         "Industri Komponen dan Suku Cadang Mesin dan Turbin (KBLI 28113)",
-
       image: machin,
-
       tags: ["Mekanikal Engineering", "Machining", "PT. JAPA INDOTAMA"],
     },
 
     {
       title: "Starret Back Plunger",
-
       description:
         "Industri Komponen dan Suku Cadang Mesin dan Turbin (KBLI 28113)",
-
       image: tube,
-
       tags: ["Pengadaan Sparepart", "PT. TAKA"],
+    },
+
+    {
+      title: "Website Sistem Informasi Manajemen",
+      description: "Website Landing Page Dispangtan Kota Cimahi",
+      image: webBerita,
+      tags: ["Software IT", "Website", "Dashboard"],
     },
   ];
 
@@ -70,7 +61,7 @@ function Portfolio() {
           <p className="font-nunito mt-4 max-w-5xl mx-auto text-[13px] md:text-[14px] font-normal leading-[1.6] text-gray-600">
             {t(
               "deskripsi_portofolio",
-              "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
             )}
           </p>
 
@@ -117,7 +108,7 @@ function Portfolio() {
                   src={portfolio.image}
                   alt={portfolio.title}
                   className={
-                    index === 0
+                    portfolio.image === webBerita
                       ? "w-full h-full object-contain mx-auto scale-x-[1.15]"
                       : "w-full h-full object-cover"
                   }

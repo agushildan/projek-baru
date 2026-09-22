@@ -50,19 +50,19 @@ function Beranda() {
       ========================== */}
       <section
         className="
-    relative
-    w-full
-    min-h-[540px]
-    md:min-h-[540px]
-    flex
-    items-center
-    justify-center
-    px-4
-    pt-[110px]
-    pb-10
-    text-center
-    overflow-hidden
-  "
+          relative
+          w-full
+          min-h-[540px]
+          md:min-h-[540px]
+          flex
+          items-center
+          justify-center
+          px-4
+          pt-[110px]
+          pb-10
+          text-center
+          overflow-hidden
+        "
       >
         {/* BACKGROUND IMAGE */}
         <img
@@ -79,7 +79,7 @@ function Beranda() {
           "
         />
 
-        {/* OVERLAY GRADIENT PUTIH */}
+        {/* OVERLAY GRADIENT */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"
           style={{
@@ -91,15 +91,15 @@ function Beranda() {
         {/* CONTENT */}
         <div
           className="
-    max-w-[1000px]
-    mx-auto
-    flex
-    flex-col
-    items-center
-    w-full
-    relative
-    z-10
-  "
+            max-w-[1000px]
+            mx-auto
+            flex
+            flex-col
+            items-center
+            w-full
+            relative
+            z-10
+          "
         >
           {/* JUDUL */}
           <h1
@@ -124,7 +124,7 @@ function Beranda() {
                 mb-5
               "
             >
-              {t("biru1")}
+              MEKANIKAL,
             </span>
 
             <span
@@ -135,7 +135,7 @@ function Beranda() {
                 mb-5
               "
             >
-              {t("merah")}
+              ENGINEERING & SOLUSI IT
             </span>
 
             <span
@@ -145,7 +145,7 @@ function Beranda() {
                 block
               "
             >
-              {t("biru2")}
+              UNTUK BISNIS INDUSTRI
             </span>
           </h1>
 
@@ -164,7 +164,11 @@ function Beranda() {
               fontFamily: "'Nunito', sans-serif",
             }}
           >
-            {t("isi_beranda")}
+            PT. Digi Tekno Indonesia merupakan perusahaan yang menyediakan Jasa
+            Service Mesin Manufaktur, Pengadaan Sparepart dan Material Industri,
+            Solusi Teknologi Informasi (IT), Mekanikal & Engineering, serta
+            Konsultasi IT dengan pelayanan profesional dan produk berkualitas
+            untuk mendukung kebutuhan industri dan bisnis anda.
           </p>
 
           {/* WHATSAPP BUTTON */}
@@ -211,38 +215,38 @@ function Beranda() {
           <div className="w-full pb-2">
             <div
               className="
-      flex
-      flex-wrap
-      justify-center
-      items-center
-      gap-x-3
-      gap-y-2
-      text-white
-      font-bold
-      text-xs
-      sm:text-sm
-      md:text-base
-      text-center
-      mx-auto
-      drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
-    "
+                flex
+                flex-wrap
+                justify-center
+                items-center
+                gap-x-3
+                gap-y-2
+                text-white
+                font-bold
+                text-xs
+                sm:text-sm
+                md:text-base
+                text-center
+                mx-auto
+                drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
+              "
               style={{
                 fontFamily: "'Inter', sans-serif",
               }}
             >
-              <span>{t("solusiit")}</span>
+              <span>Mekanikal & Engineering</span>
 
               <span className="font-bold">•</span>
 
-              <span>{t("mekanik")}</span>
+              <span>Perawatan Mesin Manufaktur</span>
 
               <span className="font-bold">•</span>
 
-              <span>{t("perawatan")}</span>
+              <span>Pengadaan Sparepart & Material Industri</span>
 
               <span className="font-bold">•</span>
 
-              <span>{t("spareart")}</span>
+              <span>Solusi IT</span>
             </div>
           </div>
         </div>

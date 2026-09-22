@@ -31,33 +31,38 @@ function ProdukDetail() {
   const produkList = [
     {
       nomor: "1.",
-      image: appleimac,
-      title: t("produk_software_title", "Software IT"),
-      description: t(
-        "produk_software_desc",
-        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
-      ),
-      bg: "#f7e3d7", // Peach / Krem Soft
-    },
-    {
-      nomor: "2.",
       image: mknk,
       title: t("produk_mekanik_title", "Mekanikal & Engineering"),
       description: t(
         "produk_mekanik_desc",
         "Jasa Repair dan Service Mesin Manufaktur",
       ),
-      bg: "#cbe3f0", // Biru Muda Soft
+      bg: "#cbe3f0",
+      type: "mekanik",
     },
+
     {
-      nomor: "3.",
+      nomor: "2.",
       image: sparepart,
       title: t("produk_sparepart_title", "Pengadaan Sparepart"),
       description: t(
         "produk_sparepart_desc",
         "Pengadaan Sparepart dan Material Industri",
       ),
-      bg: "#dcd4f0", // Ungu Muda Soft
+      bg: "#dcd4f0",
+      type: "sparepart",
+    },
+
+    {
+      nomor: "3.",
+      image: appleimac,
+      title: t("produk_software_title", "Software IT"),
+      description: t(
+        "produk_software_desc",
+        "Website Sistem Informasi Manajemen, Landing Page, Company Profile, Enterprise Resource Planning",
+      ),
+      bg: "#f7e3d7",
+      type: "software",
     },
   ];
 
@@ -89,7 +94,7 @@ function ProdukDetail() {
             <p className="mt-3 mx-auto max-w-[900px] font-['Nunito'] text-[#666666] text-[10px] sm:text-xs md:text-sm leading-relaxed">
               {t(
                 "deskripsi_produk_jasa",
-                "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP, Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+                "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
               )}
             </p>
           </div>
@@ -125,7 +130,7 @@ function ProdukDetail() {
                   {/* =========================
                       PRODUK 1 - iMAC
                   ========================== */}
-                  {index === 0 ? (
+                  {produk.type === "software" ? (
                     <div className="relative w-full h-full flex items-center justify-center">
                       {/* Frame Monitor iMac */}
                       <img
@@ -197,12 +202,12 @@ function ProdukDetail() {
                   <button
                     type="button"
                     onClick={() => {
-                      if (index === 0) {
+                      if (produk.type === "software") {
                         navigate("/produk/software");
-                      } else if (index === 1) {
+                      } else if (produk.type === "mekanik") {
                         navigate("/produk/mekanik-engineering");
-                      } else if (index === 2) {
-                        navigate("/produk/pengadaan-sparepart"); // Navigate ke halaman Sparepart
+                      } else if (produk.type === "sparepart") {
+                        navigate("/produk/pengadaan-sparepart");
                       }
                     }}
                     className="

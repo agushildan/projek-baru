@@ -29,42 +29,39 @@ function Produk() {
   const produkList = [
     {
       nomor: "1.",
-      image: appleimac,
-      // BACKGROUND CARD
-      bg: "#F1ECE2",
-      // STRIP ATAS
-      strip: "#F2DED7",
-      title: t("produk_software_title", "Software IT"),
-      description: t(
-        "produk_software_desc",
-        "Website Manajemen Informasi Sistem, Landing Page, Company Profile, Enterprise Resource Planning",
-      ),
-    },
-    {
-      nomor: "2.",
       image: mknk,
-      // BACKGROUND CARD
       bg: "#E2F0F1",
-      // STRIP ATAS
       strip: "#C4E2EF",
       title: t("produk_mekanik_title", "Mekanik & Engineering"),
       description: t(
         "produk_mekanik_desc",
         "Jasa Repair dan Service Mesin Manufaktur",
       ),
+      type: "image",
     },
     {
-      nomor: "3.",
+      nomor: "2.",
       image: sparepart,
-      // BACKGROUND CARD
       bg: "#E7E2F1",
-      // STRIP ATAS
       strip: "#D4C9EB",
       title: t("produk_sparepart_title", "Pengadaan Sparepart"),
       description: t(
         "produk_sparepart_desc",
         "Pengadaan Sparepart dan Material Industri",
       ),
+      type: "image",
+    },
+    {
+      nomor: "3.",
+      image: appleimac,
+      bg: "#F1ECE2",
+      strip: "#F2DED7",
+      title: t("produk_software_title", "Software IT"),
+      description: t(
+        "produk_software_desc",
+        "Website Manajemen Informasi Sistem, Landing Page, Company Profile, Enterprise Resource Planning",
+      ),
+      type: "software",
     },
   ];
 
@@ -80,7 +77,7 @@ function Produk() {
           <p className="mt-2 max-w-5xl text-xs sm:text-sm md:text-[14px] leading-relaxed text-gray-600">
             {t(
               "deskripsi_produk_jasa",
-              "PT Digi Tekno Indonesia menyediakan Software IT (Website MIS (Manajemen Informasi Sistem), Landing Page, Company Profile, ERP, Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
             )}
           </p>
         </div>
@@ -205,7 +202,7 @@ function Produk() {
                     {/* =========================
                         PRODUK 1 - iMAC
                     ========================== */}
-                    {index === 0 ? (
+                    {produk.type === "software" ? (
                       <div
                         className="
                           relative
