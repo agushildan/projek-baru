@@ -14,6 +14,12 @@ function Sertifikasi() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "Sertifikat",
+    description:
+      "PT. Digi Tekno Indonesia menyediakan Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+  });
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
@@ -26,6 +32,37 @@ function Sertifikasi() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  // ==========================================
+  // AMBIL PAGE SETTING SERTIFIKASI
+  // ==========================================
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/sertifikasi",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman Sertifikasi.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "Sertifikat",
+          description: data.data?.description || "",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Sertifikasi:", error);
+      }
+    };
+
+    fetchPageSetting();
   }, []);
 
   const sertifikatList = [
@@ -94,7 +131,7 @@ function Sertifikasi() {
               tracking-wide
             "
           >
-            {t("judul_sertifikasi", "Sertifikat")}
+            {pageSetting.title}
           </h1>
 
           <p
@@ -109,10 +146,7 @@ function Sertifikasi() {
               leading-relaxed
             "
           >
-            {t(
-              "deskripsi_sertifikasi",
-              "PT. Digi Tekno Indonesia menyediakan Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
-            )}
+            {pageSetting.description}
           </p>
         </div>
       </section>

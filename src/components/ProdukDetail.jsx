@@ -11,6 +11,12 @@ import webDigi from "../assets/produk/web_digi.png";
 function ProdukDetail() {
   const navigate = useNavigate();
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "PRODUK & JASA",
+    description:
+      "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
+
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
 
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
@@ -25,6 +31,33 @@ function ProdukDetail() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/produk-jasa",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman Produk & Jasa.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "PRODUK & JASA",
+          description: data.data?.description || "",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Produk & Jasa:", error);
+      }
+    };
+
+    fetchPageSetting();
   }, []);
 
   /* KODE WARNA CARD DIATUR PRESISI SESUAI DESAIN REFERENSI */
@@ -88,14 +121,11 @@ function ProdukDetail() {
         >
           <div className="max-w-[1100px] mx-auto text-center">
             <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
-              {t("judul_produk_jasa", "PRODUK & JASA")}
+              {pageSetting.title}
             </h1>
 
             <p className="mt-3 mx-auto max-w-[900px] font-['Nunito'] text-[#666666] text-[10px] sm:text-xs md:text-sm leading-relaxed">
-              {t(
-                "deskripsi_produk_jasa",
-                "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-              )}
+              {pageSetting.description}
             </p>
           </div>
         </div>

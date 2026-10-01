@@ -35,7 +35,40 @@ function Artikel() {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/artikel",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman artikel.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "Artikel",
+          description: data.data?.description || "",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Artikel:", error);
+      }
+    };
+
+    fetchPageSetting();
+  }, []);
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
+
+  const [pageSetting, setPageSetting] = useState({
+    title: "Artikel",
+    description:
+      "PT. Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
 
   // =========================
   // HIGHLIGHT ARTIKEL
@@ -118,7 +151,7 @@ function Artikel() {
               leading-none
             "
           >
-            Artikel
+            {pageSetting.title}
           </h1>
 
           <p
@@ -132,10 +165,7 @@ function Artikel() {
               leading-[1.8]
             "
           >
-            {t(
-              "deskripsi_artikel",
-              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-            )}
+            {pageSetting.description}
           </p>
         </div>
       </section>

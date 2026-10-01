@@ -17,6 +17,25 @@ const Footer = () => {
     };
   }, []);
 
+  const [kontak, setKontak] = useState([]);
+
+  useEffect(() => {
+    const fetchKontak = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/kontak");
+        const result = await response.json();
+
+        if (result.success) {
+          setKontak(result.data);
+        }
+      } catch (error) {
+        console.error("Gagal mengambil data kontak:", error);
+      }
+    };
+
+    fetchKontak();
+  }, []);
+
   return (
     <footer className="bg-[#1e324c] text-white px-5 py-[30px] md:px-[50px] [font-family:'Nunito_Sans',sans-serif]">
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row md:justify-between flex-wrap gap-[30px] md:gap-10">
@@ -166,8 +185,8 @@ const Footer = () => {
                 </svg>
 
                 <p className="font-['Nunito Sans'] m-0 text-[0.95rem] leading-[1.6] text-left">
-                  Summarecon Magna Commercial Blok MD-18, Summarecon Gedebage
-                  Bandung - Jawa Barat 40293
+                  {kontak.find((item) => item.namaPengaturan === "Alamat")
+                    ?.isiPengaturan || "-"}
                 </p>
               </a>
             </li>
@@ -175,7 +194,7 @@ const Footer = () => {
             {/* EMAIL */}
             <li className="flex items-start gap-[15px]">
               <a
-                href="mailto:digiteknoindo@gmail.com"
+                href={`mailto:${kontak.find((item) => item.namaPengaturan === "Email")?.isiPengaturan || ""}`}
                 className="flex items-start gap-[15px] text-white no-underline hover:opacity-80 transition-opacity duration-200"
               >
                 <svg
@@ -193,7 +212,8 @@ const Footer = () => {
                 </svg>
 
                 <p className="font-['Nunito Sans'] m-0 text-[0.95rem] leading-[1.6] text-left">
-                  digiteknoindo@gmail.com
+                  {kontak.find((item) => item.namaPengaturan === "Email")
+                    ?.isiPengaturan || "-"}
                 </p>
               </a>
             </li>
@@ -201,7 +221,7 @@ const Footer = () => {
             {/* TELEPON */}
             <li className="flex items-start gap-[15px]">
               <a
-                href="tel:+6285924101807"
+                href={`tel:${kontak.find((item) => item.namaPengaturan === "No HP")?.isiPengaturan || ""}`}
                 className="flex items-start gap-[15px] text-white no-underline hover:opacity-80 transition-opacity duration-200"
               >
                 <svg
@@ -219,7 +239,8 @@ const Footer = () => {
                 </svg>
 
                 <p className="font-['Nunito Sans'] m-0 text-[0.95rem] leading-[1.6] text-left">
-                  0859-2410-1807
+                  {kontak.find((item) => item.namaPengaturan === "No HP")
+                    ?.isiPengaturan || "-"}
                 </p>
               </a>
             </li>
@@ -227,7 +248,7 @@ const Footer = () => {
             {/* INSTAGRAM */}
             <li className="flex items-start gap-[15px]">
               <a
-                href="https://www.instagram.com/digiteknoindo/"
+                href={`https://www.instagram.com/${kontak.find((item) => item.namaPengaturan === "Instagram")?.isiPengaturan || ""}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-[15px] text-white no-underline hover:opacity-80 transition-opacity duration-200"
@@ -246,7 +267,8 @@ const Footer = () => {
                 </svg>
 
                 <p className="font-['Nunito Sans'] m-0 text-[0.95rem] leading-[1.6] text-left">
-                  digiteknoindo
+                  {kontak.find((item) => item.namaPengaturan === "Instagram")
+                    ?.isiPengaturan || "-"}
                 </p>
               </a>
             </li>

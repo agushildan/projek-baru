@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import TentangKami from "./tentang";
 import VisiMisi from "./visimisi";
@@ -14,6 +14,7 @@ import Footer from "./Footer";
 import bannerBeranda from "../assets/banner_beranda.png";
 
 function Beranda() {
+  const [homeData, setHomeData] = useState(null);
   const whatsappNumber = "6285924101807";
 
   const message =
@@ -43,6 +44,26 @@ function Beranda() {
     };
   }, []);
 
+  useEffect(() => {
+    const fetchHomeData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/home");
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Gagal mengambil data Beranda");
+        }
+
+        setHomeData(data.data);
+      } catch (error) {
+        console.error("❌ Error mengambil data Beranda:", error);
+      }
+    };
+
+    fetchHomeData();
+  }, []);
+
   return (
     <div>
       {/* =========================
@@ -50,19 +71,19 @@ function Beranda() {
       ========================== */}
       <section
         className="
-          relative
-          w-full
-          min-h-[540px]
-          md:min-h-[540px]
-          flex
-          items-center
-          justify-center
-          px-4
-          pt-[110px]
-          pb-10
-          text-center
-          overflow-hidden
-        "
+    relative
+    w-full
+    min-h-[550px]
+    md:min-h-[550px]
+    flex
+    items-center
+    justify-center
+    px-5
+    pt-[120px]
+    pb-10
+    text-center
+    overflow-hidden
+  "
       >
         {/* BACKGROUND IMAGE */}
         <img
@@ -104,71 +125,49 @@ function Beranda() {
           {/* JUDUL */}
           <h1
             className="
-              font-semibold
-              text-[38px]
-              sm:text-[44px]
-              md:text-[50px]
-              leading-[100%]
-              tracking-[0%]
-              mb-7
-            "
+    font-semibold
+    text-[38px]
+    sm:text-[44px]
+    md:text-[50px]
+    leading-[100%]
+    tracking-[0%]
+    mt-6
+    mb-7
+  "
             style={{
               fontFamily: "'Belanosima', sans-serif",
             }}
           >
             <span
               className="
-                text-white
-                drop-shadow-[1px_2px_3px_rgba(0,0,0,0.45)]
-                block
-                mb-5
-              "
+      text-white
+      drop-shadow-[1px_2px_3px_rgba(0,0,0,0.45)]
+      block
+    "
+              style={{
+                whiteSpace: "pre-line",
+              }}
             >
-              MEKANIKAL,
-            </span>
-
-            <span
-              className="
-                text-white
-                drop-shadow-[1px_2px_3px_rgba(0,0,0,0.45)]
-                block
-                mb-5
-              "
-            >
-              ENGINEERING & SOLUSI IT
-            </span>
-
-            <span
-              className="
-                text-white
-                drop-shadow-[1px_2px_3px_rgba(0,0,0,0.45)]
-                block
-              "
-            >
-              UNTUK BISNIS INDUSTRI
+              {homeData?.slogan || ""}
             </span>
           </h1>
 
           {/* DESKRIPSI */}
           <p
             className="
-              text-white
-              text-sm
-              sm:text-base
-              leading-relaxed
-              max-w-[760px]
-              mb-7
-              drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]
-            "
+    text-white
+    text-sm
+    sm:text-base
+    leading-relaxed
+    max-w-[760px]
+    mb-7
+    drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]
+  "
             style={{
               fontFamily: "'Nunito', sans-serif",
             }}
           >
-            PT. Digi Tekno Indonesia merupakan perusahaan yang menyediakan Jasa
-            Service Mesin Manufaktur, Pengadaan Sparepart dan Material Industri,
-            Solusi Teknologi Informasi (IT), Mekanikal & Engineering, serta
-            Konsultasi IT dengan pelayanan profesional dan produk berkualitas
-            untuk mendukung kebutuhan industri dan bisnis anda.
+            {homeData?.description || ""}
           </p>
 
           {/* WHATSAPP BUTTON */}
@@ -215,38 +214,34 @@ function Beranda() {
           <div className="w-full pb-2">
             <div
               className="
-                flex
-                flex-wrap
-                justify-center
-                items-center
-                gap-x-3
-                gap-y-2
-                text-white
-                font-bold
-                text-xs
-                sm:text-sm
-                md:text-base
-                text-center
-                mx-auto
-                drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
-              "
+    flex
+    flex-wrap
+    justify-center
+    items-center
+    gap-x-3
+    gap-y-2
+    text-white
+    font-bold
+    text-xs
+    sm:text-sm
+    md:text-base
+    text-center
+    mx-auto
+    drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]
+  "
               style={{
                 fontFamily: "'Inter', sans-serif",
               }}
             >
-              <span>Mekanikal & Engineering</span>
+              {homeData?.categories?.map((category, index) => (
+                <React.Fragment key={category.id}>
+                  <span>{category.name}</span>
 
-              <span className="font-bold">•</span>
-
-              <span>Perawatan Mesin Manufaktur</span>
-
-              <span className="font-bold">•</span>
-
-              <span>Pengadaan Sparepart & Material Industri</span>
-
-              <span className="font-bold">•</span>
-
-              <span>Solusi IT</span>
+                  {index < homeData.categories.length - 1 && (
+                    <span className="font-bold">•</span>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </div>

@@ -21,6 +21,12 @@ import video2 from "../assets/Kegiatan/vidio2.mp4";
 function KegiatanDetail() {
   const [, setCurrentLang] = useState(i18n.language || "id");
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "Kegiatan",
+    description:
+      "PT. Digi Tekno Indonesia menyediakan Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+  });
+
   // =========================
   // SLIDER
   // =========================
@@ -54,6 +60,33 @@ function KegiatanDetail() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/kegiatan",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman kegiatan.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "Kegiatan",
+          description: data.data?.description || "",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Kegiatan:", error);
+      }
+    };
+
+    fetchPageSetting();
   }, []);
 
   // =========================
@@ -257,7 +290,7 @@ function KegiatanDetail() {
               tracking-wide
             "
           >
-            {t("judul_kegiatan", "Kegiatan")}
+            {pageSetting.title}
           </h1>
 
           <p
@@ -272,10 +305,7 @@ function KegiatanDetail() {
               leading-relaxed
             "
           >
-            {t(
-              "deskripsi_kegiatan",
-              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-            )}
+            {pageSetting.description}
           </p>
         </div>
       </section>

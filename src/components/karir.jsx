@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
+
 import Footer from "./Footer";
 import { ArrowRight } from "lucide-react";
 
 function Karir() {
+  const [pageSetting, setPageSetting] = useState({
+    title: "Karir",
+    description:
+      "PT. Digi Tekno Indonesia menyediakan Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP), Mekanik & Engineering (Repair & Services), serta Pengadaan Sparepart dan Material Industri untuk mendukung kebutuhan bisnis.",
+  });
+
   const jobs = [
     {
       title: "UI/UX Designer",
@@ -16,6 +24,33 @@ function Karir() {
       category: "IT & Software",
     },
   ];
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/karir",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman karir.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "Karir",
+          description: data.data?.description || "",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Karir:", error);
+      }
+    };
+
+    fetchPageSetting();
+  }, []);
 
   return (
     <div className="w-full pt-[64px] bg-white">
@@ -44,7 +79,7 @@ function Karir() {
               tracking-wide
             "
           >
-            Karir
+            {pageSetting.title}
           </h1>
 
           <p
@@ -59,10 +94,7 @@ function Karir() {
               leading-relaxed
             "
           >
-            PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair &
-            Services), Pengadaan Sparepart dan Material Industri, Software IT
-            (Website SIM (Sistem Informasi Manajemen), Landing Page, Company
-            Profile, ERP) untuk mendukung kebutuhan bisnis.
+            {pageSetting.description}
           </p>
         </div>
       </section>
