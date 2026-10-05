@@ -3,16 +3,22 @@ import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import i18n from "../i18n";
 
-import sertifikat1 from "../assets/sertifikasi/sertifikat1.jpg";
-import sertifikat2 from "../assets/sertifikasi/sertifikat2.jpg";
-import sertifikat3 from "../assets/sertifikasi/sertifikat3.jpg";
-import sertifikat4 from "../assets/sertifikasi/sertifikat4.jpg";
-import sertifikat5 from "../assets/sertifikasi/sertifikat5.jpg";
-import sertifikat6 from "../assets/sertifikasi/sertifikat6.jpg";
-
 function Sertifikasi() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
   const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const [sertifikatList, setSertifikatList] = useState([]);
+  const [loadingSertifikat, setLoadingSertifikat] = useState(true);
+
+  const totalPages = Math.ceil(sertifikatList.length / itemsPerPage);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+
+  const currentSertifikat = sertifikatList.slice(
+    startIndex,
+    startIndex + itemsPerPage,
+  );
 
   const [pageSetting, setPageSetting] = useState({
     title: "Sertifikat",
@@ -65,40 +71,29 @@ function Sertifikasi() {
     fetchPageSetting();
   }, []);
 
-  const sertifikatList = [
-    {
-      image: sertifikat1,
-      title: "ISO 9001:2015",
-      description: "Sertifikasi Quality Management System",
-    },
-    {
-      image: sertifikat2,
-      title: "ISO 14001:2015",
-      description: "Sertifikasi Environmental Management System",
-    },
-    {
-      image: sertifikat3,
-      title: "ISO 45001:2018",
-      description:
-        "Sertifikasi Occupational Health and Safety Management System",
-    },
-    {
-      image: sertifikat4,
-      title: "ISO 9001:2015",
-      description: "Sertifikasi Quality Management System",
-    },
-    {
-      image: sertifikat5,
-      title: "ISO 14001:2015",
-      description: "Sertifikasi Environmental Management System",
-    },
-    {
-      image: sertifikat6,
-      title: "ISO 45001:2018",
-      description:
-        "Sertifikasi Occupational Health and Safety Management System",
-    },
-  ];
+  useEffect(() => {
+    const fetchSertifikasi = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/sertifikasi");
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(
+            result.message || "Gagal mengambil data sertifikasi.",
+          );
+        }
+
+        setSertifikatList(result.data);
+      } catch (error) {
+        console.error("❌ Error mengambil sertifikasi:", error);
+      } finally {
+        setLoadingSertifikat(false);
+      }
+    };
+
+    fetchSertifikasi();
+  }, []);
 
   return (
     <div className="w-full pt-[64px]">
@@ -166,7 +161,7 @@ function Sertifikasi() {
     gap-y-[18px]
   "
           >
-            {sertifikatList.map((sertifikat, index) => (
+            {currentSertifikat.map((sertifikat, index) => (
               <div
                 key={index}
                 className="
@@ -199,14 +194,14 @@ h-[390px]
 "
                 >
                   <img
-                    src={sertifikat.image}
-                    alt={sertifikat.title}
+                    src={`http://localhost:5000${sertifikat.gambar}`}
+                    alt={sertifikat.nama}
                     className="
-        w-full
-        h-full
-        object-contain
-        block
-      "
+    w-full
+    h-full
+    object-contain
+    block
+  "
                   />
                 </div>
 
@@ -231,7 +226,7 @@ font-semibold
 leading-[20px]
       "
                   >
-                    {sertifikat.title}
+                    {sertifikat.nama}
                   </h2>
 
                   <p
@@ -245,7 +240,7 @@ leading-[14px]
 text-center
       "
                   >
-                    {sertifikat.description}
+                    {sertifikat.deskripsi}
                   </p>
                 </div>
               </div>
@@ -303,12 +298,13 @@ h-full
               </button>
 
               {/* Page Buttons */}
-              {[1, 2, 3, 4].map((page) => (
-                <button
-                  key={page}
-                  type="button"
-                  onClick={() => setCurrentPage(page)}
-                  className="
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => setCurrentPage(page)}
+                    className="
                       w-[40px]
 h-full
                       flex
@@ -318,9 +314,9 @@ h-full
                       border-[#E5E5E5]
                       cursor-pointer
                     "
-                >
-                  <span
-                    className={`
+                  >
+                    <span
+                      className={`
                         flex
                         items-center
                         justify-center
@@ -336,16 +332,19 @@ text-[16px]
                             : "bg-transparent text-[#666666]"
                         }
                       `}
-                  >
-                    {page}
-                  </span>
-                </button>
-              ))}
+                    >
+                      {page}
+                    </span>
+                  </button>
+                ),
+              )}
 
               {/* Next */}
               <button
                 type="button"
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, 4))}
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
                 className="
     w-[40px]
     h-full

@@ -12,6 +12,12 @@ function Produk() {
 
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "PRODUK & JASA",
+    description:
+      "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
@@ -71,14 +77,11 @@ function Produk() {
         {/* JUDUL */}
         <div className="mb-4">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-[32px] font-semibold tracking-wide">
-            {t("judul_produk_jasa", "PRODUK & JASA")}
+            {pageSetting.title}
           </h2>
 
           <p className="mt-2 max-w-5xl text-xs sm:text-sm md:text-[14px] leading-relaxed text-gray-600">
-            {t(
-              "deskripsi_produk_jasa",
-              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-            )}
+            {pageSetting.description}
           </p>
         </div>
 

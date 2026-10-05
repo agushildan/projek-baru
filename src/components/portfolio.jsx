@@ -9,6 +9,12 @@ import tube from "../assets/produk/tube.png";
 function Portfolio() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "PORTOFOLIO",
+    description:
+      "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
@@ -21,6 +27,33 @@ function Portfolio() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/portofolio",
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(
+            result.message || "Gagal mengambil pengaturan portofolio.",
+          );
+        }
+
+        setPageSetting({
+          title: result.data.title,
+          description: result.data.description,
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Portofolio:", error);
+      }
+    };
+
+    fetchPageSetting();
   }, []);
 
   const portfolioList = [
@@ -55,14 +88,11 @@ function Portfolio() {
         {/* JUDUL DAN DESKRIPSI */}
         <div className="text-center">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
-            PORTOFOLIO
+            {pageSetting.title}
           </h2>
 
           <p className="font-nunito mt-4 max-w-5xl mx-auto text-[13px] md:text-[14px] font-normal leading-[1.6] text-gray-600">
-            {t(
-              "deskripsi_portofolio",
-              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-            )}
+            {pageSetting.description}
           </p>
 
           {/* TOMBOL LIHAT SELENGKAPNYA */}

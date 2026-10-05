@@ -9,6 +9,12 @@ import toolsImg from "../assets/sparepart/tools_consumables.png";
 function SparepartDetail() {
   const [, setCurrentLang] = useState(i18n.language || "id");
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "PENGADAAN SPAREPART",
+    description:
+      "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
@@ -62,6 +68,35 @@ function SparepartDetail() {
     },
   ];
 
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/sparepart",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman Sparepart.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "PENGADAAN SPAREPART",
+          description:
+            data.data?.description ||
+            "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Sparepart:", error);
+      }
+    };
+
+    fetchPageSetting();
+  }, []);
+
   return (
     <div className="w-full min-h-screen bg-white">
       {/* =========================
@@ -76,14 +111,11 @@ function SparepartDetail() {
       >
         <div className="max-w-[1100px] mx-auto text-center">
           <h1 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide uppercase">
-            PENGADAAN SPAREPART
+            {pageSetting.title}
           </h1>
 
           <p className="mt-3 mx-auto max-w-[900px] font-['Nunito'] text-[#666666] text-[10px] sm:text-xs md:text-sm leading-relaxed">
-            {t(
-              "deskripsi_produk_jasa",
-              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-            )}
+            {pageSetting.description}
           </p>
         </div>
       </section>

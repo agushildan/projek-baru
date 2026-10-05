@@ -10,6 +10,12 @@ function SoftwareDetail() {
   const [, setCurrentLang] = useState(i18n.language || "id");
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [pageSetting, setPageSetting] = useState({
+    title: "SOFTWARE IT",
+    description:
+      "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
@@ -22,6 +28,35 @@ function SoftwareDetail() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/software-it",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman Software IT.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "SOFTWARE IT",
+          description:
+            data.data?.description ||
+            "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Software IT:", error);
+      }
+    };
+
+    fetchPageSetting();
   }, []);
 
   const produkSoftware = [
@@ -90,7 +125,7 @@ function SoftwareDetail() {
                 uppercase
               "
             >
-              SOFTWARE IT
+              {pageSetting.title}
             </h1>
 
             <p
@@ -106,10 +141,7 @@ function SoftwareDetail() {
                 leading-relaxed
               "
             >
-              {t(
-                "deskripsi_produk_jasa",
-                "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-              )}
+              {pageSetting.description}
             </p>
           </div>
         </div>

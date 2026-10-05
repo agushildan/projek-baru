@@ -10,6 +10,12 @@ import instalasiListrik from "../assets/layanan/Installlation_Electrical.png";
 function Layanan() {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
 
+  const [layananSetting, setLayananSetting] = useState({
+    slogan: "LAYANAN",
+    description:
+      "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
+  });
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
   useEffect(() => {
@@ -22,6 +28,31 @@ function Layanan() {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  useEffect(() => {
+    const fetchLayananSetting = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/layanan");
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(
+            result.message || "Gagal mengambil pengaturan layanan.",
+          );
+        }
+
+        setLayananSetting({
+          slogan: result.data.slogan || "LAYANAN",
+          description: result.data.description || "",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil pengaturan layanan:", error);
+      }
+    };
+
+    fetchLayananSetting();
   }, []);
 
   const layananList = [
@@ -79,14 +110,11 @@ function Layanan() {
         {/* JUDUL */}
         <div className="text-center mb-7">
           <h2 className="font-['Cormorant_Garamond'] text-[#222222] text-3xl md:text-4xl font-semibold tracking-wide">
-            {t("judul_layanan", "LAYANAN")}
+            {layananSetting.slogan}
           </h2>
 
           <p className="font-['Nunito Sans'] mt-7 max-w-4xl mx-auto text-[12px] md:text-[12px] leading-relaxed text-[#666666]">
-            {t(
-              "deskripsi_layanan",
-              "PT Digi Tekno Indonesia menyediakan Mekanik & Engineering (Repair & Services), Pengadaan Sparepart dan Material Industri, Software IT (Website SIM (Sistem Informasi Manajemen), Landing Page, Company Profile, ERP) untuk mendukung kebutuhan bisnis.",
-            )}
+            {layananSetting.description}
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import machining from "../assets/layanan_mekanikal/mchnng.png";
 import repairMaintenance from "../assets/layanan_mekanikal/repairnmnt.png";
@@ -16,7 +16,13 @@ import portome3 from "../assets/produk/portome3.png";
 import portome4 from "../assets/produk/portome4.png";
 
 function MekanikEngineering() {
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const [pageSetting, setPageSetting] = useState({
+    title: "Mekanikal & Engineering",
+    description:
+      "PT. Digi Tekno Indonesia menyediakan Layanan Mekanikal dan Engineering, seperti Layanan Repair, Maintenance, Machining, dan Engineering untuk menjaga performa, maintenance dan kendala mesin industri anda.",
+  });
   const layananList = [
     {
       title: "Machining",
@@ -43,6 +49,35 @@ function MekanikEngineering() {
       image: fabrication,
     },
   ];
+
+  useEffect(() => {
+    const fetchPageSetting = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/page-settings/mekanikal",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data.message || "Gagal mengambil pengaturan halaman Mekanikal.",
+          );
+        }
+
+        setPageSetting({
+          title: data.data?.title || "Mekanikal & Engineering",
+          description:
+            data.data?.description ||
+            "PT. Digi Tekno Indonesia menyediakan Layanan Mekanikal dan Engineering, seperti Layanan Repair, Maintenance, Machining, dan Engineering untuk menjaga performa, maintenance dan kendala mesin industri anda.",
+        });
+      } catch (error) {
+        console.error("❌ Error mengambil Page Setting Mekanikal:", error);
+      }
+    };
+
+    fetchPageSetting();
+  }, []);
 
   return (
     <div className="w-full min-h-screen bg-white">
@@ -80,7 +115,7 @@ function MekanikEngineering() {
             uppercase
           "
           >
-            Mekanikal & Engineering
+            {pageSetting.title}
           </h1>
 
           <p
@@ -96,10 +131,7 @@ function MekanikEngineering() {
             leading-relaxed
           "
           >
-            PT. Digi Tekno Indonesia menyediakan Layanan Mekanikal dan
-            Engineering, seperti Layanan Repair, Maintenance, Machining, dan
-            Engineering untuk menjaga performa, maintenance dan kendala mesin
-            industri anda.
+            {pageSetting.description}
           </p>
         </div>
       </section>
