@@ -2,22 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import Footer from "./Footer";
 import i18n from "../i18n";
 
-// =========================
-// ASSET FOTO KEGIATAN
-// =========================
-import kegiatan1 from "../assets/kegiatan/kegiatan1.jpg";
-import kegiatan2 from "../assets/kegiatan/kegiatan2.jpg";
-import kegiatan3 from "../assets/kegiatan/kegiatan3.jpg";
-import kegiatan4 from "../assets/kegiatan/kegiatan4.jpg";
-import kegiatan5 from "../assets/kegiatan/kegiatan5.jpg";
-import kegiatan6 from "../assets/kegiatan/kegiatan6.jpg";
-
-// =========================
-// ASSET VIDEO
-// =========================
-import video1 from "../assets/Kegiatan/vidio1.mp4";
-import video2 from "../assets/Kegiatan/vidio2.mp4";
-
 function KegiatanDetail() {
   const [, setCurrentLang] = useState(i18n.language || "id");
 
@@ -38,12 +22,34 @@ function KegiatanDetail() {
   const timerStartRef = useRef(null);
   const remainingTimeRef = useRef(5 * 1000);
 
-  // Video
-  const video1Ref = useRef(null);
-  const video2Ref = useRef(null);
+  const videoRefs = useRef({});
+  const [videoEnded, setVideoEnded] = useState(false);
 
-  const [video1Ended, setVideo1Ended] = useState(false);
-  const [video2Ended, setVideo2Ended] = useState(false);
+  const [kegiatanData, setKegiatanData] = useState([]);
+
+  const getMediaUrl = (media) => {
+    if (!media) return "";
+
+    if (media.startsWith("http")) {
+      return media;
+    }
+
+    return `http://localhost:5000${media}`;
+  };
+
+  const formatTanggal = (tanggal) => {
+    if (!tanggal) return "-";
+
+    const date = new Date(tanggal);
+
+    if (isNaN(date.getTime())) return "-";
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+
+    return `${day} - ${month} - ${year}`;
+  };
 
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
@@ -89,49 +95,89 @@ function KegiatanDetail() {
     fetchPageSetting();
   }, []);
 
+  useEffect(() => {
+    const fetchKegiatan = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/postingan/kegiatan",
+        );
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Gagal mengambil data kegiatan");
+        }
+
+        setKegiatanData(result.data);
+      } catch (error) {
+        console.error("❌ Error mengambil data kegiatan:", error);
+      }
+    };
+
+    fetchKegiatan();
+  }, []);
+
   // =========================
   // DATA KEGIATAN
   // =========================
-  const kegiatanList = [
-    {
-      image: kegiatan1,
-      date: "16 - 05 - 2026",
-      title: "Buka Bersama PT. Digi Tekno Indonesia",
-    },
-    {
-      image: kegiatan2,
-      date: "16 - 05 - 2026",
-      title: "Rafting Citumang",
-    },
-    {
-      image: kegiatan3,
-      date: "16 - 05 - 2026",
-      title: "Rafting Citumang",
-    },
-    {
-      image: kegiatan4,
-      date: "16 - 05 - 2026",
-      title: "Rafting Citumang",
-    },
-    {
-      image: kegiatan5,
-      date: "16 - 05 - 2026",
-      title: "Arung Jeram",
-    },
-    {
-      image: kegiatan6,
-      date: "16 - 05 - 2026",
-      title: "Gathering PT. Digi Tekno Indonesia",
-    },
+
+  const kegiatanList = kegiatanData.filter((item) => item.tipe === "Gambar");
+
+  const videoList = kegiatanData.filter((item) => item.tipe === "Video");
+
+  // =========================
+  // BAGI DATA MENJADI HALAMAN
+  // FOTO = MAKSIMAL 6
+  // VIDEO = MAKSIMAL 2
+  // =========================
+
+  const chunkArray = (array, size) => {
+    const result = [];
+
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+
+    return result;
+  };
+
+  const photoPages = chunkArray(kegiatanList, 6);
+  const videoPages = chunkArray(videoList, 2);
+
+  // Semua halaman digabung secara berurutan:
+  // FOTO 1, FOTO 2, ... lalu VIDEO 1, VIDEO 2, ...
+  const slides = [
+    ...photoPages.map((items) => ({
+      type: "photo",
+      items,
+    })),
+
+    ...videoPages.map((items) => ({
+      type: "video",
+      items,
+    })),
   ];
 
   // =========================
   // TIMER SLIDE 1
   // 10 DETIK
   // =========================
+  // =========================
+  // TIMER SLIDE FOTO
+  // 5 DETIK
+  // =========================
+
   useEffect(() => {
-    // Kalau sedang di slide video, tidak menggunakan timer 10 detik
-    if (currentSlide !== 0) {
+    const currentSlideData = slides[currentSlide];
+
+    // Tidak ada slide
+    if (!currentSlideData) {
+      return;
+    }
+
+    // Kalau slide sekarang bukan foto,
+    // timer foto tidak berjalan
+    if (currentSlideData.type !== "photo") {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
         timerRef.current = null;
@@ -149,10 +195,24 @@ function KegiatanDetail() {
     timerStartRef.current = Date.now();
 
     timerRef.current = setTimeout(() => {
-      setCurrentSlide(1);
+      // Timer sudah selesai
+      // supaya cleanup tidak menghitung timer lama lagi
+      timerRef.current = null;
+      timerStartRef.current = null;
 
-      // Reset timer
+      // Reset timer untuk slide berikutnya
       remainingTimeRef.current = 5 * 1000;
+
+      // Pindah ke slide berikutnya
+      setCurrentSlide((prev) => {
+        if (prev < slides.length - 1) {
+          return prev + 1;
+        }
+
+        // Kalau sudah slide terakhir,
+        // kembali ke slide pertama
+        return 0;
+      });
     }, remainingTimeRef.current);
 
     return () => {
@@ -172,38 +232,59 @@ function KegiatanDetail() {
         timerRef.current = null;
       }
     };
-  }, [currentSlide, isHovered]);
+  }, [currentSlide, isHovered, slides.length]);
+
+  // =========================
+  // JAGA CURRENT SLIDE
+  // =========================
+
+  useEffect(() => {
+    if (slides.length === 0) {
+      setCurrentSlide(0);
+      return;
+    }
+
+    if (currentSlide >= slides.length) {
+      setCurrentSlide(slides.length - 1);
+    }
+  }, [slides.length, currentSlide]);
 
   // =========================
   // VIDEO SLIDE
   // =========================
+  // =========================
+  // VIDEO SLIDE
+  // =========================
+
   useEffect(() => {
-    if (currentSlide !== 1) return;
+    const currentSlideData = slides[currentSlide];
 
-    setVideo1Ended(false);
-    setVideo2Ended(false);
-
-    if (video1Ref.current) {
-      video1Ref.current.currentTime = 0;
-      video1Ref.current.play().catch(() => {});
+    // Bukan slide video
+    if (!currentSlideData || currentSlideData.type !== "video") {
+      return;
     }
 
-    if (video2Ref.current) {
-      video2Ref.current.currentTime = 0;
-      video2Ref.current.play().catch(() => {});
-    }
+    setVideoEnded(false);
+
+    // Ambil video berdasarkan ID
+    const currentVideos = currentSlideData.items
+      .map((video) => videoRefs.current[video.id])
+      .filter((video) => video && typeof video.pause === "function");
+
+    currentVideos.forEach((video) => {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    });
 
     const videoTimer = setTimeout(
       () => {
+        currentVideos.forEach((video) => {
+          if (video && typeof video.pause === "function") {
+            video.pause();
+          }
+        });
+
         setCurrentSlide(0);
-
-        if (video1Ref.current) {
-          video1Ref.current.pause();
-        }
-
-        if (video2Ref.current) {
-          video2Ref.current.pause();
-        }
 
         remainingTimeRef.current = 5 * 1000;
       },
@@ -212,8 +293,14 @@ function KegiatanDetail() {
 
     return () => {
       clearTimeout(videoTimer);
+
+      currentVideos.forEach((video) => {
+        if (video && typeof video.pause === "function") {
+          video.pause();
+        }
+      });
     };
-  }, [currentSlide]);
+  }, [currentSlide, slides]);
 
   // =========================
   // SALAH SATU VIDEO SELESAI
@@ -224,23 +311,20 @@ function KegiatanDetail() {
     }
 
     // Kalau salah satu video selesai,
-    // video yang satunya langsung dihentikan
+    // semua video dihentikan
     // dan slider kembali ke foto.
-    if (video1Ended || video2Ended) {
-      if (video1Ref.current) {
-        video1Ref.current.pause();
-      }
-
-      if (video2Ref.current) {
-        video2Ref.current.pause();
-      }
+    if (videoEnded) {
+      Object.values(videoRefs.current).forEach((video) => {
+        if (video && typeof video.pause === "function") {
+          video.pause();
+        }
+      });
 
       setCurrentSlide(0);
 
-      // Foto berikutnya mulai dari 10 detik
       remainingTimeRef.current = 5 * 1000;
     }
-  }, [video1Ended, video2Ended, currentSlide]);
+  }, [videoEnded, currentSlide]);
 
   // =========================
   // HOVER CARD FOTO
@@ -334,382 +418,308 @@ function KegiatanDetail() {
                 SLIDE 1
                 6 CARD KEGIATAN
             ================================================== */}
-            <div className="w-full shrink-0">
+            {slides.map((slide, slideIndex) => (
               <div
-                className="
-                  grid
-                  grid-cols-1
-                  md:grid-cols-3
-                  gap-x-5
-                  gap-y-10
+                key={`${slide.type}-${slideIndex}`}
+                className="w-full shrink-0"
+              >
+                {/* ==================================================
+        SLIDE FOTO
+    ================================================== */}
+
+                {slide.type === "photo" && (
+                  <div
+                    className="
+          grid
+          grid-cols-1
+          md:grid-cols-3
+          gap-x-5
+          gap-y-10
+        "
+                  >
+                    {slide.items.map((kegiatan, index) => (
+                      <div
+                        key={kegiatan.id}
+                        onMouseEnter={handlePhotoMouseEnter}
+                        onMouseLeave={handlePhotoMouseLeave}
+                        className="
+              relative
+              bg-white
+              border
+              border-[#E4E4E4]
+              rounded-[6px]
+              overflow-visible
+              shadow-[0_1px_4px_rgba(0,0,0,0.08)]
+              flex
+              flex-col
+              w-full
+              h-[430px]
+            "
+                      >
+                        {/* =========================
+                STRIP ATAS
+            ========================== */}
+
+                        <div
+                          className={`
+                absolute
+                -top-[15px]
+                left-1/2
+                -translate-x-1/2
+                w-[160px]
+                h-[25px]
+                rounded-[2px]
+                ${index % 2 === 1 ? "bg-[#F5DEDE]/60" : "bg-[#DCE7F8]/60"}
+              `}
+                        />
+
+                        {/* =========================
+                GAMBAR
+            ========================== */}
+
+                        <div
+                          className="
+                mx-5
+                mt-5
+                h-[390px]
+                rounded-[3px]
+                overflow-hidden
+                bg-[#D9D9D9]
+              "
+                        >
+                          <img
+                            src={getMediaUrl(kegiatan.media)}
+                            alt={kegiatan.deskripsi}
+                            draggable="false"
+                            className="
+                  w-full
+                  h-full
+                  object-cover
+                  block
                 "
-              >
-                {kegiatanList.map((kegiatan, index) => (
-                  <div
-                    key={index}
-                    onMouseEnter={handlePhotoMouseEnter}
-                    onMouseLeave={handlePhotoMouseLeave}
-                    className="
-                      relative
-                      bg-white
-                      border
-                      border-[#E4E4E4]
-                      rounded-[6px]
-                      overflow-visible
-                      shadow-[0_1px_4px_rgba(0,0,0,0.08)]
-                      flex
-                      flex-col
-                      w-full
-                      h-[430px]
-                    "
-                  >
-                    {/* =========================
-                        STRIP ATAS
-                    ========================== */}
-                    <div
-                      className={`
-                        absolute
-                        -top-[15px]
-                        left-1/2
-                        -translate-x-1/2
-                        w-[160px]
-                        h-[25px]
-                        rounded-[2px]
-                        ${
-                          index % 2 === 1
-                            ? "bg-[#F5DEDE]/60"
-                            : "bg-[#DCE7F8]/60"
-                        }
-                      `}
-                    />
+                          />
+                        </div>
 
-                    {/* =========================
-                        GAMBAR
-                    ========================== */}
-                    <div
-                      className="
-    mx-5
-    mt-5
-    h-[390px]
-    rounded-[3px]
-    overflow-hidden
-    bg-[#D9D9D9]
-  "
-                    >
-                      <img
-                        src={kegiatan.image}
-                        alt={kegiatan.title}
-                        draggable="false"
-                        className="
-                          w-full
-                          h-full
-                          object-cover
-                          block
-                        "
-                      />
-                    </div>
+                        {/* =========================
+                INFORMASI
+            ========================== */}
 
-                    {/* =========================
-                        INFORMASI
-                    ========================== */}
-                    <div
-                      className="
-                        w-full
-                        px-3
-                        pt-3
-                        pb-6
-                        text-center
-                      "
-                    >
-                      <p
-                        className="
-                          font-['Nunito']
-                          text-[#999999]
-                          text-[15px]
-                        "
-                      >
-                        {kegiatan.date}
-                      </p>
+                        <div
+                          className="
+                w-full
+                px-3
+                pt-3
+                pb-6
+                text-center
+              "
+                        >
+                          <p
+                            className="
+                  font-['Nunito']
+                  text-[#999999]
+                  text-[15px]
+                "
+                          >
+                            {formatTanggal(kegiatan.tanggal)}
+                          </p>
 
-                      <h2
-                        className="
-                          mt-3
-                          font-['Nunito']
-                          text-[#222222]
-                          text-[15px]
-                          font-semibold
-                          leading-[15px]
-                        "
-                      >
-                        {kegiatan.title}
-                      </h2>
-                    </div>
+                          <h2
+                            className="
+                  mt-3
+                  font-['Nunito']
+                  text-[#222222]
+                  text-[15px]
+                  font-semibold
+                  leading-[15px]
+                "
+                          >
+                            {kegiatan.deskripsi}
+                          </h2>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
+                )}
 
-            {/* ==================================================
-    SLIDE 2
-    VIDEO
-================================================== */}
-            <div className="w-full shrink-0">
-              <div
-                className="
-      w-full
-      flex
-      items-start
-      justify-center
-      gap-5
-      md:gap-6
-    "
-              >
-                {/* =========================
-        VIDEO 1
-    ========================== */}
-                <div
-                  className="
-    relative
-    bg-white
-    border
-    border-[#E4E4E4]
-    rounded-[6px]
-    overflow-visible
-    shadow-[0_1px_4px_rgba(0,0,0,0.08)]
-    flex
-    flex-col
-    w-full
-    h-[540px]
-  "
-                >
-                  {/* STRIP ATAS */}
-                  <div
-                    className="
-          absolute
-          -top-[24px]
-          left-1/2
-          -translate-x-1/2
-          w-[280px]
-          h-[35px]
-          rounded-[2px]
-          bg-[#F5DEDE]/60
-        "
-                  />
+                {/* ==================================================
+        SLIDE VIDEO
+    ================================================== */}
 
-                  {/* VIDEO */}
-                  <div
-                    className="
-    mx-5
-    mt-5
-    h-[440px]
-    rounded-[3px]
-    overflow-hidden
-    bg-[#D9D9D9]
-  "
-                  >
-                    <video
-                      ref={video1Ref}
-                      src={video1}
-                      muted
-                      playsInline
-                      preload="auto"
-                      onEnded={() => setVideo1Ended(true)}
-                      onMouseEnter={() => {
-                        video1Ref.current?.pause();
-                      }}
-                      onMouseLeave={() => {
-                        if (!video1Ended) {
-                          video1Ref.current?.play().catch(() => {});
-                        }
-                      }}
-                      className="
-    w-full
-    h-full
-    object-cover
-    block
-  "
-                    />
-                  </div>
-
-                  {/* INFORMASI */}
+                {slide.type === "video" && (
                   <div
                     className="
           w-full
-          px-3
-          pt-3
-          pb-6
-          text-center
+          flex
+          flex-wrap
+          items-start
+          justify-center
+          gap-5
+          md:gap-6
         "
                   >
-                    <p
-                      className="
-            font-['Nunito']
-            text-[#999999]
-            text-[15px]
-          "
-                    >
-                      16 - 05 - 2026
-                    </p>
+                    {slide.items.map((video, index) => (
+                      <div
+                        key={video.id}
+                        className={`
+              relative
+              bg-white
+              border
+              border-[#E4E4E4]
+              rounded-[6px]
+              overflow-visible
+              shadow-[0_1px_4px_rgba(0,0,0,0.08)]
+              flex
+              flex-col
+              w-full
+              md:w-[calc(50%-12px)]
+              h-[540px]
+              ${index % 2 === 1 ? "mt-[300px]" : ""}
+            `}
+                      >
+                        {/* =========================
+                STRIP ATAS
+            ========================== */}
 
-                    <h2
-                      className="
-            mt-3
-            font-['Nunito']
-            text-[#222222]
-            text-[15px]
-            font-semibold
-            leading-[15px]
-          "
-                    >
-                      Rafting Citumang
-                    </h2>
+                        <div
+                          className={`
+                absolute
+                -top-[24px]
+                left-1/2
+                -translate-x-1/2
+                w-[280px]
+                h-[35px]
+                rounded-[2px]
+                ${index % 2 === 1 ? "bg-[#DCE7F8]/60" : "bg-[#F5DEDE]/60"}
+              `}
+                        />
+
+                        {/* =========================
+                VIDEO
+            ========================== */}
+
+                        <div
+                          className="
+                mx-5
+                mt-5
+                h-[440px]
+                rounded-[3px]
+                overflow-hidden
+                bg-[#D9D9D9]
+              "
+                        >
+                          <video
+                            ref={(el) => {
+                              videoRefs.current[video.id] = el;
+                            }}
+                            src={getMediaUrl(video.media)}
+                            muted
+                            playsInline
+                            preload="auto"
+                            onEnded={() => setVideoEnded(true)}
+                            onMouseEnter={() => {
+                              const currentVideo = videoRefs.current[video.id];
+
+                              if (
+                                currentVideo &&
+                                typeof currentVideo.pause === "function"
+                              ) {
+                                currentVideo.pause();
+                              }
+                            }}
+                            onMouseLeave={() => {
+                              const currentVideo = videoRefs.current[video.id];
+
+                              if (
+                                !videoEnded &&
+                                currentVideo &&
+                                typeof currentVideo.play === "function"
+                              ) {
+                                currentVideo.play().catch(() => {});
+                              }
+                            }}
+                            className="
+                  w-full
+                  h-full
+                  object-cover
+                  block
+                "
+                          />
+                        </div>
+
+                        {/* =========================
+                INFORMASI
+            ========================== */}
+
+                        <div
+                          className="
+                w-full
+                px-3
+                pt-3
+                pb-6
+                text-center
+              "
+                        >
+                          <p
+                            className="
+                  font-['Nunito']
+                  text-[#999999]
+                  text-[15px]
+                "
+                          >
+                            {formatTanggal(video.tanggal)}
+                          </p>
+
+                          <h2
+                            className="
+                  mt-3
+                  font-['Nunito']
+                  text-[#222222]
+                  text-[15px]
+                  font-semibold
+                  leading-[15px]
+                "
+                          >
+                            {video.deskripsi}
+                          </h2>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                </div>
-
-                {/* =========================
-        VIDEO 2
-    ========================== */}
-                <div
-                  className="
-    relative
-    bg-white
-    border
-    border-[#E4E4E4]
-    rounded-[6px]
-    overflow-visible
-    shadow-[0_1px_4px_rgba(0,0,0,0.08)]
-    flex
-    flex-col
-    w-full
-    h-[540px]
-    mt-[300px]
-  "
-                >
-                  {/* STRIP ATAS */}
-                  <div
-                    className="
-    absolute
-    -top-[24px]
-    left-1/2
-    -translate-x-1/2
-    w-[280px]
-    h-[35px]
-    rounded-[2px]
-    bg-[#DCE7F8]/60
-  "
-                  />
-
-                  {/* VIDEO */}
-                  <div
-                    className="
-    mx-5
-    mt-5
-    h-[440px]
-    rounded-[3px]
-    overflow-hidden
-    bg-[#D9D9D9]
-  "
-                  >
-                    <video
-                      ref={video2Ref}
-                      src={video2}
-                      muted
-                      playsInline
-                      preload="auto"
-                      onEnded={() => setVideo2Ended(true)}
-                      onMouseEnter={() => {
-                        video2Ref.current?.pause();
-                      }}
-                      onMouseLeave={() => {
-                        if (!video2Ended) {
-                          video2Ref.current?.play().catch(() => {});
-                        }
-                      }}
-                      className="
-    w-full
-    h-full
-    object-cover
-    block
-  "
-                    />
-                  </div>
-
-                  {/* INFORMASI */}
-                  <div
-                    className="
-          w-full
-          px-3
-          pt-3
-          pb-6
-          text-center
-        "
-                  >
-                    <p
-                      className="
-            font-['Nunito']
-            text-[#999999]
-            text-[15px]
-          "
-                    >
-                      16 - 05 - 2026
-                    </p>
-
-                    <h2
-                      className="
-            mt-3
-            font-['Nunito']
-            text-[#222222]
-            text-[15px]
-            font-semibold
-            leading-[15px]
-          "
-                    >
-                      Rafting Citumang
-                    </h2>
-                  </div>
-                </div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* =========================
-            DOT INDICATOR
-        ========================== */}
-        <div className="flex justify-center items-center gap-2 mt-8">
-          <button
-            type="button"
-            aria-label="Slide kegiatan foto"
-            onClick={() => {
-              setCurrentSlide(0);
-              remainingTimeRef.current = 5 * 1000;
-            }}
-            className={`
-              w-[10px]
-              h-[10px]
-              rounded-full
-              transition-all
-              duration-300
-              cursor-pointer
-              ${currentSlide === 0 ? "bg-[#4C8AAE]" : "bg-[#D9D9D9]"}
-            `}
-          />
+    DOT INDICATOR
+========================== */}
 
-          <button
-            type="button"
-            aria-label="Slide kegiatan video"
-            onClick={() => setCurrentSlide(1)}
-            className={`
-              w-[10px]
-              h-[10px]
-              rounded-full
-              transition-all
-              duration-300
-              cursor-pointer
-              ${currentSlide === 1 ? "bg-[#4C8AAE]" : "bg-[#D9D9D9]"}
-            `}
-          />
-        </div>
+        {slides.length > 0 && (
+          <div className="flex justify-center items-center gap-2 mt-8">
+            {slides.map((slide, index) => (
+              <button
+                key={index}
+                type="button"
+                aria-label={`Slide kegiatan ${index + 1}`}
+                onClick={() => {
+                  setCurrentSlide(index);
+                  remainingTimeRef.current = 5 * 1000;
+                  setVideoEnded(false);
+                }}
+                className={`
+          w-[10px]
+          h-[10px]
+          rounded-full
+          transition-all
+          duration-300
+          cursor-pointer
+          ${currentSlide === index ? "bg-[#4C8AAE]" : "bg-[#D9D9D9]"}
+        `}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* =========================

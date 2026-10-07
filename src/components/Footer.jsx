@@ -1,5 +1,11 @@
 import { useState, useEffect } from "react";
 import i18n from "../i18n";
+import whatsappIcon from "../assets/icons/whatsapp.svg";
+import instagramIcon from "../assets/icons/instagram.svg";
+import gmailIcon from "../assets/icons/gmail.svg";
+import linkedinIcon from "../assets/icons/linkedin.svg";
+import youtubeIcon from "../assets/icons/youtube.svg";
+import facebookIcon from "../assets/icons/facebook.svg";
 
 const Footer = () => {
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
@@ -15,6 +21,64 @@ const Footer = () => {
     return () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
+  }, []);
+
+  const [footerColumns, setFooterColumns] = useState([]);
+  const [sosialMedia, setSosialMedia] = useState([]);
+  const [footerSettings, setFooterSettings] = useState([]);
+
+  useEffect(() => {
+    const fetchSosialMedia = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/sosial-media");
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          setSosialMedia(result.data);
+        }
+      } catch (error) {
+        console.error("❌ Error fetch sosial media:", error);
+      }
+    };
+
+    fetchSosialMedia();
+  }, []);
+
+  useEffect(() => {
+    const fetchFooterSettings = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/footer");
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          setFooterSettings(result.data);
+        }
+      } catch (error) {
+        console.error("❌ Error fetch footer settings:", error);
+      }
+    };
+
+    fetchFooterSettings();
+  }, []);
+
+  const fetchFooterColumns = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/footer-column");
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setFooterColumns(result.data);
+      }
+    } catch (error) {
+      console.error("❌ Error fetch footer columns:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFooterColumns();
   }, []);
 
   const [kontak, setKontak] = useState([]);
@@ -36,6 +100,54 @@ const Footer = () => {
     fetchKontak();
   }, []);
 
+  const column1 = footerColumns.find((item) => item.posisi === 1);
+  const column2 = footerColumns.find((item) => item.posisi === 2);
+  const column3 = footerColumns.find((item) => item.posisi === 3);
+
+  const footerCopyright = footerSettings.find(
+    (item) => item.nama === "Footer Copyright",
+  );
+
+  const footerLogo = footerSettings.find((item) => item.nama === "Logo Footer");
+
+  const getFooterImageUrl = (gambar) => {
+    if (!gambar) return "";
+
+    if (gambar.startsWith("http")) {
+      return gambar;
+    }
+
+    return `http://localhost:5000${gambar.startsWith("/") ? "" : "/"}${gambar}`;
+  };
+
+  const getSocialIcon = (icon) => {
+    if (icon === "whatsapp") {
+      return whatsappIcon;
+    }
+
+    if (icon === "instagram") {
+      return instagramIcon;
+    }
+
+    if (icon === "gmail") {
+      return gmailIcon;
+    }
+
+    if (icon === "linkedin") {
+      return linkedinIcon;
+    }
+
+    if (icon === "youtube") {
+      return youtubeIcon;
+    }
+
+    if (icon === "facebook") {
+      return facebookIcon;
+    }
+
+    return null;
+  };
+
   return (
     <footer className="bg-[#1e324c] text-white px-5 py-[30px] md:px-[50px] [font-family:'Nunito_Sans',sans-serif]">
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row md:justify-between flex-wrap gap-[30px] md:gap-10">
@@ -44,75 +156,40 @@ const Footer = () => {
         ========================== */}
         <div className="flex-1 md:min-w-[250px] flex flex-col items-start text-left">
           {/* JUDUL - BELANOSIMA */}
-          <h2 className="font-['Belanosima'] text-[25px] font-semibold mt-4 mb-2.5 text-left leading-none">
-            PT. Digi Tekno Indonesia
+          <h2 className="font-['Belanosima'] text-[30px] font-semibold mt-4 mb-2.5 text-left leading-none">
+            {footerCopyright?.isi || ""}
           </h2>
 
-          <img
-            src="/digilogo2.png"
-            alt="digi logo"
-            className="w-[150px] mb-2.5 block ml-0"
-          />
+          {footerLogo?.gambar && (
+            <img
+              src={getFooterImageUrl(footerLogo.gambar)}
+              alt="digi logo"
+              className="w-[150px] mb-2.5 block ml-0"
+            />
+          )}
 
           <div className="flex gap-[15px] mb-[25px] ml-0">
-            {/* WHATSAPP */}
-            <a
-              href="https://wa.me/6285924101807?text=Halo,%20saya%20ingin%20betanya?"
-              className="bg-[#4F8DC0] w-10 h-10 rounded-lg flex items-center justify-center no-underline transition-opacity duration-300 hover:opacity-80"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M15.6777 0C24.3359 0 31.3548 7.01896 31.3548 15.6771C31.3548 24.3352 24.3359 31.3542 15.6777 31.3542C12.9652 31.3542 10.4131 30.6644 8.18627 29.451L1.27377 30.6104C1.1034 30.6388 0.928707 30.6265 0.76401 30.5744C0.599313 30.5224 0.449292 30.432 0.32623 30.3108C0.203167 30.1896 0.110564 30.041 0.0560009 29.8771C0.00143794 29.7132 -0.0135326 29.5387 0.0123149 29.3679L1.17898 21.6533C0.397423 19.758 -0.00298222 17.7272 0.00064821 15.6771C0.00064821 7.01896 7.01961 0 15.6777 0ZM9.76127 7.94792C8.6894 7.94792 7.80127 8.85208 7.96752 9.96917C8.28252 12.0633 9.21294 15.9221 11.9809 18.7104C14.8742 21.6256 19.0144 22.8725 21.2559 23.364C22.4167 23.6192 23.4069 22.7004 23.4069 21.5673V18.9073C23.4069 18.8189 23.3802 18.7326 23.3302 18.6597C23.2802 18.5868 23.2094 18.5308 23.1269 18.499L20.2686 17.4008C20.1914 17.3713 20.1075 17.3642 20.0265 17.3804L17.1434 17.9433C15.284 16.9808 14.1581 15.9017 13.4829 14.2756L14.0254 11.3371C14.04 11.2589 14.0329 11.1782 14.005 11.1037L12.9331 8.23229C12.902 8.14902 12.8463 8.0772 12.7733 8.0264C12.7004 7.9756 12.6137 7.94822 12.5248 7.94792H9.76127Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+            {sosialMedia.map((item) => {
+              const icon = getSocialIcon(item.icon);
 
-            {/* INSTAGRAM */}
-            <a
-              href="https://www.instagram.com/digiteknoindo/"
-              className="bg-[#4F8DC0] w-10 h-10 rounded-lg flex items-center justify-center no-underline transition-opacity duration-300 hover:opacity-80"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 34 34"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M18.3809 0C20.2559 0.005 21.2076 0.015 22.0293 0.0383333L22.3526 0.05C22.7259 0.0633333 23.0943 0.0799999 23.5393 0.0999999C25.3126 0.183333 26.5226 0.463333 27.5843 0.875C28.6843 1.29833 29.6109 1.87167 30.5376 2.79667C31.3854 3.62955 32.0413 4.63745 32.4593 5.75C32.8709 6.81167 33.1509 8.02167 33.2343 9.79667C33.2543 10.24 33.2709 10.6083 33.2843 10.9833L33.2943 11.3067C33.3193 12.1267 33.3293 13.0783 33.3326 14.9533L33.3343 16.1967V18.38C33.3383 19.5957 33.3256 20.8113 33.2959 22.0267L33.2859 22.35C33.2726 22.725 33.2559 23.0933 33.2359 23.5367C33.1526 25.3117 32.8693 26.52 32.4593 27.5833C32.0413 28.6959 31.3854 29.7038 30.5376 30.5367C29.7047 31.3845 28.6968 32.0403 27.5843 32.4583C26.5226 32.87 25.3126 33.15 23.5393 33.2333L22.3526 33.2833L22.0293 33.2933C21.2076 33.3167 20.2559 33.3283 18.3809 33.3317L17.1376 33.3333H14.9559C13.7397 33.3376 12.5235 33.3248 11.3076 33.295L10.9843 33.285C10.5886 33.27 10.1931 33.2528 9.79761 33.2333C8.02428 33.15 6.81428 32.87 5.75095 32.4583C4.639 32.0401 3.63169 31.3843 2.79928 30.5367C1.95086 29.7039 1.29446 28.696 0.875948 27.5833C0.464282 26.5217 0.184281 25.3117 0.100948 23.5367L0.0509479 22.35L0.0426148 22.0267C0.0118916 20.8114 -0.00199882 19.5957 0.000947995 18.38V14.9533C-0.00366516 13.7377 0.00855836 12.522 0.0376148 11.3067L0.0492814 10.9833C0.0626147 10.6083 0.0792813 10.24 0.0992813 9.79667C0.182615 8.02167 0.462615 6.81333 0.874281 5.75C1.29377 4.637 1.95132 3.62906 2.80095 2.79667C3.63287 1.94925 4.63959 1.29346 5.75095 0.875C6.81428 0.463333 8.02261 0.183333 9.79761 0.0999999C10.2409 0.0799999 10.6109 0.0633333 10.9843 0.05L11.3076 0.0399999C12.5229 0.0103878 13.7386 -0.00239116 14.9543 0.00166655L18.3809 0ZM16.6676 8.33333C14.4575 8.33333 12.3379 9.21131 10.7751 10.7741C9.21225 12.3369 8.33428 14.4565 8.33428 16.6667C8.33428 18.8768 9.21225 20.9964 10.7751 22.5592C12.3379 24.122 14.4575 25 16.6676 25C18.8778 25 20.9974 24.122 22.5602 22.5592C24.123 20.9964 25.0009 18.8768 25.0009 16.6667C25.0009 14.4565 24.123 12.3369 22.5602 10.7741C20.9974 9.21131 18.8778 8.33333 16.6676 8.33333ZM16.6676 11.6667C17.3242 11.6666 17.9744 11.7958 18.5811 12.047C19.1878 12.2981 19.739 12.6663 20.2034 13.1305C20.6678 13.5948 21.0362 14.1459 21.2875 14.7525C21.5389 15.3591 21.6683 16.0092 21.6684 16.6658C21.6686 17.3224 21.5393 17.9726 21.2882 18.5793C21.037 19.186 20.6688 19.7372 20.2046 20.2016C19.7404 20.666 19.1892 21.0344 18.5826 21.2857C17.976 21.5371 17.3259 21.6666 16.6693 21.6667C15.3432 21.6667 14.0714 21.1399 13.1337 20.2022C12.1961 19.2645 11.6693 17.9927 11.6693 16.6667C11.6693 15.3406 12.1961 14.0688 13.1337 13.1311C14.0714 12.1934 15.3432 11.6667 16.6693 11.6667M25.4193 5.83333C24.8667 5.83333 24.3368 6.05283 23.9461 6.44353C23.5554 6.83423 23.3359 7.36413 23.3359 7.91667C23.3359 8.4692 23.5554 8.9991 23.9461 9.38981C24.3368 9.78051 24.8667 10 25.4193 10C25.9718 10 26.5017 9.78051 26.8924 9.38981C27.2831 8.9991 27.5026 8.4692 27.5026 7.91667C27.5026 7.36413 27.2831 6.83423 26.8924 6.44353C26.5017 6.05283 25.9718 5.83333 25.4193 5.83333Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+              if (!icon) return null;
 
-            {/* EMAIL */}
-            <a
-              href="mailto:digiteknoindo@gmail.com"
-              className="bg-[#4F8DC0] w-10 h-10 rounded-lg flex items-center justify-center no-underline transition-opacity duration-300 hover:opacity-80"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 36 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M35.9012 3.88607L35.7569 24.6086C35.7475 25.9555 34.6494 27.0385 33.3025 27.0291L27.6127 26.9895L27.7089 13.1754L17.9068 20.4227L8.20654 13.0396L8.11032 26.8551L2.42051 26.8155C2.1003 26.8133 1.78366 26.748 1.4887 26.6233C1.19373 26.4987 0.926219 26.3171 0.701441 26.0891C0.476664 25.861 0.299028 25.5909 0.178684 25.2941C0.0583407 24.9974 -0.00235212 24.6798 7.38044e-05 24.3596L0.144401 3.63703C0.165393 0.62303 3.61748 -1.07381 6.01549 0.751681L8.28011 2.47641L17.9804 9.8566L27.7825 2.60926L30.0709 0.91922C32.4926 -0.871211 35.9222 0.872066 35.9012 3.88607Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+              return (
+                <a
+                  key={item.id}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#4F8DC0] w-10 h-10 rounded-lg flex items-center justify-center no-underline transition-opacity duration-300 hover:opacity-80"
+                >
+                  <img
+                    src={icon}
+                    alt={item.nama}
+                    className="w-5 h-5 object-contain"
+                  />
+                </a>
+              );
+            })}
           </div>
 
           {/* COPYRIGHT - NUNITO SANS */}
@@ -122,41 +199,50 @@ const Footer = () => {
         </div>
 
         {/* =========================
-            KOLOM 2 - LAYANAN
-        ========================== */}
-        <div className="flex-1 md:min-w-[250px] flex flex-col items-start">
-          {/* HEADING - BELANOSIMA */}
-          <h3 className="font-['Belanosima'] text-center w-full mt-0 mb-[25px] text-[20px] font-semibold">
-            {t("layanan_digi")}
-          </h3>
+    KOLOM 2 - FOOTER COLUMN 1
+========================== */}
 
-          {/* ISI - NUNITO SANS */}
-          <ul className="font-['Nunito Sans'] list-disc pl-[18px] md:pl-5 m-0 text-center md:text-left w-full">
-            <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Software Development
-            </li>
+        {column1 && (
+          <div className="flex-1 md:min-w-[250px] flex flex-col items-start">
+            <h3 className="font-['Belanosima'] text-center w-full mt-0 mb-[25px] text-[20px] font-semibold">
+              {column1.nama}
+            </h3>
 
-            <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Services And Maintanance
-            </li>
+            <ul className="font-['Nunito Sans'] list-disc pl-[18px] md:pl-5 m-0 text-center md:text-left w-full">
+              {column1.items?.map((item) => (
+                <li
+                  key={item.id}
+                  className="mb-3 text-[0.95rem] leading-[1.5] text-left"
+                >
+                  {item.isi}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-            <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              IT Equipment/Hardware &amp; Networking
-            </li>
+        {/* =========================
+    KOLOM 3 - FOOTER COLUMN 3
+========================== */}
 
-            <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              IT Consultant &amp; Problem Solving
-            </li>
+        {column3 && (
+          <div className="flex-1 md:min-w-[250px] flex flex-col items-start">
+            <h3 className="font-['Belanosima'] text-center w-full mt-0 mb-[25px] text-[20px] font-semibold">
+              {column3.nama}
+            </h3>
 
-            <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Procurement of Engine and Turbine Components and Spare Parts
-            </li>
-
-            <li className="mb-3 text-[0.95rem] leading-[1.5] text-left">
-              Installation Electrical and Automation Equipment
-            </li>
-          </ul>
-        </div>
+            <ul className="font-['Nunito Sans'] list-disc pl-[18px] md:pl-5 m-0 text-center md:text-left w-full">
+              {column3.items?.map((item) => (
+                <li
+                  key={item.id}
+                  className="mb-3 text-[0.95rem] leading-[1.5] text-left"
+                >
+                  {item.isi}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         {/* =========================
             KOLOM 3 - KONTAK

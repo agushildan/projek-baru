@@ -1,12 +1,41 @@
 import "./Navbar.css";
 import { useState, useEffect, useRef } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import i18n from "../i18n";
 
 function Navbar() {
   const [keyword, setKeyword] = useState("");
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const [logoHeader, setLogoHeader] = useState("");
+
+  useEffect(() => {
+    const fetchLogoHeader = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/pengaturan-lainnya",
+        );
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          const logo = result.data.find((item) => item.nama === "Logo Header");
+
+          if (logo?.gambar) {
+            setLogoHeader(`http://localhost:5000${logo.gambar}`);
+          }
+        }
+      } catch (error) {
+        console.error("❌ Gagal mengambil Logo Header:", error);
+      }
+    };
+
+    fetchLogoHeader();
+  }, []);
+
+  const [menuData, setMenuData] = useState([]);
+  const [menuLoading, setMenuLoading] = useState(true);
 
   const [currentLang, setCurrentLang] = useState(i18n.language || "id");
 
@@ -16,237 +45,62 @@ function Navbar() {
 
   const t = (key) => i18n.t(key);
 
+  // ===============================
+  // GET MENU DARI DATABASE
+  // ===============================
+  useEffect(() => {
+    const fetchMenu = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/pengaturan-menu",
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || "Gagal mengambil data menu");
+        }
+
+        setMenuData(data.data || []);
+      } catch (error) {
+        console.error("❌ Error fetch navbar menu:", error);
+      } finally {
+        setMenuLoading(false);
+      }
+    };
+
+    fetchMenu();
+  }, []);
+
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setCurrentLang(lng);
   };
 
-  const isTentangAktif = ["/sertifikasi", "/visimisi"].includes(
-    location.pathname,
-  );
-  const isInfoAktif = ["/karir", "/faq", "/artikel"].includes(
-    location.pathname,
-  );
+  // ===============================
+  // DATA UNTUK SEARCH
+  // ===============================
+  const menuRoutes = menuData.flatMap((menu) => {
+    const data = [];
 
-  const menuRoutes = [
-    {
-      keywords: [
-        "beranda",
-        "home",
-        "utama",
-        "halaman utama",
-        "homepage",
-        "menu utama",
-        "menu",
-        "dashbord",
-        "tampilan awal",
-        "home page",
-        "awal",
-        "welcome page",
-        "main menu",
-        "landing page",
-        "welcome",
-        "start page",
-      ],
-      route: "/",
-    },
-    {
-      keywords: [
-        "produk",
-        "product",
-        "barang",
-        "produk kami",
-        "item",
-        "equipment",
-        "peralatan",
-        "sparepart",
-        "spare part",
-        "componen",
-        "daftar barang",
-        "produk list",
-        "list produk",
-        "alat alat",
-        "mesin",
-        "hardware",
-        "perangkat",
-        "produk unggulan",
-        "produk terbaru",
-        "katalog",
-      ],
-      route: "/#produk",
-    },
-    {
-      keywords: [
-        "layanan",
-        "service",
-        "jasa",
-        "services",
-        "pelayanan",
-        "layanan kami",
-        "service kami",
-        "jasa kami",
-        "support",
-        "dukungan",
-        "our services",
-        "professional service",
-        "maintanance",
-        "instalation",
-      ],
-      route: "/layanan",
-    },
-    {
-      keywords: [
-        "mitra",
-        "partner",
-        "kerjasama",
-        "mitra kami",
-        "kerja sama",
-        "partners",
-        "kolaborasi",
-        "rekan",
-        "partnership",
-        "our partners",
-        "mitra perusahaan",
-        "partner perusahaan",
-        "rekan perusahaan",
-      ],
-      route: "/#mitra",
-    },
-    {
-      keywords: [
-        "kegiatan",
-        "activity",
-        "event",
-        "acara",
-        "events",
-        "aktivitas",
-        "dokumentasi",
-        "agenda",
-        "kegiatan perusahaan",
-        "event perusahaan",
-        "company activty",
-        "company event",
-        "our activty",
-        "our event",
-        "event terbaru",
-      ],
-      route: "/#kegiatan",
-    },
-    {
-      keywords: [
-        "sertifikasi",
-        "sertifikat",
-        "penghargaan",
-        "sertifikasi perusahaan",
-        "dokumen",
-        "certifikasi",
-        "penghargaan perusahaan",
-        "sertifikasi kami",
-        "company certification",
-      ],
-      route: "/sertifikasi",
-    },
-    {
-      keywords: [
-        "visi",
-        "misi",
-        "visi misi",
-        "vision mission",
-        "vision",
-        "mission",
-        "tujuan",
-        "tujuan perusahaan",
-        "arah perusahaan",
-        "company vision",
-        "company mision",
-        "our vision",
-        "our mision",
-      ],
-      route: "/visimisi",
-    },
-    {
-      keywords: [
-        "tentang",
-        "about",
-        "tentang kami",
-        "about us",
-        "profil",
-        "company profile",
-        "company",
-        "informasi tentang perusahaan",
-        "our company",
-        "company history",
-        "sejarah perusahaan",
-        "identitass perusahaan",
-        "tentang bisnis kami",
-      ],
-      route: "/#tentang",
-    },
-    {
-      keywords: [
-        "karir",
-        "career",
-        "job",
-        "jobs",
-        "lowongan",
-        "lowongan kerja",
-        "rekrutmen",
-        "recruitment",
-        "join us",
-        "bekerja",
-        "gabung",
-        "bergabung dengan kami",
-        "work with us",
-        "working with us",
-        "our careeers",
-      ],
-      route: "/karir",
-    },
-    {
-      keywords: [
-        "faq",
-        "help",
-        "bantuan",
-        "tanya jawab",
-        "question",
-        "informasi umum",
-        "pertanyaan",
-        "jawaban",
-        "pertanyaan yang sering di tanyakan",
-        "pusat bantuan",
-        "help center",
-        "pusat informasi",
-        "bantuan umum",
-        "common question",
-        "common answer",
-      ],
-      route: "/faq",
-    },
-    {
-      keywords: [
-        "blog",
-        "tes",
-        "artikel",
-        "articles",
-        "berita",
-        "news",
-        "informasi",
-        "berita perusahaan",
-        "tips",
-        "update",
-        "company blog",
-        "company news",
-        "latest news",
-        "latest update",
-        "informasi teknologi",
-        "berita teknologi",
-        "kabar terbaru",
-        "publikasi",
-        "publication",
-      ],
-      route: "/blog",
-    },
-  ];
+    if (menu.nama) {
+      data.push({
+        keywords: [menu.nama.toLowerCase()],
+        route: menu.url || "#",
+      });
+    }
+
+    (menu.subMenus || []).forEach((subMenu) => {
+      if (subMenu.nama) {
+        data.push({
+          keywords: [subMenu.nama.toLowerCase()],
+          route: subMenu.url,
+        });
+      }
+    });
+
+    return data;
+  });
 
   const closeAllMenus = () => {
     setIsMobileMenuOpen(false);
@@ -321,10 +175,72 @@ function Navbar() {
     return () => clearTimeout(timeoutId);
   }, [location.pathname, location.hash]);
 
+  // ===============================
+  // CEK MENU AKTIF
+  // ===============================
+  const isMenuActive = (menu) => {
+    const currentPath = location.pathname;
+    const currentHash = location.hash;
+
+    // Cek URL menu utama
+    if (menu.url) {
+      if (menu.url.startsWith("/#")) {
+        const hash = menu.url.substring(1);
+
+        if (currentPath === "/" && currentHash === hash) {
+          return true;
+        }
+      } else if (menu.url !== "/" && currentPath === menu.url) {
+        return true;
+      }
+    }
+
+    // Cek submenu
+    return (menu.subMenus || []).some((subMenu) => {
+      if (!subMenu.url) return false;
+
+      if (subMenu.url.startsWith("/#")) {
+        const hash = subMenu.url.substring(1);
+
+        return currentPath === "/" && currentHash === hash;
+      }
+
+      return currentPath === subMenu.url;
+    });
+  };
+
+  // ===============================
+  // NAVIGASI MENU
+  // ===============================
+  const handleMenuClick = (url) => {
+    if (!url) {
+      return;
+    }
+
+    closeAllMenus();
+
+    // URL external
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      window.location.href = url;
+      return;
+    }
+
+    // URL dengan hash
+    if (url.startsWith("/#")) {
+      const hash = url.substring(2);
+
+      navigateToHomeSection(hash);
+      return;
+    }
+
+    // URL internal
+    navigate(url);
+  };
+
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src="digilogo2.png" alt="Logo" />
+        <img src={logoHeader || "digilogo2.png"} alt="Logo" />
       </div>
 
       <button className="hp-btn" onClick={() => setIsMobileMenuOpen(true)}>
@@ -337,125 +253,83 @@ function Navbar() {
 
       <div className={`nav-menu-wrapper ${isMobileMenuOpen ? "open" : ""}`}>
         <div className="mobile-header">
-          <img src="digilogo2.png" alt="Logo" className="mobile-logo" />
+          <img
+            src={logoHeader || "digilogo2.png"}
+            alt="Logo"
+            className="mobile-logo"
+          />
           <button className="close-btn" onClick={closeAllMenus}>
             ✕
           </button>
         </div>
 
         <ul className="menu" ref={menuRef}>
-          <li>
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) =>
-                isActive && !location.hash ? "menu-aktif" : ""
-              }
-              onClick={() => {
-                closeAllMenus();
-                navigate("/");
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                });
-              }}
-            >
-              {t("beranda")}
-            </NavLink>
-          </li>
+          {!menuLoading &&
+            menuData
+              .filter((menu) => menu.status === "Aktif")
+              .map((menu) => {
+                const hasSubMenu = menu.subMenus && menu.subMenus.length > 0;
 
-          <li>
-            <span
-              className={`dropdown-trigger ${activeMenu === "tentang" || isTentangAktif ? "menu-aktif" : ""}`}
-              onClick={() => toggleMenu("tentang")}
-            >
-              {t("tentang_digi")}
-            </span>
-            <ul className={`submenu ${activeMenu === "tentang" ? "show" : ""}`}>
-              <li>
-                <NavLink to="/sertifikasi" onClick={closeAllMenus}>
-                  {t("sertifikasi")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/visimisi" onClick={closeAllMenus}>
-                  {t("visi_misi")}
-                </NavLink>
-              </li>
-            </ul>
-          </li>
+                const menuAktif = isMenuActive(menu);
 
-          <li>
-            <NavLink
-              to="/produklain"
-              className={() =>
-                location.pathname === "/produklain" ||
-                location.pathname.startsWith("/produk/")
-                  ? "menu-aktif"
-                  : ""
-              }
-              onClick={closeAllMenus}
-            >
-              {t("produk")}
-            </NavLink>
-          </li>
+                if (hasSubMenu) {
+                  return (
+                    <li key={menu.id}>
+                      <span
+                        className={`dropdown-trigger ${
+                          activeMenu === String(menu.id) || menuAktif
+                            ? "menu-aktif"
+                            : ""
+                        }`}
+                        onClick={() => toggleMenu(String(menu.id))}
+                      >
+                        {menu.nama}
+                      </span>
 
-          <li>
-            <NavLink
-              to="/layanan"
-              className={({ isActive }) => (isActive ? "menu-aktif" : "")}
-              onClick={closeAllMenus}
-            >
-              {t("layanan")}
-            </NavLink>
-          </li>
+                      <ul
+                        className={`submenu ${
+                          activeMenu === String(menu.id) ? "show" : ""
+                        }`}
+                      >
+                        {menu.subMenus
+                          .filter((subMenu) => subMenu.url && subMenu.nama)
+                          .map((subMenu) => (
+                            <li key={subMenu.id}>
+                              <a
+                                href={subMenu.url}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleMenuClick(subMenu.url);
+                                }}
+                              >
+                                {subMenu.nama}
+                              </a>
+                            </li>
+                          ))}
+                      </ul>
+                    </li>
+                  );
+                }
 
-          <li>
-            <span
-              className={`dropdown-trigger ${
-                location.hash === "#mitra" ? "menu-aktif" : ""
-              }`}
-              onClick={() => navigateToHomeSection("mitra")}
-            >
-              {t("mitra")}
-            </span>
-          </li>
-
-          <li>
-            <NavLink
-              to="/kegiatanDetail"
-              className={({ isActive }) => (isActive ? "menu-aktif" : "")}
-              onClick={closeAllMenus}
-            >
-              {t("kegiatan")}
-            </NavLink>
-          </li>
-
-          <li>
-            <span
-              className={`dropdown-trigger ${activeMenu === "info" || isInfoAktif ? "menu-aktif" : ""}`}
-              onClick={() => toggleMenu("info")}
-            >
-              {t("info")}
-            </span>
-            <ul className={`submenu ${activeMenu === "info" ? "show" : ""}`}>
-              <li>
-                <NavLink to="/karir" onClick={closeAllMenus}>
-                  {t("karir")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/faq" onClick={closeAllMenus}>
-                  {t("faq")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/artikel" onClick={closeAllMenus}>
-                  {t("Artikel")}
-                </NavLink>
-              </li>
-            </ul>
-          </li>
+                return (
+                  <li key={menu.id}>
+                    {menu.url ? (
+                      <a
+                        href={menu.url}
+                        className={menuAktif ? "menu-aktif" : ""}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleMenuClick(menu.url);
+                        }}
+                      >
+                        {menu.nama}
+                      </a>
+                    ) : (
+                      <span>{menu.nama}</span>
+                    )}
+                  </li>
+                );
+              })}
         </ul>
 
         <div className="nav-right-container">

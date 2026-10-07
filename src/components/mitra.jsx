@@ -1,20 +1,16 @@
 import { useEffect, useState } from "react";
 import i18n from "../i18n";
 
-import DWITAMA from "../assets/Mitra/DWITAMA.png";
-import ICA from "../assets/Mitra/ICA.png";
-import JAPA from "../assets/Mitra/JAPA.png";
-import KATALIS from "../assets/Mitra/KATALIS SINERGI INDONESIA.png";
-import PLN from "../assets/Mitra/PLN.png";
-import SOLUSINDO from "../assets/Mitra/SOLUSINDO.png";
-import TAKA from "../assets/Mitra/TAKA.png";
-import TAMARIS from "../assets/Mitra/TAMARIS HYDR.png";
-
 function Mitra() {
   const [, setCurrentLang] = useState(i18n.language || "id");
 
+  const [mitraList, setMitraList] = useState([]);
+
   const t = (key, defaultValue) => i18n.t(key, { defaultValue });
 
+  // =========================
+  // LANGUAGE
+  // =========================
   useEffect(() => {
     const handleLanguageChange = (lng) => {
       setCurrentLang(lng);
@@ -27,16 +23,52 @@ function Mitra() {
     };
   }, []);
 
-  const mitraList = [
-    { image: JAPA, alt: "PT JAPA Indo Tama" },
-    { image: DWITAMA, alt: "DWITAMA" },
-    { image: ICA, alt: "ICA", className: "scale-[1.4]" },
-    { image: PLN, alt: "PLN Nusantara Power" },
-    { image: KATALIS, alt: "Katalis Sinergi Indonesia" },
-    { image: TAKA, alt: "TAKA Turbomachinery" },
-    { image: SOLUSINDO, alt: "Solusindo Integrata Praetoria" },
-    { image: TAMARIS, alt: "Tamaris Hydro" },
-  ];
+  // =========================
+  // GET DATA MITRA
+  // =========================
+  useEffect(() => {
+    const fetchMitra = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/mitra");
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Gagal mengambil data Mitra.");
+        }
+
+        setMitraList(result.data);
+      } catch (error) {
+        console.error("❌ Gagal mengambil data Mitra:", error);
+      }
+    };
+
+    fetchMitra();
+  }, []);
+
+  // =========================
+  // URL LOGO
+  // =========================
+  const getMitraLogoUrl = (logo) => {
+    if (!logo) return "";
+
+    if (logo.startsWith("http")) {
+      return logo;
+    }
+
+    return `http://localhost:5000${logo.startsWith("/") ? "" : "/"}${logo}`;
+  };
+
+  // =========================
+  // CLASS LOGO KHUSUS
+  // =========================
+  const getLogoClassName = (nama) => {
+    if (nama?.toLowerCase().includes("indonesia chemical alumina")) {
+      return "scale-[1.4]";
+    }
+
+    return "";
+  };
 
   // Duplikasi list agar pergerakan tidak terputus
   const duplicatedMitraList = [...mitraList, ...mitraList];
@@ -49,14 +81,21 @@ function Mitra() {
       {/* Definisi Animasi CSS Langsung */}
       <style>{`
         @keyframes scrollLeft {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% {
+            transform: translateX(0);
+          }
+
+          100% {
+            transform: translateX(-50%);
+          }
         }
+
         .animate-scroll-left {
           display: flex;
           width: max-content;
           animation: scrollLeft 20s linear infinite;
         }
+
         .animate-scroll-left:hover {
           animation-play-state: paused;
         }
@@ -75,7 +114,7 @@ function Mitra() {
           <div className="animate-scroll-left gap-5">
             {duplicatedMitraList.map((mitra, index) => (
               <div
-                key={index}
+                key={`${mitra.id}-${index}`}
                 className="w-[235px] h-[164px] bg-white rounded-[10px] overflow-hidden border-[3px] border-[#806758] shadow-[0_4px_10px_rgba(0,0,0,0.25)] flex flex-col shrink-0"
               >
                 <div className="w-full h-[30px] shrink-0 bg-[#F8BCBD] border-b-[1px] border-[#806758] flex items-center justify-end px-[10px] gap-[7px]">
@@ -94,6 +133,7 @@ function Mitra() {
                         strokeLinecap="round"
                       />
                     </svg>
+
                     <svg
                       width="23"
                       height="23"
@@ -110,6 +150,7 @@ function Mitra() {
                         strokeWidth="1.5"
                       />
                     </svg>
+
                     <svg
                       width="23"
                       height="23"
@@ -134,13 +175,15 @@ function Mitra() {
                 </div>
 
                 <div className="flex-1 w-full flex items-center justify-center px-[14px] py-[8px]">
-                  <img
-                    src={mitra.image}
-                    alt={mitra.alt}
-                    className={`max-w-full max-h-full object-contain ${
-                      mitra.className || ""
-                    }`}
-                  />
+                  {mitra.logo && (
+                    <img
+                      src={getMitraLogoUrl(mitra.logo)}
+                      alt={mitra.nama}
+                      className={`max-w-full max-h-full object-contain ${getLogoClassName(
+                        mitra.nama,
+                      )}`}
+                    />
+                  )}
                 </div>
               </div>
             ))}
